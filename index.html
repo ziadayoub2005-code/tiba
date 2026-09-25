@@ -2943,23 +2943,28 @@
             </div>
           </div>
 
-          <div class="template-card-footer">
-            <button type="button" class="btn btn-primary" style="flex:1;" onclick="selectTemplate('${tmpl.id}')">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>${currentRole === 'admin' ? 'تعديل بيانات القالب' : 'اختيار هذه الاستمارة وتعبئتها'}</span>
-            </button>
-            ${currentRole === 'admin' ? `
-              <button type="button" class="btn btn-outline btn-sm" onclick="event.stopPropagation(); togglePublishTemplate('${tmpl.id}');" title="${isPublished ? 'إيقاف نشر هذا القالب للطلاب (تحويل لمسودة)' : 'نشر هذا القالب للطلاب الآن'}" style="${isPublished ? 'color:#f59e0b; border-color:rgba(245,158,11,0.4);' : 'color:#10b981; border-color:rgba(16,185,129,0.4);'}">
+          ${currentRole === 'admin' ? `
+            <div style="margin-top: 14px; padding-top: 12px; border-top: 1px dashed #334155;">
+              <button type="button" class="btn btn-sm" onclick="event.stopPropagation(); togglePublishTemplate('${tmpl.id}');" style="width:100%; justify-content:center; padding:9px 12px; font-weight:800; font-size:0.88rem; border-radius:8px; display:flex; align-items:center; gap:8px; cursor:pointer; transition:all 0.2s ease; ${isPublished ? 'background:rgba(245,158,11,0.14); color:#fbbf24; border:1.5px solid #f59e0b;' : 'background:rgba(16,185,129,0.16); color:#34d399; border:1.5px solid #10b981;'}">
                 ${isPublished ? `
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="10" y1="15" x2="10" y2="9"></line><line x1="14" y1="15" x2="14" y2="9"></line></svg>
-                  <span>إيقاف النشر</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="10" y1="15" x2="10" y2="9"></line><line x1="14" y1="15" x2="14" y2="9"></line></svg>
+                  <span>توقيف العرض (معروض للطلاب حالياً)</span>
                 ` : `
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
-                  <span>نشر للطلاب</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                  <span>تشغيل العرض (نشر وإتاحة للطلاب)</span>
                 `}
               </button>
-              <button type="button" class="btn btn-outline btn-sm" onclick="event.stopPropagation(); deleteTemplate('${tmpl.id}');" title="حذف هذا القالب">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path></svg>
+            </div>
+          ` : ''}
+
+          <div class="template-card-footer" style="margin-top: 10px;">
+            <button type="button" class="btn btn-primary" style="flex:1;" onclick="selectTemplate('${tmpl.id}')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>${currentRole === 'admin' ? 'تعديل وتحرير القالب' : 'اختيار هذه الاستمارة وتعبئتها'}</span>
+            </button>
+            ${currentRole === 'admin' ? `
+              <button type="button" class="btn btn-outline btn-sm" onclick="event.stopPropagation(); deleteTemplate('${tmpl.id}');" title="حذف هذا القالب نهائياً" style="padding: 8px 12px;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path></svg>
               </button>
             ` : ''}
           </div>
@@ -2983,7 +2988,7 @@
       showWorkspaceView();
     };
 
-    // Toggle Publish Status for a Template
+    // Toggle Publish/Display Status for a Template
     window.togglePublishTemplate = function(templateId) {
       const tmpl = templates.find(t => t.id === templateId);
       if (!tmpl) return;
@@ -2995,9 +3000,9 @@
       }
       renderGallery();
       if (tmpl.published) {
-        showSwalToast('تم نشر القالب للطلاب!', 'أصبح هذا القالب متاحاً وظاهراً لجميع الطلاب الآن في قائمة الاستمارات.');
+        showSwalToast('تم تشغيل العرض للطلاب!', 'تم تفعيل وعرض الاستمارة وأصبحت مرئية لكافة الطلاب بنجاح.');
       } else {
-        showSwalToast('تم إيقاف النشر!', 'تم تحويل القالب إلى مسودة خاصة ولن يظهر للطلاب.');
+        showSwalToast('تم توقيف العرض!', 'تم توقيف عرض الاستمارة وأصبحت مخفية عن الطلاب تماماً.');
       }
     };
 
@@ -3013,29 +3018,35 @@
         badge.className = 'status-pill status-published';
         badge.innerHTML = `
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          منشور للطلاب
+          معروض للطلاب حالياً
         `;
-        desc.innerText = 'هذا القالب منشور حالياً ومتاح لكافة الطلاب في قائمة الاستمارات الرسمية.';
-        toggleBtn.className = 'btn btn-outline btn-sm';
-        toggleBtn.style.color = '#f59e0b';
-        toggleBtn.style.borderColor = 'rgba(245,158,11,0.5)';
+        desc.innerText = 'هذا القالب معروض ومتاح حالياً لجميع الطلاب في قائمة الاستمارات الرسمية.';
+        toggleBtn.className = 'btn btn-sm';
+        toggleBtn.style.background = 'rgba(245,158,11,0.15)';
+        toggleBtn.style.color = '#fbbf24';
+        toggleBtn.style.border = '1.5px solid #f59e0b';
+        toggleBtn.style.fontWeight = '800';
+        toggleBtn.style.padding = '10px';
         toggleBtn.innerHTML = `
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="10" y1="15" x2="10" y2="9"></line><line x1="14" y1="15" x2="14" y2="9"></line></svg>
-          إيقاف النشر (تحويل لمسودة خاصة)
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="10" y1="15" x2="10" y2="9"></line><line x1="14" y1="15" x2="14" y2="9"></line></svg>
+          توقيف العرض (إخفاء عن الطلاب)
         `;
       } else {
         badge.className = 'status-pill status-draft';
         badge.innerHTML = `
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
-          مسودة (غير منشور)
+          العرض متوقف (مخفي عن الطلاب)
         `;
-        desc.innerText = 'هذا القالب مسودة خاصة بك كمسؤول فقط، ولن يظهر لأي طالب حتى تضغط على نشر.';
-        toggleBtn.className = 'btn btn-admin btn-sm';
-        toggleBtn.style.color = '#fff';
-        toggleBtn.style.borderColor = '';
+        desc.innerText = 'هذا القالب متوقف عرضه ومخفي عن الطلاب، يمكنك تعديله ثم تشغيل العرض متى أردت.';
+        toggleBtn.className = 'btn btn-sm';
+        toggleBtn.style.background = '#10b981';
+        toggleBtn.style.color = '#ffffff';
+        toggleBtn.style.border = '1.5px solid #10b981';
+        toggleBtn.style.fontWeight = '800';
+        toggleBtn.style.padding = '10px';
         toggleBtn.innerHTML = `
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
-          نشر هذا القالب للطلاب الآن
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          تشغيل العرض (إتاحة للطلاب فوراً)
         `;
       }
     }
