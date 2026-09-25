@@ -1989,17 +1989,16 @@
         أنت الآن في وضع الإدارة (Admin) — يمكنك إنشاء وتعديل ونشر القوالب للطلاب
       </div>
       <div style="display:flex; gap:8px; flex-wrap:wrap;">
-        <button type="button" class="btn btn-outline btn-sm" id="btnAdminRestoreDefaults" title="استعادة القوالب الرسمية الأربعة">
-          🔄 استعادة الأصلية
-        </button>
         <button type="button" class="btn btn-outline btn-sm" id="btnAdminDeleteAll" style="color:#ef4444; border-color:rgba(239,68,68,0.4);" title="حذف جميع القوالب دفعة واحدة">
-          🗑️ حذف كل القوالب
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+          حذف كافة القوالب
         </button>
         <button type="button" class="btn btn-outline btn-sm" id="btnAdminChangePass">
-          🔐 كلمة المرور
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          كلمة المرور
         </button>
         <button type="button" class="btn btn-admin btn-sm" id="btnAdminCreateNew">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
           + إنشاء قالب جديد ونشره
         </button>
       </div>
@@ -2072,7 +2071,7 @@
               حفظ ونشر القالب للطلاب
             </button>
             <button type="button" class="btn btn-outline btn-sm" id="btnChangePassInPanel" title="تغيير كلمة مرور الإدارة">
-              🔐
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
             </button>
           </div>
         </div>
@@ -2227,8 +2226,8 @@
                   <button type="button" class="btn btn-outline btn-sm" id="btnToggleLogo" style="flex:1;">
                     إخفاء الشعار
                   </button>
-                  <button type="button" class="btn btn-outline btn-sm" id="btnResetLogo" title="استعادة شعار طيبة الأصلي">
-                    استعادة
+                  <button type="button" class="btn btn-outline btn-sm" id="btnResetLogo" title="إعادة شعار معاهد طيبة الافتراضي">
+                    الشعار الأصلي
                   </button>
                 </div>
               </div>
@@ -2275,7 +2274,9 @@
       <!-- Always Visible Student Instructions Banner Above the Form -->
       <div class="student-top-guide-bar no-print" id="studentTopGuideBar">
         <div class="guide-bar-content">
-          <div class="guide-bar-icon-wrap">💡</div>
+          <div class="guide-bar-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path></svg>
+          </div>
           <div>
             <div class="guide-bar-title">تعليمات هامة للطلاب:</div>
             <div class="guide-bar-instructions">
@@ -2501,7 +2502,9 @@
 
   <!-- SweetAlert Success Toast -->
   <div class="swal-toast" id="swalToast">
-    <div class="swal-toast-icon">✓</div>
+    <div class="swal-toast-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    </div>
     <div>
       <div class="swal-toast-title">تم بنجاح!</div>
       <div class="swal-toast-msg">تم تفريغ كافة بيانات الجدول وأصبح جاهزاً لإدخال بيانات جديدة.</div>
@@ -2527,7 +2530,7 @@
       </div>
       <div class="print-tip-item">
         <span style="color:#10b981; font-weight:bold;">3.</span>
-        <div><strong>رسومات الخلفية (Background graphics):</strong> تأكد من <strong>تفعيلها ✓</strong> لظهور ألوان العناوين والإطارات.</div>
+        <div><strong>رسومات الخلفية (Background graphics):</strong> تأكد من <strong>تفعيل الخيار</strong> لظهور ألوان العناوين والإطارات.</div>
       </div>
 
       <div style="display: flex; gap: 10px; margin-top: 18px; justify-content: flex-end;">
@@ -2806,36 +2809,27 @@
           if (currentRole === 'admin') {
             grid.innerHTML = `
               <div style="grid-column: 1/-1; text-align: center; padding: 50px 20px; background: rgba(15, 23, 42, 0.7); border: 2px dashed #475569; border-radius: 16px;">
-                <div style="font-size: 2.8rem; margin-bottom: 12px;">📁</div>
+                <div style="width: 56px; height: 56px; margin: 0 auto 14px auto; background: rgba(148, 163, 184, 0.1); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: #94a3b8;">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                </div>
                 <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 8px;">لا توجد أي قوالب منشورة حالياً</h3>
                 <p style="font-size: 0.88rem; color: #94a3b8; max-width: 480px; margin: 0 auto 16px auto; line-height: 1.6;">
-                  تم حذف جميع القوالب. يمكنك كمسؤول إنشاء قالب استمارة جديد الآن ونشره فوراً للطلاب، أو استعادة النماذج الافتراضية.
+                  تم حذف جميع القوالب. يمكنك كمسؤول إنشاء قالب استمارة جديد الآن ونشره فوراً للطلاب.
                 </p>
-                <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+                <div style="display:flex; justify-content:center;">
                   <button type="button" class="btn btn-admin" onclick="document.getElementById('btnAdminCreateNew').click()">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                     + إنشاء قالب جديد ونشره
-                  </button>
-                  <button type="button" class="btn btn-outline" id="btnRestoreInEmpty">
-                    🔄 استعادة القوالب الأصلية
                   </button>
                 </div>
               </div>
             `;
-            setTimeout(() => {
-              const rBtn = document.getElementById('btnRestoreInEmpty');
-              if (rBtn) {
-                rBtn.onclick = () => {
-                  templates = JSON.parse(JSON.stringify(INITIAL_TEMPLATES));
-                  saveTemplates();
-                  renderGallery();
-                  showSwalToast('تمت الاستعادة!', 'تمت استعادة قوالب معاهد طيبة الافتراضية بنجاح.');
-                };
-              }
-            }, 10);
           } else {
             grid.innerHTML = `
               <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; background: rgba(15, 23, 42, 0.7); border: 2px dashed #334155; border-radius: 16px;">
-                <div style="font-size: 3.2rem; margin-bottom: 14px;">⏳</div>
+                <div style="width: 60px; height: 60px; margin: 0 auto 14px auto; background: rgba(56, 189, 248, 0.12); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #38bdf8;">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
                 <h3 style="font-size: 1.35rem; font-weight: 800; color: #38bdf8; margin-bottom: 8px;">لا توجد استمارات متاحة حالياً</h3>
                 <p style="font-size: 0.95rem; color: #cbd5e1; max-width: 520px; margin: 0 auto; line-height: 1.7;">
                   لم تقم إدارة المعهد بنشر أي استمارة بحث حتى الآن. يرجى الانتظار حتى تقوم إدارة المعهد بنشر القوالب المعتمدة لقسمك.
@@ -2918,7 +2912,7 @@
       const title = tmpl ? tmpl.formTitle : 'هذه الاستمارة';
       showSwalConfirm({
         title: 'حذف استمارة البحث نهائياً',
-        desc: `هل أنت متأكد من حذف <strong>«${title}»</strong> نهائياً من قائمة القوالب؟<br><span class="warn-highlight">⚠️ لن يتمكن الطلاب من الوصول إلى هذا القالب بعد حذفه!</span>`,
+        desc: `هل أنت متأكد من حذف <strong>«${title}»</strong> نهائياً من قائمة القوالب؟<br><span class="warn-highlight">تنبيه: لن يتمكن الطلاب من الوصول إلى هذا القالب بعد حذفه!</span>`,
         confirmText: 'نعم، احذف القالب الآن',
         cancelText: 'تراجع',
         onConfirm: () => {
@@ -3448,13 +3442,32 @@
         const newHash = await sha256(newPass);
         localStorage.setItem("tiba_admin_hash_v2", newHash);
         changeFeedback.style.color = '#10b981';
-        changeFeedback.innerText = '✅ تم تحديث كلمة المرور وتشفيرها بنجاح!';
+        changeFeedback.innerText = 'تم تحديث كلمة المرور وتشفيرها بنجاح!';
         changeFeedback.style.display = 'block';
 
         setTimeout(() => {
           changePassModal.classList.remove('active');
         }, 1200);
       });
+
+      // Admin Delete All Templates
+      const btnAdminDeleteAll = document.getElementById('btnAdminDeleteAll');
+      if (btnAdminDeleteAll) {
+        btnAdminDeleteAll.addEventListener('click', () => {
+          showSwalConfirm({
+            title: 'حذف كافة القوالب نهائياً',
+            desc: 'هل أنت متأكد من حذف جميع استمارات وقوالب البحث نهائياً من المنصة؟<br><span class="warn-highlight">تنبيه: لن يظهر أي قالب للطلاب حتى تقوم بإنشاء قوالب جديدة!</span>',
+            confirmText: 'نعم، احذف كافة القوالب',
+            cancelText: 'إلغاء',
+            onConfirm: () => {
+              templates = [];
+              saveTemplates();
+              renderGallery();
+              showSwalToast('تم حذف كافة القوالب!', 'تم تفريغ قائمة القوالب بالكامل.');
+            }
+          });
+        });
+      }
 
       // Admin Create New Template
       document.getElementById('btnAdminCreateNew').addEventListener('click', () => {
@@ -3504,7 +3517,7 @@
           templates.push(JSON.parse(JSON.stringify(currentTemplate)));
         }
         saveTemplates();
-        showSwalToast('تم النشر بنجاح! 🎉', 'تم حفظ القالب ونشره لجميع الطلاب في قائمة الاستمارات.');
+        showSwalToast('تم النشر بنجاح!', 'تم حفظ القالب ونشره لجميع الطلاب في قائمة الاستمارات.');
       });
 
       // Mobile Tabs
@@ -3658,15 +3671,15 @@
       document.getElementById('btnResetColumns').addEventListener('click', () => {
         showSwalConfirm({
           title: 'إعادة تعيين الأعمدة الافتراضية',
-          desc: 'هل تريد إعادة أعمدة الجدول إلى الأعمدة الرسمية الأصلية للمعهد؟<br><span class="warn-highlight">⚠️ سيتم استعادة الأعمدة الأربعة الافتراضية.</span>',
-          confirmText: 'نعم، استعادة الأعمدة',
+          desc: 'هل تريد إعادة أعمدة الجدول إلى الأعمدة الرسمية الأصلية للمعهد؟<br><span class="warn-highlight">تنبيه: سيتم إعادة ضبط الأعمدة الأربعة الافتراضية.</span>',
+          confirmText: 'نعم، إعادة ضبط الأعمدة',
           cancelText: 'إلغاء',
           onConfirm: () => {
             currentTemplate.columns = JSON.parse(JSON.stringify(INITIAL_TEMPLATES[0].columns));
             recalculateColumnWidths();
             renderColumnsList();
             renderPreview();
-            showSwalToast('تمت الاستعادة!', 'تمت إعادة الأعمدة إلى التوزيع الافتراضي.');
+            showSwalToast('تمت إعادة الضبط!', 'تمت إعادة الأعمدة إلى التوزيع الافتراضي.');
           }
         });
       });
@@ -3737,7 +3750,7 @@
       document.getElementById('btnClearData').addEventListener('click', () => {
         showSwalConfirm({
           title: 'هل أنت متأكد من تفريغ الجدول؟',
-          desc: 'سيتم مسح جميع البيانات والأسماء التي أدخلتها في جدول الطلاب بالكامل.<br><span class="warn-highlight">⚠️ لن تتمكن من التراجع عن هذه الخطوة بعد التأكيد!</span>',
+          desc: 'سيتم مسح جميع البيانات والأسماء التي أدخلتها في جدول الطلاب بالكامل.<br><span class="warn-highlight">تنبيه: لن تتمكن من التراجع عن هذه الخطوة بعد التأكيد!</span>',
           confirmText: 'نعم، تفريغ الجدول الآن',
           cancelText: 'إلغاء الأمر',
           onConfirm: () => {
