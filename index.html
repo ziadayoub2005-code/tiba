@@ -1988,9 +1988,15 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
         أنت الآن في وضع الإدارة (Admin) — يمكنك إنشاء وتعديل ونشر القوالب للطلاب
       </div>
-      <div style="display:flex; gap:8px;">
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <button type="button" class="btn btn-outline btn-sm" id="btnAdminRestoreDefaults" title="استعادة القوالب الرسمية الأربعة">
+          🔄 استعادة الأصلية
+        </button>
+        <button type="button" class="btn btn-outline btn-sm" id="btnAdminDeleteAll" style="color:#ef4444; border-color:rgba(239,68,68,0.4);" title="حذف جميع القوالب دفعة واحدة">
+          🗑️ حذف كل القوالب
+        </button>
         <button type="button" class="btn btn-outline btn-sm" id="btnAdminChangePass">
-          🔐 تغيير كلمة المرور
+          🔐 كلمة المرور
         </button>
         <button type="button" class="btn btn-admin btn-sm" id="btnAdminCreateNew">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
@@ -2673,7 +2679,7 @@
     function loadTemplates() {
       try {
         const stored = localStorage.getItem("tiba_templates_v2");
-        if (stored) {
+        if (stored !== null) {
           templates = JSON.parse(stored);
         } else {
           templates = JSON.parse(JSON.stringify(INITIAL_TEMPLATES));
@@ -2796,6 +2802,50 @@
       });
 
       if (filtered.length === 0) {
+        if (templates.length === 0) {
+          if (currentRole === 'admin') {
+            grid.innerHTML = `
+              <div style="grid-column: 1/-1; text-align: center; padding: 50px 20px; background: rgba(15, 23, 42, 0.7); border: 2px dashed #475569; border-radius: 16px;">
+                <div style="font-size: 2.8rem; margin-bottom: 12px;">📁</div>
+                <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 8px;">لا توجد أي قوالب منشورة حالياً</h3>
+                <p style="font-size: 0.88rem; color: #94a3b8; max-width: 480px; margin: 0 auto 16px auto; line-height: 1.6;">
+                  تم حذف جميع القوالب. يمكنك كمسؤول إنشاء قالب استمارة جديد الآن ونشره فوراً للطلاب، أو استعادة النماذج الافتراضية.
+                </p>
+                <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+                  <button type="button" class="btn btn-admin" onclick="document.getElementById('btnAdminCreateNew').click()">
+                    + إنشاء قالب جديد ونشره
+                  </button>
+                  <button type="button" class="btn btn-outline" id="btnRestoreInEmpty">
+                    🔄 استعادة القوالب الأصلية
+                  </button>
+                </div>
+              </div>
+            `;
+            setTimeout(() => {
+              const rBtn = document.getElementById('btnRestoreInEmpty');
+              if (rBtn) {
+                rBtn.onclick = () => {
+                  templates = JSON.parse(JSON.stringify(INITIAL_TEMPLATES));
+                  saveTemplates();
+                  renderGallery();
+                  showSwalToast('تمت الاستعادة!', 'تمت استعادة قوالب معاهد طيبة الافتراضية بنجاح.');
+                };
+              }
+            }, 10);
+          } else {
+            grid.innerHTML = `
+              <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; background: rgba(15, 23, 42, 0.7); border: 2px dashed #334155; border-radius: 16px;">
+                <div style="font-size: 3.2rem; margin-bottom: 14px;">⏳</div>
+                <h3 style="font-size: 1.35rem; font-weight: 800; color: #38bdf8; margin-bottom: 8px;">لا توجد استمارات متاحة حالياً</h3>
+                <p style="font-size: 0.95rem; color: #cbd5e1; max-width: 520px; margin: 0 auto; line-height: 1.7;">
+                  لم تقم إدارة المعهد بنشر أي استمارة بحث حتى الآن. يرجى الانتظار حتى تقوم إدارة المعهد بنشر القوالب المعتمدة لقسمك.
+                </p>
+              </div>
+            `;
+          }
+          return;
+        }
+
         grid.innerHTML = `
           <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #94a3b8;">
             <p style="font-size: 1.1rem; font-weight: 700;">لا توجد استمارات مطابقة للبحث</p>
@@ -2841,7 +2891,7 @@
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
               <span>${currentRole === 'admin' ? 'تعديل ونشر القالب' : 'اختيار هذه الاستمارة وتعبئتها'}</span>
             </button>
-            ${currentRole === 'admin' && templates.length > 1 ? `
+            ${currentRole === 'admin' ? `
               <button type="button" class="btn btn-outline btn-sm" onclick="event.stopPropagation(); deleteTemplate('${tmpl.id}');" title="حذف هذا القالب">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path></svg>
               </button>
