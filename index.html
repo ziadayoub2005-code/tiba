@@ -1474,20 +1474,27 @@
         min-width: 100%;
         max-width: 100%;
         border-left: none;
-        display: block;
+        display: none;
       }
 
       main.canvas-area {
-        display: none;
+        display: flex;
         width: 100%;
         padding: 14px 10px 60px 10px;
       }
 
+      body.show-edit-mode aside.control-panel {
+        display: block !important;
+      }
+      body.show-edit-mode main.canvas-area {
+        display: none !important;
+      }
+
       body.show-preview-mode aside.control-panel {
-        display: none;
+        display: none !important;
       }
       body.show-preview-mode main.canvas-area {
-        display: flex;
+        display: flex !important;
       }
     }
 
@@ -2307,7 +2314,204 @@
       gap: 6px;
     }
 
-  </style>
+  
+    /* ========================================================
+       STUDENT SMART SEARCH VIEW (ULTRA-CLEAN & INTUITIVE)
+       ======================================================== */
+    .view-student-search {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 80px);
+      padding: 30px 16px 60px 16px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .student-search-hero {
+      text-align: center;
+      max-width: 720px;
+      margin-bottom: 28px;
+    }
+
+    .student-search-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 30px;
+      color: #38bdf8;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .student-search-hero h2 {
+      font-size: clamp(1.6rem, 4vw, 2.3rem);
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .student-search-hero p {
+      font-size: clamp(0.95rem, 2vw, 1.08rem);
+      color: #94a3b8;
+      line-height: 1.6;
+      margin: 0 auto;
+      max-width: 600px;
+    }
+
+    .student-search-card {
+      width: 100%;
+      max-width: 680px;
+      background: #111827;
+      border: 1.5px solid #1f2937;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+    }
+
+    .search-input-group {
+      display: flex;
+      gap: 10px;
+      position: relative;
+    }
+
+    @media (max-width: 640px) {
+      .search-input-group {
+        flex-direction: column;
+      }
+    }
+
+    .search-input-box {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-input-box svg {
+      position: absolute;
+      right: 16px;
+      color: #94a3b8;
+      pointer-events: none;
+    }
+
+    .student-dept-input {
+      width: 100%;
+      padding: 15px 46px 15px 16px;
+      background: #0b1120;
+      border: 2px solid #334155;
+      border-radius: 12px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #ffffff;
+      outline: none;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .student-dept-input:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+      background: #0f172a;
+    }
+
+    .student-dept-input::placeholder {
+      color: #64748b;
+      font-weight: 400;
+    }
+
+    .btn-do-search {
+      padding: 14px 28px;
+      background: #2563eb;
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      font-family: inherit;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-do-search:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    .dept-not-found-box {
+      margin-top: 16px;
+      padding: 14px 18px;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1.5px solid rgba(239, 68, 68, 0.35);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #f87171;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .dept-quick-pills-sec {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid #1f2937;
+    }
+
+    .dept-quick-label {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: #94a3b8;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .dept-pills-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .dept-chip-btn {
+      padding: 8px 16px;
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid #334155;
+      border-radius: 20px;
+      color: #e2e8f0;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dept-chip-btn:hover {
+      background: #2563eb;
+      border-color: #2563eb;
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+</style>
 </head>
 <body>
 
@@ -2329,16 +2533,16 @@
     </div>
 
     <div class="navbar-actions">
-      <!-- Admin role indicator (Hidden by default for students) -->
+      <!-- Admin role indicator (Hidden for students, shown ONLY when #admin is unlocked) -->
       <span class="role-badge admin" id="roleBadge" style="display:none;">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>
-        <span id="roleBadgeText">وضع الإدارة</span>
+        <span id="roleBadgeText">وضع الإدارة (Admin)</span>
       </span>
 
-      <!-- Switch to Gallery / All Departments -->
-      <button type="button" class="btn btn-secondary btn-sm" id="btnBrowseGallery" title="تصفح جميع الأقسام والاستمارات">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-        <span class="btn-navbar-text">أقسام الاستمارات</span>
+      <!-- Back to Search Button (Student & Admin) -->
+      <button type="button" class="btn btn-secondary btn-sm workspace-btn" id="btnBackToSearchNav" style="display:none;" title="العودة لاختيار قسم آخر">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        <span>اختيار قسم آخر</span>
       </button>
 
       <!-- Clear Data -->
@@ -2347,10 +2551,10 @@
         <span class="btn-navbar-text">تفريغ الجدول</span>
       </button>
 
-      <!-- Admin Login / Logout Trigger -->
-      <button type="button" class="btn btn-outline btn-sm" id="btnAuthToggle">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-        <span id="authBtnText">دخول الإدارة</span>
+      <!-- Admin Exit Button (Visible only when Admin is logged in) -->
+      <button type="button" class="btn btn-outline btn-sm" id="btnAdminLogout" style="display:none;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <span>خروج من الإدارة</span>
       </button>
 
       <!-- Print Button (Primary for student) -->
@@ -2365,10 +2569,70 @@
     </div>
   </header>
 
+  <!-- Mobile Segmented Tabs Bar (Active when in Workspace on screens < 1024px) -->
+  <div class="mobile-tab-bar no-print" id="mobileTabBar" style="display:none;">
+    <div class="segmented-switch">
+      <button type="button" class="segmented-btn" id="tabBtnEdit">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="3" y1="15" x2="21" y2="15"></line></svg>
+        <span>التحكم في الجدول</span>
+      </button>
+      <button type="button" class="segmented-btn active" id="tabBtnPreview">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        <span>معاينة الاستمارة (A4)</span>
+      </button>
+    </div>
+  </div>
+
   <!-- ========================================================
        SCREEN 1: TEMPLATES GALLERY FOR STUDENTS & ADMIN
        ======================================================== -->
-  <section class="view-gallery" id="viewGallery">
+  
+  <!-- ========================================================
+       STUDENT SMART SEARCH VIEW (LANDING SCREEN)
+       ======================================================== -->
+  <section class="view-student-search" id="viewStudentSearch">
+    <div class="student-search-hero">
+      <div class="student-search-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path></svg>
+        <span>المنظومة الرسمية لاستمارات أبحاث التخرج</span>
+      </div>
+      <h2>ابحث عن استمارة قسمك الدراسي</h2>
+      <p>اكتب اسم قسمك بالأسفل، وسيتم نقلك مباشرة إلى الاستمارة المعتمدة لكتابة بيانات فريقك وطباعتها بسهولة تامة.</p>
+    </div>
+
+    <div class="student-search-card">
+      <div class="search-input-group">
+        <div class="search-input-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="deptSearchInput" class="student-dept-input" placeholder="اكتب اسم قسمك هنا (مثال: علوم الحاسب، نظم معلومات، هندسة...)">
+        </div>
+        <button type="button" id="btnDoDeptSearch" class="btn-do-search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <span>بحث وفتح الاستمارة</span>
+        </button>
+      </div>
+
+      <!-- Error / Not Found Alert -->
+      <div id="deptNotFoundAlert" class="dept-not-found-box" style="display:none;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        <div>
+          <div style="font-weight:700; font-size:0.98rem;" id="notFoundQueryTitle">عذراً، لم يتم العثور على استمارة لهذا القسم</div>
+          <div style="font-size:0.83rem; color:#fecaca; margin-top:2px;">يرجى التأكد من كتابة اسم القسم، أو اختيار أحد الأقسام المعتمدة المتاحة بالأسفل:</div>
+        </div>
+      </div>
+
+      <!-- Quick Department Chips -->
+      <div class="dept-quick-pills-sec">
+        <span class="dept-quick-label">أو اختر قسمك مباشرة بنقرة واحدة:</span>
+        <div class="dept-pills-wrapper" id="quickDeptsGrid">
+          <!-- Populated by JavaScript from live DB templates -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADMIN GALLERY (Only visible via /#admin secret route) -->
+  <section class="view-gallery" id="viewGallery" style="display:none;">
     <!-- Admin Live Announcement Banner -->
     <div class="announcement-banner" id="announcementBanner" style="display:none;">
       <div class="announcement-content">
@@ -3807,6 +4071,7 @@
                 if (eventData && eventData.data) {
                   templates = Array.isArray(eventData.data) ? eventData.data : Object.values(eventData.data);
                   renderGallery();
+        renderQuickDeptChips();
                   if (currentTemplate) {
                     const updated = templates.find(t => t.id === currentTemplate.id);
                     if (updated) {
@@ -3839,14 +4104,205 @@
     }
 
 
+    
+    // ========================================================
+    // ARABIC PHONETIC NORMALIZATION & FUZZY MATCHER
+    // ========================================================
+    function normalizeArabic(text) {
+      if (!text) return '';
+      let s = text.trim().toLowerCase();
+      s = s.replace(/[\u064B-\u065F\u0670\u0640]/g, '');
+      s = s.replace(/[أإآٱ]/g, 'ا');
+      s = s.replace(/ة/g, 'ه');
+      s = s.replace(/ى/g, 'ي');
+      s = s.replace(/ث/g, 'س');
+      s = s.replace(/ذ/g, 'ز');
+      s = s.replace(/ظ/g, 'ض');
+      s = s.replace(/[^\u0600-\u06FFa-zA-Z0-9\s]/g, ' ');
+      return s.replace(/\s+/g, ' ').trim();
+    }
+
+    function calcLevenshtein(s1, s2) {
+      if (s1.length < s2.length) return calcLevenshtein(s2, s1);
+      if (s2.length === 0) return s1.length;
+      let prev = Array.from({ length: s2.length + 1 }, (_, i) => i);
+      for (let i = 0; i < s1.length; i++) {
+        let curr = [i + 1];
+        for (let j = 0; j < s2.length; j++) {
+          let ins = prev[j + 1] + 1;
+          let del = curr[j] + 1;
+          let sub = prev[j] + (s1[i] !== s2[j] ? 1 : 0);
+          curr.push(Math.min(ins, del, sub));
+        }
+        prev = curr;
+      }
+      return prev[prev.length - 1];
+    }
+
+    function findMatchingTemplate(query, list) {
+      const qNorm = normalizeArabic(query);
+      if (!qNorm) return null;
+      const qWords = qNorm.split(' ').filter(w => w.length > 0);
+      if (qWords.length === 0) return null;
+
+      let bestTmpl = null;
+      let highestScore = 0;
+
+      list.forEach(t => {
+        // Only published templates for students
+        if (t.published === false) return;
+
+        const dNorm = normalizeArabic(t.dept || '');
+        const titleNorm = normalizeArabic(t.formTitle || '');
+
+        // 1. Direct or partial substring match
+        if (qNorm === dNorm || dNorm === qNorm) {
+          if (1.0 > highestScore) { highestScore = 1.0; bestTmpl = t; }
+          return;
+        }
+        if (dNorm.includes(qNorm) || qNorm.includes(dNorm)) {
+          if (0.95 > highestScore) { highestScore = 0.95; bestTmpl = t; }
+          return;
+        }
+        if (titleNorm.includes(qNorm)) {
+          if (0.90 > highestScore) { highestScore = 0.90; bestTmpl = t; }
+          return;
+        }
+
+        // 2. Word-by-word fuzzy comparison with typo tolerance
+        const targetWords = (dNorm + ' ' + titleNorm).split(' ').filter(w => w.length > 1);
+        let wordScores = qWords.map(qw => {
+          let maxWScore = 0;
+          targetWords.forEach(tw => {
+            const dist = calcLevenshtein(qw, tw);
+            const maxLen = Math.max(qw.length, tw.length);
+            const sim = maxLen > 0 ? (1.0 - (dist / maxLen)) : 0;
+            if (sim > maxWScore) maxWScore = sim;
+          });
+          return maxWScore;
+        });
+
+        const avgScore = wordScores.reduce((a, b) => a + b, 0) / wordScores.length;
+        if (avgScore > highestScore) {
+          highestScore = avgScore;
+          bestTmpl = t;
+        }
+      });
+
+      // Threshold: 0.50 allows handling typos like "علوق حاثب" -> "علوم الحاسب"
+      if (highestScore >= 0.50 && bestTmpl) {
+        return { template: bestTmpl, score: highestScore };
+      }
+      return null;
+    }
+
+    // Render Quick Department Chips on Search Page
+    function renderQuickDeptChips() {
+      const container = document.getElementById('quickDeptsGrid');
+      if (!container) return;
+      container.innerHTML = '';
+
+      const publishedTemplates = templates.filter(t => t.published !== false);
+      publishedTemplates.forEach(t => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'dept-chip-btn';
+        btn.innerHTML = `
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>${t.dept}</span>
+        `;
+        btn.addEventListener('click', () => {
+          selectTemplate(t.id);
+        });
+        container.appendChild(btn);
+      });
+    }
+
+    // Execute Student Search
+    function handleStudentSearch() {
+      const input = document.getElementById('deptSearchInput');
+      const alertBox = document.getElementById('deptNotFoundAlert');
+      const titleEl = document.getElementById('notFoundQueryTitle');
+      const query = (input.value || '').trim();
+
+      if (!query) {
+        alertBox.style.display = 'flex';
+        titleEl.innerText = 'يرجى كتابة اسم القسم في خانة البحث';
+        return;
+      }
+
+      const match = findMatchingTemplate(query, templates);
+      if (match && match.template) {
+        alertBox.style.display = 'none';
+        selectTemplate(match.template.id);
+        showSwalToast('تم فتح الاستمارة المعتمدة!', `قسم: ${match.template.dept}`);
+      } else {
+        alertBox.style.display = 'flex';
+        titleEl.innerText = `عذراً، لم نتمكن من العثور على استمارة لقسم: "${query}"`;
+      }
+    }
+
+    // Secret Admin Route Checker
+    function checkAdminSecretRoute() {
+      const hash = window.location.hash;
+      const search = window.location.search;
+      const isAdminRoute = (hash === '#admin' || hash === '#/admin' || search.includes('admin=1') || search.includes('admin=true'));
+
+      if (isAdminRoute) {
+        const adminSession = sessionStorage.getItem('tiba_admin_auth_v1');
+        if (adminSession === 'true') {
+          currentRole = 'admin';
+          showAdminGalleryView();
+        } else {
+          document.getElementById('adminLoginModal').classList.add('active');
+        }
+      } else {
+        if (currentRole !== 'admin') {
+          showStudentSearchView();
+        }
+      }
+    }
+
+    function showStudentSearchView() {
+      document.getElementById('viewStudentSearch').style.display = 'flex';
+      document.getElementById('viewGallery').style.display = 'none';
+      document.getElementById('appWorkspace').classList.remove('active');
+      document.getElementById('mobileTabBar').style.display = 'none';
+      document.querySelectorAll('.workspace-btn').forEach(b => b.style.display = 'none');
+      document.getElementById('btnBackToSearchNav').style.display = 'none';
+      renderQuickDeptChips();
+    }
+
+    function showAdminGalleryView() {
+      document.getElementById('viewStudentSearch').style.display = 'none';
+      document.getElementById('viewGallery').style.display = 'flex';
+      document.getElementById('appWorkspace').classList.remove('active');
+      document.getElementById('mobileTabBar').style.display = 'none';
+      document.querySelectorAll('.workspace-btn').forEach(b => b.style.display = 'none');
+      
+      const roleBadge = document.getElementById('roleBadge');
+      if (roleBadge) {
+        roleBadge.className = 'role-badge admin';
+        roleBadge.style.display = 'inline-flex';
+      }
+      const btnLogout = document.getElementById('btnAdminLogout');
+      if (btnLogout) btnLogout.style.display = 'inline-flex';
+
+      applyRolePermissions();
+      renderGallery();
+        renderQuickDeptChips();
+    }
+
     // Load templates from Cloud Database with local fallback
     async function loadTemplates() {
       try {
         templates = await TibaCloudDB.getTemplates();
         renderGallery();
+        renderQuickDeptChips();
       } catch (e) {
         templates = JSON.parse(JSON.stringify(INITIAL_TEMPLATES));
         renderGallery();
+        renderQuickDeptChips();
       }
     }
 
@@ -3863,15 +4319,28 @@
       document.getElementById('mobileTabBar').style.display = 'none';
       document.querySelectorAll('.workspace-btn').forEach(btn => btn.style.display = 'none');
       renderGallery();
+        renderQuickDeptChips();
     }
 
     function showWorkspaceView() {
+      document.getElementById('viewStudentSearch').style.display = 'none';
       document.getElementById('viewGallery').style.display = 'none';
       document.getElementById('appWorkspace').classList.add('active');
+      
+      document.querySelectorAll('.workspace-btn').forEach(btn => btn.style.display = 'inline-flex');
+      const btnBackSearch = document.getElementById('btnBackToSearchNav');
+      if (btnBackSearch) btnBackSearch.style.display = 'inline-flex';
+
       if (window.innerWidth <= 1024) {
         document.getElementById('mobileTabBar').style.display = 'block';
+        document.body.classList.add('show-preview-mode');
+        const tabBtnPreview = document.getElementById('tabBtnPreview');
+        const tabBtnEdit = document.getElementById('tabBtnEdit');
+        if (tabBtnPreview && tabBtnEdit) {
+          tabBtnPreview.classList.add('active');
+          tabBtnEdit.classList.remove('active');
+        }
       }
-      document.querySelectorAll('.workspace-btn').forEach(btn => btn.style.display = 'inline-flex');
       
       applyRolePermissions();
       updateAdminBannerUI();
@@ -3880,7 +4349,7 @@
       
       setTimeout(() => {
         fitToScreen();
-      }, 80);
+      }, 100);
     }
 
     // Apply Role UI Controls
@@ -4116,6 +4585,7 @@
         updateAdminBannerUI();
       }
       renderGallery();
+        renderQuickDeptChips();
       if (tmpl.published) {
         showSwalToast('تم تشغيل العرض للطلاب!', 'تم تفعيل وعرض الاستمارة وأصبحت مرئية لكافة الطلاب بنجاح.');
       } else {
@@ -4180,6 +4650,7 @@
           templates = templates.filter(t => t.id !== templateId);
           saveTemplates();
           renderGallery();
+        renderQuickDeptChips();
           showSwalToast('تم حذف القالب!', 'تمت إزالة الاستمارة من قائمة قوالب الطلاب بنجاح.');
         }
       });
@@ -4870,7 +5341,55 @@
 
     function init() {
       loadTemplates();
-      showGalleryView();
+      showStudentSearchView();
+      
+      // Student Search Events
+      const btnDoSearch = document.getElementById('btnDoDeptSearch');
+      const searchInput = document.getElementById('deptSearchInput');
+      if (btnDoSearch) btnDoSearch.addEventListener('click', handleStudentSearch);
+      if (searchInput) {
+        searchInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') handleStudentSearch();
+        });
+      }
+
+      // Back to search button in navbar & panel
+      const btnBackNav = document.getElementById('btnBackToSearchNav');
+      if (btnBackNav) btnBackNav.addEventListener('click', () => {
+        if (currentRole === 'admin') {
+          showAdminGalleryView();
+        } else {
+          showStudentSearchView();
+        }
+      });
+      const btnBackPanel = document.getElementById('btnBackToGalleryFromPanel');
+      if (btnBackPanel) btnBackPanel.addEventListener('click', () => {
+        if (currentRole === 'admin') {
+          showAdminGalleryView();
+        } else {
+          showStudentSearchView();
+        }
+      });
+
+      // Admin Logout
+      const btnLogout = document.getElementById('btnAdminLogout');
+      if (btnLogout) {
+        btnLogout.addEventListener('click', () => {
+          sessionStorage.removeItem('tiba_admin_auth_v1');
+          currentRole = 'student';
+          window.location.hash = '';
+          const roleBadge = document.getElementById('roleBadge');
+          if (roleBadge) roleBadge.style.display = 'none';
+          btnLogout.style.display = 'none';
+          showStudentSearchView();
+          showSwalToast('تم الخروج', 'عدت الآن إلى وضع الطالب.');
+        });
+      }
+
+      // Secret Admin Route Listener
+      window.addEventListener('hashchange', checkAdminSecretRoute);
+      checkAdminSecretRoute();
+
 
       // Navigation
       document.getElementById('brandHomeBtn').addEventListener('click', showGalleryView);
@@ -4885,6 +5404,7 @@
           pill.classList.add('active');
           activeFilter = pill.dataset.filter;
           renderGallery();
+        renderQuickDeptChips();
         });
       });
 
@@ -4901,6 +5421,7 @@
             showWorkspaceView();
           } else {
             renderGallery();
+        renderQuickDeptChips();
           }
         } else {
           passInput.value = '';
@@ -4954,6 +5475,7 @@
             showWorkspaceView();
           } else {
             renderGallery();
+        renderQuickDeptChips();
           }
         } else {
           failedAttempts++;
@@ -5046,6 +5568,7 @@
               templates = [];
               saveTemplates();
               renderGallery();
+        renderQuickDeptChips();
               showSwalToast('تم حذف كافة القوالب!', 'تم تفريغ قائمة القوالب بالكامل.');
             }
           });
