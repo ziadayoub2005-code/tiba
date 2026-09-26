@@ -2326,7 +2326,44 @@
         <h1>منصة استمارة بحث التخرج</h1>
         <span class="subtitle">معاهد طيبة العليا • تصميم رسمي متوافق مع مقاس A4</span>
       </div>
-      </div>
+    </div>
+
+    <div class="navbar-actions">
+      <!-- Admin role indicator (Hidden by default for students) -->
+      <span class="role-badge admin" id="roleBadge" style="display:none;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>
+        <span id="roleBadgeText">وضع الإدارة</span>
+      </span>
+
+      <!-- Switch to Gallery / All Departments -->
+      <button type="button" class="btn btn-secondary btn-sm" id="btnBrowseGallery" title="تصفح جميع الأقسام والاستمارات">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        <span class="btn-navbar-text">أقسام الاستمارات</span>
+      </button>
+
+      <!-- Clear Data -->
+      <button type="button" class="btn btn-outline btn-sm workspace-btn" id="btnClearData" title="تفريغ جدول الطلاب" style="display:none;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+        <span class="btn-navbar-text">تفريغ الجدول</span>
+      </button>
+
+      <!-- Admin Login / Logout Trigger -->
+      <button type="button" class="btn btn-outline btn-sm" id="btnAuthToggle">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span id="authBtnText">دخول الإدارة</span>
+      </button>
+
+      <!-- Print Button (Primary for student) -->
+      <button type="button" class="btn btn-primary workspace-btn" id="btnPrintPdf" style="display:none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+          <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        <span>طباعة / حفظ PDF</span>
+      </button>
+    </div>
+  </header>
 
   <!-- ========================================================
        SCREEN 1: TEMPLATES GALLERY FOR STUDENTS & ADMIN
