@@ -13,29 +13,28 @@
 
   <style>
     /* ========================================================
-       CSS RESET & MODERN ACADEMIC DESIGN TOKENS
+       CSS RESET & ACADEMIC DESIGN TOKENS (ZERO EMOJIS, PURE SVG)
        ======================================================== */
     :root {
       --bg-dark: #0b1120;
       --bg-surface: #0f172a;
       --bg-card: #1e293b;
-      --bg-card-hover: #273549;
+      --bg-card-hover: #24344d;
       --border-color: #334155;
       --border-focus: #38bdf8;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --primary: #2563eb;
       --primary-hover: #1d4ed8;
-      --primary-glow: rgba(37, 99, 235, 0.35);
+      --primary-glow: rgba(37, 99, 235, 0.3);
       --accent-cyan: #38bdf8;
       --accent-purple: #c084fc;
       --accent-emerald: #10b981;
-      --accent-amber: #f59e0b;
       --accent-rose: #ef4444;
       --radius-sm: 6px;
       --radius-md: 10px;
       --radius-lg: 16px;
-      --radius-xl: 22px;
+      --radius-xl: 20px;
       --font-ui: 'Cairo', system-ui, -apple-system, sans-serif;
       --font-paper: 'Amiri', 'Cairo', 'Traditional Arabic', serif;
     }
@@ -44,6 +43,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
@@ -61,18 +61,15 @@
 
     /* Global Scrollbar */
     ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
+      width: 6px;
+      height: 6px;
     }
     ::-webkit-scrollbar-track {
       background: #0b1120;
     }
     ::-webkit-scrollbar-thumb {
       background: #334155;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #475569;
+      border-radius: 3px;
     }
 
     /* Buttons */
@@ -84,11 +81,11 @@
       font-family: var(--font-ui);
       font-size: 0.92rem;
       font-weight: 700;
-      padding: 10px 18px;
+      padding: 9px 16px;
       border-radius: var(--radius-md);
       border: 1px solid transparent;
       cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.2s ease;
       text-decoration: none;
       user-select: none;
       white-space: nowrap;
@@ -101,8 +98,7 @@
     }
     .btn-primary:hover {
       background: linear-gradient(135deg, #3b82f6, #2563eb);
-      transform: translateY(-1.5px);
-      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+      transform: translateY(-1px);
     }
 
     .btn-outline {
@@ -113,17 +109,14 @@
     .btn-outline:hover {
       background: #334155;
       border-color: #64748b;
-      transform: translateY(-1px);
     }
 
     .btn-admin {
       background: linear-gradient(135deg, #7c3aed, #6d28d9);
       color: #ffffff;
-      box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
     }
     .btn-admin:hover {
       background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-      transform: translateY(-1.5px);
     }
 
     .btn-sm {
@@ -134,10 +127,10 @@
 
     /* Top App Navbar */
     header.app-navbar {
-      background: rgba(15, 23, 42, 0.95);
+      background: rgba(15, 23, 42, 0.96);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-color);
-      padding: 12px 24px;
+      padding: 10px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -149,30 +142,30 @@
     .navbar-brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       cursor: pointer;
     }
 
     .brand-icon {
-      width: 42px;
-      height: 42px;
+      width: 38px;
+      height: 38px;
       background: linear-gradient(135deg, #1e3a8a, #2563eb);
-      border-radius: 12px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #ffffff;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+      flex-shrink: 0;
     }
 
     .brand-titles h1 {
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       font-weight: 800;
       color: #ffffff;
-      letter-spacing: -0.3px;
+      line-height: 1.2;
     }
     .brand-titles .subtitle {
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       color: var(--accent-cyan);
       font-weight: 600;
     }
@@ -180,16 +173,16 @@
     .navbar-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     .role-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 5px 12px;
+      padding: 4px 10px;
       border-radius: 20px;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
     }
     .role-badge.admin {
@@ -199,28 +192,27 @@
     }
 
     /* ========================================================
-       STUDENT HOME SCREEN: CLEAN, SIMPLE, ULTRA-FRIENDLY
+       STUDENT HOME SCREEN (CLEAN, MODERN, MOBILE-PERFECT)
        ======================================================== */
     .view-student-home {
-      max-width: 1080px;
+      max-width: 980px;
       margin: 0 auto;
-      padding: 32px 20px 60px 20px;
+      padding: 20px 16px 40px 16px;
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 32px;
-      animation: fadeIn 0.3s ease;
+      gap: 20px;
+      animation: fadeIn 0.25s ease;
     }
 
-    /* Official Student Instructions Card */
+    /* Modern Instructions Card */
     .student-guide-card {
       background: linear-gradient(145deg, #1e293b, #0f172a);
-      border: 2px solid #3b82f6;
-      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15);
-      border-radius: var(--radius-xl);
-      padding: 26px 28px;
+      border: 1.5px solid #3b82f6;
+      border-radius: var(--radius-lg);
+      padding: 20px 22px;
       position: relative;
-      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     }
 
     .student-guide-card::before {
@@ -229,19 +221,20 @@
       top: 0;
       right: 0;
       left: 0;
-      height: 4px;
+      height: 3px;
       background: linear-gradient(90deg, #38bdf8, #2563eb, #a855f7);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     }
 
     .guide-header {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
+      gap: 10px;
+      margin-bottom: 8px;
     }
 
     .guide-header h2 {
-      font-size: 1.35rem;
+      font-size: 1.18rem;
       font-weight: 800;
       color: #ffffff;
       display: flex;
@@ -250,40 +243,40 @@
     }
 
     .guide-subtitle {
-      font-size: 0.98rem;
+      font-size: 0.9rem;
       color: #cbd5e1;
       font-weight: 600;
-      margin-bottom: 18px;
-      line-height: 1.6;
+      margin-bottom: 14px;
+      line-height: 1.5;
     }
 
     .guide-points {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 10px;
     }
 
     .guide-point-item {
       display: flex;
       align-items: flex-start;
-      gap: 14px;
-      background: rgba(15, 23, 42, 0.6);
-      padding: 14px 18px;
+      gap: 12px;
+      background: rgba(15, 23, 42, 0.65);
+      padding: 12px 14px;
       border-radius: var(--radius-md);
       border: 1px solid rgba(255, 255, 255, 0.05);
-      font-size: 0.95rem;
-      line-height: 1.6;
+      font-size: 0.88rem;
+      line-height: 1.5;
       color: #e2e8f0;
     }
 
     .point-num {
-      width: 28px;
-      height: 28px;
-      min-width: 28px;
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
       background: #2563eb;
       color: #fff;
       font-weight: 800;
-      font-size: 0.9rem;
+      font-size: 0.82rem;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -292,84 +285,102 @@
 
     .empty-boxes {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
-      margin-top: 8px;
+      margin-top: 6px;
     }
 
     .empty-tag {
-      background: rgba(239, 68, 68, 0.15);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(239, 68, 68, 0.12);
       color: #fca5a5;
-      border: 1px solid rgba(239, 68, 68, 0.35);
-      padding: 4px 12px;
-      border-radius: 8px;
-      font-size: 0.88rem;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 0.82rem;
       font-weight: 700;
     }
 
     .table-fields-tags {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
-      margin-top: 8px;
+      margin-top: 6px;
     }
 
     .field-tag {
-      background: rgba(16, 185, 129, 0.15);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(16, 185, 129, 0.12);
       color: #6ee7b7;
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      padding: 4px 12px;
-      border-radius: 8px;
-      font-size: 0.88rem;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 0.82rem;
       font-weight: 700;
     }
     .field-tag.highlight {
-      background: rgba(245, 158, 11, 0.2);
+      background: rgba(245, 158, 11, 0.15);
       color: #fde047;
-      border-color: rgba(245, 158, 11, 0.5);
+      border-color: rgba(245, 158, 11, 0.4);
     }
 
-    /* Exactly Two Big Department Cards */
+    /* Exactly Two Department Cards */
     .cards-section-title {
-      font-size: 1.3rem;
+      font-size: 1.15rem;
       font-weight: 800;
       color: #ffffff;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     .student-dept-cards-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+      gap: 16px;
       width: 100%;
     }
 
-    @media (max-width: 820px) {
+    @media (max-width: 768px) {
       .student-dept-cards-grid {
         grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .view-student-home {
+        padding: 14px 12px 30px 12px;
+        gap: 16px;
+      }
+      .student-guide-card {
+        padding: 16px 14px;
+      }
+      .guide-point-item {
+        padding: 10px 12px;
+        gap: 10px;
+        font-size: 0.84rem;
       }
     }
 
     .dept-card {
       background: linear-gradient(145deg, #1e293b, #0f172a);
-      border: 2px solid var(--border-color);
-      border-radius: var(--radius-xl);
-      padding: 28px;
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 22px 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
+      transition: all 0.25s ease;
       cursor: pointer;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
     }
 
     .dept-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
     }
 
     .dept-card.card-cs {
@@ -377,7 +388,6 @@
     }
     .dept-card.card-cs:hover {
       border-color: #38bdf8;
-      box-shadow: 0 16px 36px rgba(56, 189, 248, 0.2);
     }
 
     .dept-card.card-bis {
@@ -385,67 +395,68 @@
     }
     .dept-card.card-bis:hover {
       border-color: #a855f7;
-      box-shadow: 0 16px 36px rgba(168, 85, 247, 0.2);
     }
 
     .card-top-badge {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .badge-dept-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.6rem;
+      color: #fff;
     }
     .card-cs .badge-dept-icon {
       background: rgba(56, 189, 248, 0.15);
       border: 1px solid rgba(56, 189, 248, 0.3);
+      color: #38bdf8;
     }
     .card-bis .badge-dept-icon {
       background: rgba(168, 85, 247, 0.15);
       border: 1px solid rgba(168, 85, 247, 0.3);
+      color: #c084fc;
     }
 
     .badge-team-size {
-      background: rgba(16, 185, 129, 0.2);
+      background: rgba(16, 185, 129, 0.15);
       color: #34d399;
-      border: 1px solid rgba(16, 185, 129, 0.4);
-      padding: 6px 14px;
-      border-radius: 20px;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      padding: 4px 12px;
+      border-radius: 16px;
       font-weight: 800;
-      font-size: 0.92rem;
+      font-size: 0.85rem;
     }
 
     .card-dept-name {
-      font-size: 1.45rem;
+      font-size: 1.3rem;
       font-weight: 800;
       color: #ffffff;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
 
     .card-form-title {
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       color: #94a3b8;
       font-weight: 600;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
       line-height: 1.4;
     }
 
     .card-specs-list {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      margin-bottom: 24px;
-      padding-top: 14px;
+      gap: 6px;
+      margin-bottom: 18px;
+      padding-top: 12px;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       color: #cbd5e1;
     }
 
@@ -463,14 +474,14 @@
 
     .btn-card-enter {
       width: 100%;
-      padding: 14px 20px;
-      font-size: 1.05rem;
+      padding: 12px 16px;
+      font-size: 0.98rem;
       font-weight: 800;
       border-radius: var(--radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
       border: none;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -493,38 +504,38 @@
     }
 
     /* ========================================================
-       ADMIN VIEW (/#admin ONLY)
+       SCREEN 2: ADMIN DASHBOARD (ACCESSED ONLY VIA /#admin)
        ======================================================== */
     .view-admin-dashboard {
-      max-width: 1140px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 30px 20px 60px 20px;
+      padding: 24px 16px 50px 16px;
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 24px;
-      animation: fadeIn 0.3s ease;
+      gap: 20px;
+      animation: fadeIn 0.25s ease;
     }
 
     .admin-hero-banner {
-      background: linear-gradient(135deg, #31104b, #1e1b4b);
+      background: linear-gradient(135deg, #2e1065, #1e1b4b);
       border: 1.5px solid #a855f7;
       border-radius: var(--radius-lg);
-      padding: 20px 24px;
+      padding: 18px 22px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 14px;
     }
 
     .admin-hero-title {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
     .admin-hero-title h2 {
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 800;
       color: #f3e8ff;
     }
@@ -532,15 +543,14 @@
     .admin-hero-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
     }
 
-    /* Template Cards in Admin View */
     .admin-templates-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
       width: 100%;
     }
 
@@ -548,28 +558,28 @@
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
-      padding: 22px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 16px;
+      gap: 14px;
     }
 
     .admin-tmpl-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 10px;
+      gap: 8px;
     }
 
     .admin-tmpl-header h3 {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 800;
       color: #fff;
     }
 
     .admin-tmpl-meta {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
       line-height: 1.6;
     }
@@ -577,16 +587,16 @@
     .admin-card-actions {
       display: flex;
       gap: 8px;
-      margin-top: 10px;
+      margin-top: 8px;
     }
 
     /* ========================================================
-       SCREEN 2: WORKSPACE & A4 PAPER PREVIEW
+       SCREEN 3: WORKSPACE & RESPONSIVE FORM FILLING
        ======================================================== */
     .app-workspace {
       display: none;
       flex: 1;
-      height: calc(100vh - 70px);
+      height: calc(100vh - 60px);
       overflow: hidden;
       position: relative;
     }
@@ -594,24 +604,138 @@
       display: flex;
     }
 
-    /* Student Top Reminder Pill in Workspace */
-    .student-reminder-pill {
-      background: rgba(30, 41, 59, 0.95);
-      border: 1px solid #38bdf8;
-      color: #e0f2fe;
-      padding: 10px 18px;
-      border-radius: 30px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 12px auto 0 auto;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-      z-index: 10;
+    /* Mobile Segmented Switch (Fill Form vs A4 Preview) */
+    .mobile-tab-bar {
+      display: none;
+      background: #0f172a;
+      border-bottom: 1px solid var(--border-color);
+      padding: 8px 12px;
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 40;
     }
 
-    /* Canvas Area */
+    .segmented-switch {
+      display: flex;
+      background: #1e293b;
+      padding: 4px;
+      border-radius: 10px;
+      gap: 4px;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    .segmented-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 12px;
+      font-family: var(--font-ui);
+      font-size: 0.88rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 7px;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .segmented-btn.active {
+      background: #2563eb;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+    }
+
+    /* Dedicated Mobile Student Data Entry View */
+    .mobile-entry-view {
+      display: none;
+      flex: 1;
+      overflow-y: auto;
+      padding: 14px 14px 60px 14px;
+      background: #0b1120;
+    }
+
+    .mobile-entry-container {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mobile-entry-header {
+      background: #1e293b;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .mobile-student-card {
+      background: #1e293b;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .student-card-badge {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #38bdf8;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+      padding-bottom: 6px;
+    }
+
+    .student-card-badge.is-leader {
+      color: #fde047;
+    }
+
+    .mobile-input-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .mobile-field-label {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #94a3b8;
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .mobile-field-input {
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      padding: 9px 12px;
+      color: #ffffff;
+      font-family: var(--font-ui);
+      font-size: 0.92rem;
+      outline: none;
+      direction: rtl;
+    }
+    .mobile-field-input:focus {
+      border-color: #38bdf8;
+      background: #131d33;
+    }
+
+    /* Main Canvas Area */
     main.canvas-area {
       flex: 1;
       background: #0f172a;
@@ -620,7 +744,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px 14px 60px 14px;
+      padding: 16px 12px 60px 12px;
       position: relative;
     }
 
@@ -634,13 +758,30 @@
 
     .paper-scale-container {
       transform-origin: top center;
-      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.2s ease;
     }
 
     .paper-wrapper {
       padding: 0;
       display: flex;
       justify-content: center;
+    }
+
+    /* Student Top Reminder in Workspace */
+    .student-reminder-pill {
+      background: rgba(30, 41, 59, 0.96);
+      border: 1px solid #38bdf8;
+      color: #e0f2fe;
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+      z-index: 10;
     }
 
     /* ========================================================
@@ -663,7 +804,7 @@
       font-family: var(--font-paper);
     }
 
-    /* Academic Double Official Border */
+    /* Double Official Border */
     .a4-page::before {
       content: "";
       position: absolute;
@@ -786,7 +927,7 @@
       border-bottom: 1px solid #000;
     }
 
-    /* Project Metadata with Dotted Lines (Clearly Left Empty for handwritten/faculty) */
+    /* Project Metadata with Dotted Lines (Left Empty for handwritten entry) */
     .project-meta-box {
       margin: 4px 0 10px 0;
       display: flex;
@@ -941,8 +1082,8 @@
        ADMIN CONTROL PANEL (SIDEBAR IN WORKSPACE)
        ======================================================== */
     aside.control-panel {
-      width: 360px;
-      min-width: 360px;
+      width: 350px;
+      min-width: 350px;
       background: var(--bg-surface);
       border-left: 1px solid var(--border-color);
       display: flex;
@@ -952,31 +1093,31 @@
     }
 
     .panel-section {
-      padding: 16px 18px;
+      padding: 14px 16px;
       border-bottom: 1px solid var(--border-color);
     }
 
     .section-title {
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       font-weight: 800;
       color: #c084fc;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       display: flex;
       align-items: center;
       gap: 6px;
     }
 
     .form-group {
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       text-align: right;
     }
 
     .form-label {
       display: block;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
       color: var(--text-muted);
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
 
     .form-control {
@@ -984,10 +1125,10 @@
       background: #1e293b;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-sm);
-      padding: 8px 12px;
+      padding: 8px 10px;
       color: #ffffff;
       font-family: var(--font-ui);
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       outline: none;
       direction: rtl;
     }
@@ -998,19 +1139,19 @@
     .columns-manage-box {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      margin-top: 8px;
+      gap: 6px;
+      margin-top: 6px;
     }
 
     .column-manage-item {
       background: #1e293b;
       border: 1px solid var(--border-color);
-      padding: 6px 10px;
+      padding: 5px 8px;
       border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 8px;
+      gap: 6px;
     }
 
     .column-manage-item input {
@@ -1018,7 +1159,7 @@
       border: none;
       color: #fff;
       font-family: var(--font-ui);
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       outline: none;
       flex: 1;
     }
@@ -1043,15 +1184,15 @@
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
-      padding: 24px;
+      padding: 22px;
       width: 100%;
-      max-width: 480px;
+      max-width: 460px;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
       text-align: right;
     }
 
     .modal-card h3 {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 800;
       color: #ffffff;
       margin-bottom: 8px;
@@ -1060,27 +1201,74 @@
       gap: 8px;
     }
 
-    /* SweetAlert-like Toast */
+    /* Toast */
     .swal-toast {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
+      bottom: 20px;
+      right: 20px;
       background: #1e293b;
       border: 1.5px solid #38bdf8;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-      padding: 14px 20px;
+      padding: 12px 18px;
       border-radius: var(--radius-md);
       color: #fff;
       z-index: 2000;
       font-weight: 700;
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       display: none;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       animation: fadeIn 0.25s ease;
     }
     .swal-toast.active {
       display: flex;
+    }
+
+    /* ========================================================
+       RESPONSIVE BREAKPOINTS (MOBILE VS DESKTOP)
+       ======================================================== */
+    @media (max-width: 1024px) {
+      .app-workspace {
+        flex-direction: column;
+        height: calc(100vh - 58px);
+      }
+
+      .mobile-tab-bar {
+        display: block;
+      }
+
+      aside.control-panel {
+        width: 100%;
+        min-width: 100%;
+        display: none;
+      }
+
+      /* On mobile, canvas is only visible when preview tab is active */
+      body.mode-entry main.canvas-area {
+        display: none !important;
+      }
+      body.mode-entry .mobile-entry-view {
+        display: block !important;
+      }
+
+      body.mode-preview main.canvas-area {
+        display: flex !important;
+      }
+      body.mode-preview .mobile-entry-view {
+        display: none !important;
+      }
+    }
+
+    @media (min-width: 1025px) {
+      .mobile-tab-bar {
+        display: none !important;
+      }
+      .mobile-entry-view {
+        display: none !important;
+      }
+      main.canvas-area {
+        display: flex !important;
+      }
     }
 
     /* ========================================================
@@ -1102,12 +1290,13 @@
         overflow: visible !important;
       }
 
-      /* Strictly hide all UI elements */
       header.app-navbar,
       aside.control-panel,
       .view-student-home,
       .view-admin-dashboard,
       .student-reminder-pill,
+      .mobile-tab-bar,
+      .mobile-entry-view,
       .modal-backdrop,
       .swal-toast,
       .no-print {
@@ -1179,18 +1368,18 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-4px); }
+      from { opacity: 0; transform: translateY(-3px); }
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
-<body>
+<body class="mode-entry">
 
   <!-- Top Global Navbar -->
   <header class="app-navbar no-print">
     <div class="navbar-brand" id="brandHomeBtn">
       <div class="brand-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
           <path d="M6 6h10"></path>
           <path d="M6 10h10"></path>
@@ -1212,19 +1401,19 @@
 
       <!-- Back to Department Selection (Visible in Form Workspace) -->
       <button type="button" class="btn btn-outline btn-sm" id="btnBackToHome" style="display:none;">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
         <span>اختيار قسم آخر</span>
       </button>
 
       <!-- Admin Logout -->
       <button type="button" class="btn btn-outline btn-sm" id="btnAdminLogout" style="display:none; color:#f87171; border-color:rgba(239,68,68,0.4);">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-        <span>خروج من الإدارة</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <span>خروج</span>
       </button>
 
-      <!-- Direct Print / Save PDF Button -->
-      <button type="button" class="btn btn-primary" id="btnPrintPdf" style="display:none;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <!-- Direct Print Button -->
+      <button type="button" class="btn btn-primary btn-sm" id="btnPrintPdf" style="display:none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <polyline points="6 9 6 2 18 2 18 9"></polyline>
           <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
           <rect x="6" y="14" width="12" height="8"></rect>
@@ -1235,28 +1424,37 @@
   </header>
 
   <!-- ========================================================
-       SCREEN 1: STUDENT HOME SCREEN (NO BLOAT, DIRECT CARDS)
+       SCREEN 1: STUDENT HOME SCREEN (NO BLOAT, CLEAN CARDS)
        ======================================================== -->
   <section class="view-student-home" id="viewStudentHome">
     <!-- Student Official Instructions Card -->
     <div class="student-guide-card">
       <div class="guide-header">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-        <h2>تعليمات هامة للطلاب:</h2>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        <h2>تعليمات هامة للطلاب</h2>
       </div>
       <p class="guide-subtitle">
-        ده لينك قوالب الاستمارات المعتمدة، كل اللي عليك: هتدخل على الاستمارة الخاصة بقسمك، وتكتب البيانات زي ما وضحنا ليكم:
+        ادخل على الاستمارة الخاصة بقسمك، واكتب بيانات فريقك مباشرة:
       </p>
 
       <div class="guide-points">
         <div class="guide-point-item">
           <span class="point-num">١</span>
           <div>
-            هتلاقي الاستمارة جاهزة، كل اللي عليك تملأ البيانات المطلوبة، <strong>وتسيب الخانات دي فاضية:</strong>
+            الاستمارة جاهزة بالكامل، املأ بيانات الطلاب فقط، <strong>واترك هذه الخانات فارغة:</strong>
             <div class="empty-boxes">
-              <span class="empty-tag">❌ رقم المشروع</span>
-              <span class="empty-tag">❌ اسم المشروع</span>
-              <span class="empty-tag">❌ اسم الدكتور المشرف</span>
+              <span class="empty-tag">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line></svg>
+                رقم المشروع
+              </span>
+              <span class="empty-tag">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line></svg>
+                اسم المشروع
+              </span>
+              <span class="empty-tag">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line></svg>
+                اسم الدكتور المشرف
+              </span>
             </div>
           </div>
         </div>
@@ -1264,33 +1462,42 @@
         <div class="guide-point-item">
           <span class="point-num">٢</span>
           <div>
-            <strong>وتكتب في جدول الاستمارة الآتي فقط:</strong>
+            <strong>اكتب في جدول الاستمارة الآتي فقط:</strong>
             <div class="table-fields-tags">
-              <span class="field-tag">✔ كود كل طالب</span>
-              <span class="field-tag">✔ اسم كل طالب</span>
-              <span class="field-tag">✔ رقم تليفون الـ Team Leader بس</span>
-              <span class="field-tag highlight">✔ وتحدد الـ Team Leader بكتابة TL جنب اسمه</span>
+              <span class="field-tag">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                كود كل طالب
+              </span>
+              <span class="field-tag">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                اسم كل طالب
+              </span>
+              <span class="field-tag">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                رقم تليفون الـ Team Leader بس
+              </span>
+              <span class="field-tag highlight">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                حدد قائد الفريق بكتابة TL جنب اسمه
+              </span>
             </div>
           </div>
         </div>
 
         <div class="guide-point-item">
           <span class="point-num">٣</span>
-          <div>اتأكد بس إن البيانات مكتوبة بشكل واضح ومنظم ومباشر داخل الجدول.</div>
-        </div>
-
-        <div class="guide-point-item">
-          <span class="point-num">٤</span>
-          <div>بعد ما تخلص، اضغط زر <strong>"طباعة / حفظ PDF"</strong> بالأعلى، واطبع الاستمارة وتعالى بيها، وبس كده!</div>
+          <div>
+            بعد الانتهاء، اضغط زر <strong>"طباعة / حفظ PDF"</strong> بالأعلى واطبع الاستمارة وتعالى بيها، وبس كده!
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- The Exactly Two Official Department Cards -->
+    <!-- Exactly Two Department Cards -->
     <div>
       <h3 class="cards-section-title">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path></svg>
-        اختر استمارة قسمك للدخول وتعبئة البيانات:
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+        اختر استمارة قسمك:
       </h3>
 
       <div class="student-dept-cards-grid">
@@ -1298,8 +1505,10 @@
         <div class="dept-card card-cs" onclick="openTemplateDirectly('cs')">
           <div>
             <div class="card-top-badge">
-              <div class="badge-dept-icon">💻</div>
-              <span class="badge-team-size">فريق مكون من ٦ طلاب</span>
+              <div class="badge-dept-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+              </div>
+              <span class="badge-team-size">فريق ٦ طلاب</span>
             </div>
             <h4 class="card-dept-name">قسم علوم الحاسب</h4>
             <div class="card-form-title">استمارة تسجيل مشروع تخرج علوم الحاسب</div>
@@ -1322,7 +1531,7 @@
 
           <button type="button" class="btn-card-enter">
             <span>دخول استمارة علوم الحاسب (٦ طلاب)</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
           </button>
         </div>
 
@@ -1330,10 +1539,12 @@
         <div class="dept-card card-bis" onclick="openTemplateDirectly('bis')">
           <div>
             <div class="card-top-badge">
-              <div class="badge-dept-icon">📊</div>
-              <span class="badge-team-size">فريق مكون من ١٥ طالب</span>
+              <div class="badge-dept-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+              </div>
+              <span class="badge-team-size">فريق ١٥ طالب</span>
             </div>
-            <h4 class="card-dept-name">قسم نظم معلومات الأعمال (BIS)</h4>
+            <h4 class="card-dept-name">قسم نظم معلومات الأعمال</h4>
             <div class="card-form-title">استمارة بحث تخرج نظم معلومات الأعمال</div>
 
             <div class="card-specs-list">
@@ -1354,7 +1565,7 @@
 
           <button type="button" class="btn-card-enter">
             <span>دخول استمارة نظم معلومات الأعمال (١٥ طالب)</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
           </button>
         </div>
       </div>
@@ -1367,10 +1578,10 @@
   <section class="view-admin-dashboard" id="viewAdminDashboard" style="display:none;">
     <div class="admin-hero-banner">
       <div class="admin-hero-title">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
         <div>
           <h2>لوحة إدارة القوالب والاستمارات الرسمية</h2>
-          <div style="font-size:0.85rem; color:#d8b4fe;">يمكنك إنشاء قوالب جديدة، تعديل بيانات أي استمارة، وضبط الأعمدة والصفوف.</div>
+          <div style="font-size:0.82rem; color:#d8b4fe;">إدارة القوالب، تعديل بيانات الاستمارات، وضبط الأعمدة والصفوف.</div>
         </div>
       </div>
 
@@ -1379,8 +1590,8 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
           تغيير كلمة المرور
         </button>
-        <button type="button" class="btn btn-admin" id="btnOpenNewTemplateModal">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        <button type="button" class="btn btn-admin btn-sm" id="btnOpenNewTemplateModal">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
           + إضافة استمارة جديدة
         </button>
       </div>
@@ -1393,14 +1604,58 @@
   </section>
 
   <!-- ========================================================
-       SCREEN 3: FORM WORKSPACE (A4 PAPER & ADMIN CONTROL PANEL)
+       SCREEN 3: FORM WORKSPACE (MOBILE ENTRY + A4 CANVAS + ADMIN)
        ======================================================== -->
   <div class="app-workspace" id="appWorkspace">
 
-    <!-- Admin Control Panel Sidebar (Visible in Admin Mode) -->
+    <!-- Mobile Segmented Switch (Fill Form vs A4 Preview) -->
+    <div class="mobile-tab-bar no-print" id="mobileTabBar">
+      <div class="segmented-switch">
+        <button type="button" class="segmented-btn active" id="tabBtnEntry" onclick="switchMobileTab('entry')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+          <span>كتابة بيانات الفريق</span>
+        </button>
+        <button type="button" class="segmented-btn" id="tabBtnPreview" onclick="switchMobileTab('preview')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          <span>ورقة الاستمارة A4</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Data Entry Form (Touch-friendly on phones) -->
+    <div class="mobile-entry-view no-print" id="mobileEntryView">
+      <div class="mobile-entry-container">
+        <div class="mobile-entry-header">
+          <div>
+            <div style="font-weight:800; font-size:0.95rem; color:#fff;" id="mobileEntryDeptTitle">بيانات الفريق</div>
+            <div style="font-size:0.78rem; color:#38bdf8;" id="mobileEntryTeamCount">فريق مكون من ٦ طلاب</div>
+          </div>
+          <button type="button" class="btn btn-primary btn-sm" onclick="switchMobileTab('preview'); window.print();">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            طباعة
+          </button>
+        </div>
+
+        <div style="font-size:0.8rem; color:#94a3b8; background:rgba(30,41,59,0.7); padding:8px 12px; border-radius:8px; border:1px solid #334155;">
+          اكتب كود واسم كل طالب. الطالب رقم ١ هو قائد الفريق (Team Leader)، اكتب رقم تليفونه وحدده بـ (TL).
+        </div>
+
+        <!-- Student Cards List -->
+        <div id="mobileStudentsCardsList" style="display:flex; flex-direction:column; gap:10px;">
+          <!-- Rendered by JS -->
+        </div>
+
+        <button type="button" class="btn btn-primary" onclick="switchMobileTab('preview')" style="margin-top:10px; width:100%; padding:12px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          معاينة الاستمارة الرسمية A4
+        </button>
+      </div>
+    </div>
+
+    <!-- Admin Control Panel Sidebar -->
     <aside class="control-panel no-print" id="controlPanel" style="display:none;">
-      <div style="padding:14px 18px; background:#0b1120; border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center;">
-        <span style="font-size:0.88rem; font-weight:800; color:#c084fc;">تحرير بيانات الاستمارة</span>
+      <div style="padding:12px 16px; background:#0b1120; border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:0.86rem; font-weight:800; color:#c084fc;">تحرير بيانات الاستمارة</span>
         <button type="button" class="btn btn-primary btn-sm" id="btnSaveTemplateChanges">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline></svg>
           حفظ في السحابة
@@ -1441,7 +1696,7 @@
         <div class="section-title">ضبط جدول الطلاب</div>
         <div class="form-group">
           <label class="form-label">عدد صفوف الطلاب (الحد الأقصى للفريق):</label>
-          <div style="display:flex; gap:8px;">
+          <div style="display:flex; gap:6px;">
             <input type="number" class="form-control" id="inputRowCount" min="1" max="30">
             <button type="button" class="btn btn-outline btn-sm" onclick="setQuickRows(6)">٦ طلاب</button>
             <button type="button" class="btn btn-outline btn-sm" onclick="setQuickRows(15)">١٥ طالب</button>
@@ -1453,7 +1708,7 @@
           <div class="columns-manage-box" id="adminColumnsBox">
             <!-- Rendered by JS -->
           </div>
-          <button type="button" class="btn btn-outline btn-sm" id="btnAddColumnBtn" style="margin-top:8px; width:100%;">
+          <button type="button" class="btn btn-outline btn-sm" id="btnAddColumnBtn" style="margin-top:6px; width:100%;">
             + إضافة عمود جديد
           </button>
         </div>
@@ -1481,7 +1736,8 @@
     <main class="canvas-area">
       <!-- Friendly Student Guide Pill Above Paper -->
       <div class="student-reminder-pill no-print" id="studentGuidePill">
-        <span>💡 اكتب بيانات الطلاب مباشرة في الجدول • اكتب TL بجانب اسم قائد الفريق • اترك بيانات المشروع والمشرف فارغة</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        <span>اكتب بيانات الطلاب داخل الجدول • اكتب TL بجانب قائد الفريق • اترك بيانات المشروع والمشرف فارغة</span>
       </div>
 
       <div class="paper-viewport">
@@ -1513,7 +1769,7 @@
                   <div class="form-title-divider"></div>
                 </div>
 
-                <!-- 3. Project Metadata with Dotted Lines (Clearly Left Empty for handwritten/official entry) -->
+                <!-- 3. Project Metadata with Dotted Lines -->
                 <div class="project-meta-box">
                   <div class="meta-row">
                     <span class="meta-label">رقم المشروع:</span>
@@ -1540,7 +1796,7 @@
                   </div>
                 </div>
 
-                <!-- 4. Students Table (The ONLY part students fill in directly) -->
+                <!-- 4. Students Table -->
                 <div class="table-container">
                   <table class="students-table" id="studentsTable">
                     <thead id="tableHead">
@@ -1577,29 +1833,29 @@
   <div class="modal-backdrop" id="adminLoginModal">
     <div class="modal-card">
       <h3>
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
         تسجيل دخول الإدارة (Admin)
       </h3>
-      <p style="font-size:0.88rem; color:#94a3b8; margin-bottom:14px;">أدخل الرمز السري للوصول للوحة تحرير ونشر الاستمارات:</p>
+      <p style="font-size:0.85rem; color:#94a3b8; margin-bottom:12px;">أدخل الرمز السري للوصول للوحة تحرير ونشر الاستمارات:</p>
       
       <div class="form-group">
         <label class="form-label">الرمز السري:</label>
         <input type="password" class="form-control" id="adminPinInput" placeholder="أدخل رمز الدخول (الافتراضي: 1234)">
-        <div id="loginErrorMsg" style="color:#f87171; font-size:0.8rem; margin-top:6px; display:none;">الرمز السري غير صحيح</div>
+        <div id="loginErrorMsg" style="color:#f87171; font-size:0.8rem; margin-top:5px; display:none;">الرمز السري غير صحيح</div>
       </div>
 
-      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
-        <button type="button" class="btn btn-outline" id="btnCloseLoginModal">إلغاء</button>
-        <button type="button" class="btn btn-admin" id="btnSubmitAdminLogin">دخول الإدارة</button>
+      <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:14px;">
+        <button type="button" class="btn btn-outline btn-sm" id="btnCloseLoginModal">إلغاء</button>
+        <button type="button" class="btn btn-admin btn-sm" id="btnSubmitAdminLogin">دخول الإدارة</button>
       </div>
     </div>
   </div>
 
   <!-- Add New Template Modal -->
   <div class="modal-backdrop" id="newTemplateModal">
-    <div class="modal-card" style="max-width:520px;">
+    <div class="modal-card" style="max-width:500px;">
       <h3>
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
         إضافة استمارة قسم جديدة
       </h3>
       <div class="form-group">
@@ -1622,9 +1878,9 @@
         <label class="form-label">عدد أفراد الفريق (عدد الصفوف):</label>
         <input type="number" class="form-control" id="newTmplRows" value="6" min="1" max="30">
       </div>
-      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
-        <button type="button" class="btn btn-outline" id="btnCloseNewModal">إلغاء</button>
-        <button type="button" class="btn btn-primary" id="btnConfirmCreateTemplate">إنشاء وحفظ في السحابة</button>
+      <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:14px;">
+        <button type="button" class="btn btn-outline btn-sm" id="btnCloseNewModal">إلغاء</button>
+        <button type="button" class="btn btn-primary btn-sm" id="btnConfirmCreateTemplate">حفظ في السحابة</button>
       </div>
     </div>
   </div>
@@ -1637,16 +1893,16 @@
         <label class="form-label">الرمز الجديد:</label>
         <input type="password" class="form-control" id="newPinInput" placeholder="اكتب رمز المرور الجديد...">
       </div>
-      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
-        <button type="button" class="btn btn-outline" id="btnClosePassModal">إلغاء</button>
-        <button type="button" class="btn btn-primary" id="btnConfirmChangePass">حفظ الرمز</button>
+      <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:14px;">
+        <button type="button" class="btn btn-outline btn-sm" id="btnClosePassModal">إلغاء</button>
+        <button type="button" class="btn btn-primary btn-sm" id="btnConfirmChangePass">حفظ الرمز</button>
       </div>
     </div>
   </div>
 
   <!-- Toast Notification -->
   <div class="swal-toast" id="appToast">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
     <span id="toastMsg">تم بنجاح!</span>
   </div>
 
@@ -1720,7 +1976,7 @@
       if (toast && text) {
         text.innerText = msg;
         toast.classList.add('active');
-        setTimeout(() => toast.classList.remove('active'), 3200);
+        setTimeout(() => toast.classList.remove('active'), 2800);
       }
     }
 
@@ -1733,7 +1989,6 @@
         if (resp.ok) {
           const data = await resp.json();
           if (data && typeof data === 'object') {
-            // Merge with local structure
             if (Array.isArray(data)) {
               const map = {};
               data.forEach(t => { if (t && t.id) map[t.id] = t; });
@@ -1741,11 +1996,11 @@
             } else {
               templates = data;
             }
-            localStorage.setItem('tiba_templates_cache_v4', JSON.stringify(templates));
+            localStorage.setItem('tiba_templates_cache_v5', JSON.stringify(templates));
           }
         }
       } catch (e) {
-        const cached = localStorage.getItem('tiba_templates_cache_v4');
+        const cached = localStorage.getItem('tiba_templates_cache_v5');
         if (cached) {
           try { templates = JSON.parse(cached); } catch(err) {}
         }
@@ -1754,16 +2009,16 @@
     }
 
     async function saveTemplatesToCloud() {
-      localStorage.setItem('tiba_templates_cache_v4', JSON.stringify(templates));
+      localStorage.setItem('tiba_templates_cache_v5', JSON.stringify(templates));
       try {
         await fetch(`${FIREBASE_URL}/templates.json`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(templates)
         });
-        showToast('تم حفظ التعديلات في السحابة بنجاح! 🟢');
+        showToast('تم حفظ التعديلات في السحابة بنجاح!');
       } catch (e) {
-        showToast('تم الحفظ محلياً (حدث خطأ في الاتصال بالسحابة)');
+        showToast('تم الحفظ محلياً (خطأ اتصال)');
       }
     }
 
@@ -1809,15 +2064,43 @@
       if (currentRole === 'admin') {
         document.getElementById('controlPanel').style.display = 'flex';
         document.getElementById('studentGuidePill').style.display = 'none';
+        document.getElementById('mobileTabBar').style.display = 'none';
+        document.getElementById('mobileEntryView').style.display = 'none';
+        document.querySelector('main.canvas-area').style.display = 'flex';
         syncAdminInputs();
       } else {
         document.getElementById('controlPanel').style.display = 'none';
         document.getElementById('studentGuidePill').style.display = 'flex';
+
+        // Setup mobile mode if mobile width
+        if (window.innerWidth <= 1024) {
+          switchMobileTab('entry');
+          renderMobileEntryCards();
+        }
       }
 
       renderPreview();
       fitPaperToScreen();
     }
+
+    // Switch between Mobile Entry Form and A4 Preview
+    window.switchMobileTab = function(tab) {
+      const btnEntry = document.getElementById('tabBtnEntry');
+      const btnPreview = document.getElementById('tabBtnPreview');
+
+      if (tab === 'preview') {
+        document.body.classList.remove('mode-entry');
+        document.body.classList.add('mode-preview');
+        btnPreview.classList.add('active');
+        btnEntry.classList.remove('active');
+        setTimeout(fitPaperToScreen, 50);
+      } else {
+        document.body.classList.remove('mode-preview');
+        document.body.classList.add('mode-entry');
+        btnEntry.classList.add('active');
+        btnPreview.classList.remove('active');
+      }
+    };
 
     // Direct Window Print (No Blocking Modals)
     document.getElementById('btnPrintPdf').addEventListener('click', () => {
@@ -1838,6 +2121,76 @@
       if (currentRole === 'admin') showAdminDashboard();
       else showStudentHome();
     });
+
+    // ========================================================
+    // MOBILE DATA ENTRY CARDS GENERATOR
+    // ========================================================
+    function renderMobileEntryCards() {
+      const list = document.getElementById('mobileStudentsCardsList');
+      if (!list || !currentTemplate) return;
+      list.innerHTML = '';
+
+      const count = parseInt(appState.rowCount, 10) || 15;
+      document.getElementById('mobileEntryDeptTitle').innerText = currentTemplate.dept;
+      document.getElementById('mobileEntryTeamCount').innerText = `فريق مكون من ${count} طلاب`;
+
+      while (appState.tableData.length < count) {
+        appState.tableData.push({});
+      }
+
+      for (let r = 0; r < count; r++) {
+        const isLeader = (r === 0);
+        const card = document.createElement('div');
+        card.className = 'mobile-student-card';
+
+        const rowData = appState.tableData[r] || {};
+        const codeVal = rowData['col_code'] || '';
+        const nameVal = rowData['col_name'] || '';
+        const phoneVal = rowData['col_phone'] || '';
+
+        card.innerHTML = `
+          <div class="student-card-badge ${isLeader ? 'is-leader' : ''}">
+            <div style="display:flex; align-items:center; gap:6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <span>الطالب رقم (${r + 1}) ${isLeader ? '— قائد الفريق (Team Leader)' : ''}</span>
+            </div>
+            ${isLeader ? '<span style="background:rgba(245,158,11,0.2); color:#fde047; padding:2px 8px; border-radius:4px; font-size:0.75rem;">TL</span>' : ''}
+          </div>
+
+          <div class="mobile-input-grid">
+            <div>
+              <div class="mobile-field-label">كود الطالب:</div>
+              <input type="text" inputmode="numeric" class="mobile-field-input" placeholder="أدخل كود الطالب..." value="${codeVal}" data-row="${r}" data-col="col_code">
+            </div>
+
+            <div>
+              <div class="mobile-field-label">اسم الطالب:</div>
+              <input type="text" class="mobile-field-input" placeholder="${isLeader ? 'اسم قائد الفريق (TL)' : 'اسم الطالب رباعي'}" value="${nameVal}" data-row="${r}" data-col="col_name">
+            </div>
+
+            ${isLeader ? `
+              <div>
+                <div class="mobile-field-label">رقم تليفون الـ Team Leader:</div>
+                <input type="tel" class="mobile-field-input" placeholder="01xxxxxxxxx" value="${phoneVal}" data-row="${r}" data-col="col_phone">
+              </div>
+            ` : ''}
+          </div>
+        `;
+
+        // Sync inputs directly to tableData and A4 table
+        card.querySelectorAll('input').forEach(input => {
+          input.addEventListener('input', (e) => {
+            const rowIdx = parseInt(e.target.dataset.row, 10);
+            const colId = e.target.dataset.col;
+            if (!appState.tableData[rowIdx]) appState.tableData[rowIdx] = {};
+            appState.tableData[rowIdx][colId] = e.target.value;
+            renderPreview();
+          });
+        });
+
+        list.appendChild(card);
+      }
+    }
 
     // ========================================================
     // RENDER A4 PREVIEW & STUDENTS TABLE
@@ -1929,6 +2282,10 @@
           const colId = e.target.dataset.col;
           if (!appState.tableData[r]) appState.tableData[r] = {};
           appState.tableData[r][colId] = e.target.innerText;
+
+          // Sync back to mobile card if visible
+          const mInput = document.querySelector(`.mobile-field-input[data-row="${r}"][data-col="${colId}"]`);
+          if (mInput) mInput.value = e.target.innerText;
         });
       });
     }
@@ -1938,16 +2295,21 @@
       const container = document.getElementById('paperScaleContainer');
       if (!container) return;
       if (window.innerWidth <= 1024) {
-        const availableW = window.innerWidth - 30;
+        const availableW = window.innerWidth - 24;
         const pageW = 794; // approx 210mm in px at 96dpi
-        const scale = Math.min(1, Math.max(0.42, availableW / pageW));
+        const scale = Math.min(1, Math.max(0.44, availableW / pageW));
         container.style.transform = `scale(${scale})`;
       } else {
         container.style.transform = 'scale(0.92)';
       }
     }
 
-    window.addEventListener('resize', fitPaperToScreen);
+    window.addEventListener('resize', () => {
+      fitPaperToScreen();
+      if (window.innerWidth <= 1024 && currentTemplate && currentRole === 'student') {
+        renderMobileEntryCards();
+      }
+    });
 
     // ========================================================
     // ADMIN DASHBOARD & EDITING LOGIC
@@ -1964,9 +2326,9 @@
           <div>
             <div class="admin-tmpl-header">
               <h3>${t.dept}</h3>
-              <span class="badge-team-size" style="font-size:0.8rem; padding:4px 10px;">${t.rowCount || 15} طلاب</span>
+              <span class="badge-team-size" style="font-size:0.78rem; padding:3px 10px;">${t.rowCount || 15} طلاب</span>
             </div>
-            <div class="admin-tmpl-meta" style="margin-top:10px;">
+            <div class="admin-tmpl-meta" style="margin-top:8px;">
               <div><strong>العنوان:</strong> ${t.formTitle}</div>
               <div><strong>المعهد:</strong> ${t.instLine2}</div>
               <div><strong>رئيس القسم:</strong> ${t.headName}</div>
@@ -1974,8 +2336,8 @@
           </div>
           <div class="admin-card-actions">
             <button type="button" class="btn btn-primary btn-sm" style="flex:1;" onclick="openTemplateDirectly('${t.id}')">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon></svg>
-              تعديل وتحرير القالب
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+              تعديل الاستمارة
             </button>
             <button type="button" class="btn btn-outline btn-sm" onclick="deleteTemplate('${t.id}')" style="color:#ef4444; border-color:rgba(239,68,68,0.4);" title="حذف القالب">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path></svg>
@@ -2014,7 +2376,7 @@
           <span style="font-size:0.75rem; color:#94a3b8; font-weight:bold;">#${idx + 1}</span>
           <input type="text" value="${col.name}" data-idx="${idx}" ${col.autoSeq ? 'disabled style="opacity:0.6;"' : ''}>
           ${!col.autoSeq ? `
-            <button type="button" class="btn btn-outline btn-sm" onclick="removeColumn(${idx})" style="padding:2px 6px; color:#ef4444; border:none;" title="حذف العمود">✕</button>
+            <button type="button" class="btn btn-outline btn-sm" onclick="removeColumn(${idx})" style="padding:2px 6px; color:#ef4444; border:none;" title="حذف العمود"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
           ` : ''}
         `;
 
@@ -2135,7 +2497,7 @@
         document.getElementById('adminLoginModal').classList.remove('active');
         document.getElementById('loginErrorMsg').style.display = 'none';
         showAdminDashboard();
-        showToast('تم تسجيل الدخول كمسؤول بنجاح!');
+        showToast('تم تسجيل الدخول كمسؤول بنجاح');
       } else {
         document.getElementById('loginErrorMsg').style.display = 'block';
       }
@@ -2168,7 +2530,7 @@
       if (p) {
         localStorage.setItem('tiba_admin_pin', p);
         document.getElementById('changePassModal').classList.remove('active');
-        showToast('تم تحديث رمز المرور بنجاح!');
+        showToast('تم تحديث رمز المرور بنجاح');
       }
     });
 
@@ -2219,7 +2581,7 @@
       saveTemplatesToCloud();
       document.getElementById('newTemplateModal').classList.remove('active');
       renderAdminDashboard();
-      showToast('تمت إضافة الاستمارة الجديدة بنجاح! 🎉');
+      showToast('تمت إضافة الاستمارة بنجاح');
     });
 
     // ========================================================
