@@ -1,7 +1,7 @@
 // Vercel Serverless Function for Templates Management
 // Supports Firebase Realtime Database forwarding or direct JSON storage
 
-const DEFAULT_FIREBASE = process.env.FIREBASE_DATABASE_URL || "https://tiba-graduation-default-rtdb.firebaseio.com";
+const DEFAULT_FIREBASE = process.env.FIREBASE_DATABASE_URL || "https://tiba-cd123-default-rtdb.firebaseio.com";
 
 export default async function handler(req, res) {
   // Enable CORS
