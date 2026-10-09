@@ -529,6 +529,8 @@ html_content = f'''<!DOCTYPE html>
       padding: 6px 12px;
       width: 100%;
       position: relative;
+      top: 0;
+      margin: 0;
     }}
 
     .segmented-switch {{
@@ -1856,6 +1858,8 @@ html_content = f'''<!DOCTYPE html>
       }}
 
       .mobile-tab-bar {{
+        top: 0 !important;
+        margin: 0 !important;
         padding: 6px 10px !important;
       }}
 
@@ -1999,11 +2003,13 @@ html_content = f'''<!DOCTYPE html>
       }}
 
       .mobile-tab-bar {{
-        top: 53px;
-        padding: 6px 10px;
+        top: 0 !important;
+        margin: 0 !important;
+        padding: 6px 10px !important;
       }}
       .app-workspace {{
-        height: calc(100vh - 105px);
+        height: calc(100dvh - 145px) !important;
+        height: calc(100vh - 145px) !important;
       }}
       .panel-section {{
         padding: 14px;
