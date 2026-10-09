@@ -2,3 +2,8 @@
 *.textClipping
 .system_generated/
 *.tmp
+*.bak
+__pycache__/
+generate_new_theme.py
+update_theme.py
+test_all_scenarios.py

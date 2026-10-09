@@ -9,12 +9,13 @@ html_content = f'''<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات</title>
+  <meta name="theme-color" content="#204097">
+  <title>معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات | استمارات تسجيل مشاريع وأبحاث التخرج</title>
   <meta name="description" content="منصة تسجيل وتعبئة استمارة بحث ومشروع التخرج - معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات">
   
   <!-- Open Graph / WhatsApp / Facebook Preview -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات">
+  <meta property="og:title" content="معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات | استمارات تسجيل مشاريع وأبحاث التخرج">
   <meta property="og:description" content="استمارات تسجيل مشاريع وأبحاث التخرج - معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات">
   <meta property="og:site_name" content="معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات">
   <meta property="og:image" content="https://tiba-higher-institute-for-management-and-information-technology.vercel.app/tiba_logo.png">
@@ -22,7 +23,7 @@ html_content = f'''<!DOCTYPE html>
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات">
+  <meta name="twitter:title" content="معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات | استمارات تسجيل مشاريع وأبحاث التخرج">
   <meta name="twitter:description" content="استمارات تسجيل مشاريع وأبحاث التخرج - معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات">
   <meta name="twitter:image" content="https://tiba-higher-institute-for-management-and-information-technology.vercel.app/tiba_logo.png">
   
@@ -30,21 +31,45 @@ html_content = f'''<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
-  <style>
+    <style>
     :root {{
-      --primary: #2563eb;
-      --primary-hover: #1d4ed8;
-      --accent: #38bdf8;
-      --surface-dark: #0b1120;
-      --surface-card: #0f172a;
-      --surface-panel: #1e293b;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --border-dark: #334155;
+      /* ========================================================
+         OFFICIAL TIBA HIGHER INSTITUTE BRAND IDENTITY PALETTE
+         ======================================================== */
+      --primary: #204097;                    /* Primary Official Blue */
+      --primary-hover: #213E9C;              /* Primary Hover */
+      --primary-dark: #204096;               /* Dark Blue Tone */
+      --blue-secondary: #27428B;             /* Secondary Blue */
+      --blue-deep: #33467D;                  /* Deep Blue for Headings/Text */
+      --blue-muted: #7280AB;                 /* Muted Slate Blue for Subtitles/Icons */
+      --blue-tint: #C2D0F3;                  /* Soft Tint Blue for Borders/Accents */
+      
+      /* Surfaces & Backgrounds */
+      --bg-page: #F3FCFE;                    /* Official Light Page Background */
+      --bg-surface: #FDFEF8;                 /* Soft Warm Surface */
+      --bg-card: #FFFFFF;                    /* Pure White Cards */
+      --bg-panel: #FFFFFF;                   /* Pure White Panels & Sidebars */
+      --surface-dark: #F3FCFE;               /* Compatibility alias */
+      --surface-card: #FFFFFF;               /* Compatibility alias */
+      --surface-panel: #FFFFFF;              /* Compatibility alias */
+      
+      /* Typography */
+      --text-main: #1e293b;                  /* High Contrast Body Text */
+      --text-heading: #204097;               /* Official Blue for Main Headings */
+      --text-secondary: #33467D;             /* Deep Blue for Secondary Headings */
+      --text-muted: #7280AB;                 /* Muted Secondary Text */
+      
+      /* Borders & Accents */
+      --border-dark: #C2D0F3;                /* Compatibility alias */
+      --border-color: #C2D0F3;               /* Approved Light Blue Border */
+      --border-light: rgba(32, 64, 151, 0.12);
+      --accent: #204097;                     /* Official Blue */
+      --purple: #27428B;                     /* Mapped to Official Deep Blue */
+      
+      /* Semantic Functional States (Preserved exclusively for status) */
       --success: #10b981;
       --danger: #ef4444;
       --warning: #f59e0b;
-      --purple: #8b5cf6;
     }}
 
     * {{
@@ -57,7 +82,7 @@ html_content = f'''<!DOCTYPE html>
 
     body {{
       font-family: 'Cairo', system-ui, -apple-system, sans-serif;
-      background-color: var(--surface-dark);
+      background-color: var(--bg-page);
       color: var(--text-main);
       min-height: 100vh;
       display: flex;
@@ -67,10 +92,11 @@ html_content = f'''<!DOCTYPE html>
 
     /* Global Navbar */
     header.app-navbar {{
-      background: rgba(15, 23, 42, 0.96);
+      background: #FFFFFF;
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border-dark);
+      border-bottom: 2px solid var(--border-color);
+      box-shadow: 0 2px 12px rgba(32, 64, 151, 0.08);
       padding: 10px 16px;
       display: flex;
       justify-content: space-between;
@@ -93,26 +119,26 @@ html_content = f'''<!DOCTYPE html>
       width: 40px;
       height: 40px;
       min-width: 40px;
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      background: linear-gradient(135deg, #204097, #27428B);
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+      box-shadow: 0 4px 12px rgba(32, 64, 151, 0.25);
     }}
 
     .navbar-brand h1 {{
       font-size: 1.05rem;
       font-weight: 800;
-      color: #fff;
+      color: #204097;
       line-height: 1.2;
     }}
 
     .navbar-brand span.subtitle {{
       font-size: 0.72rem;
-      color: var(--text-muted);
+      color: #33467D;
       display: block;
-      font-weight: 500;
+      font-weight: 600;
     }}
 
     .navbar-actions {{
@@ -135,15 +161,15 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     .role-badge.student {{
-      background: rgba(16, 185, 129, 0.15);
-      color: #34d399;
+      background: rgba(16, 185, 129, 0.1);
+      color: #059669;
       border-color: rgba(16, 185, 129, 0.3);
     }}
 
     .role-badge.admin {{
-      background: rgba(139, 92, 246, 0.2);
-      color: #c084fc;
-      border-color: rgba(139, 92, 246, 0.4);
+      background: rgba(32, 64, 151, 0.1);
+      color: #204097;
+      border-color: rgba(32, 64, 151, 0.25);
     }}
 
     /* Buttons */
@@ -169,42 +195,43 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     .btn-primary {{
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      background: linear-gradient(135deg, #204097, #27428B);
       color: #ffffff;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+      box-shadow: 0 4px 12px rgba(32, 64, 151, 0.25);
     }}
     .btn-primary:hover {{
-      background: linear-gradient(135deg, #1d4ed8, #1e40af);
-      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.45);
+      background: linear-gradient(135deg, #213E9C, #204096);
+      box-shadow: 0 6px 18px rgba(32, 64, 151, 0.35);
     }}
 
     .btn-admin {{
-      background: linear-gradient(135deg, #7c3aed, #6d28d9);
+      background: linear-gradient(135deg, #27428B, #33467D);
       color: #fff;
-      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.35);
+      box-shadow: 0 4px 12px rgba(39, 66, 139, 0.25);
     }}
     .btn-admin:hover {{
-      background: linear-gradient(135deg, #6d28d9, #5b21b6);
+      background: linear-gradient(135deg, #204097, #213E9C);
     }}
 
     .btn-secondary {{
-      background: #1e293b;
-      color: #cbd5e1;
-      border-color: #334155;
+      background: #F3FCFE;
+      color: #27428B;
+      border: 1px solid #C2D0F3;
     }}
     .btn-secondary:hover {{
-      background: #334155;
-      color: #fff;
+      background: #C2D0F3;
+      color: #204097;
     }}
 
     .btn-outline {{
       background: transparent;
-      color: #cbd5e1;
-      border-color: #475569;
+      color: #33467D;
+      border: 1px solid #C2D0F3;
     }}
     .btn-outline:hover {{
-      background: rgba(255, 255, 255, 0.08);
-      color: #fff;
+      background: rgba(32, 64, 151, 0.06);
+      color: #204097;
+      border-color: #204097;
     }}
 
     .btn-sm {{
@@ -228,25 +255,25 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     .gallery-hero {{
-      background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
-      border: 1px solid #334155;
+      background: linear-gradient(135deg, #FFFFFF 0%, #FDFEF8 60%, #F3FCFE 100%);
+      border: 1.5px solid var(--border-color);
       border-radius: 16px;
       padding: 28px 24px;
       text-align: center;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 8px 24px rgba(32, 64, 151, 0.08);
     }}
 
     .gallery-hero h2 {{
       font-size: 1.6rem;
       font-weight: 900;
-      color: #fff;
+      color: #204097;
       margin-bottom: 8px;
     }}
 
     .gallery-hero p {{
-      color: #94a3b8;
+      color: #33467D;
       font-size: 0.95rem;
       max-width: 600px;
       margin: 0 auto 20px auto;
@@ -271,24 +298,24 @@ html_content = f'''<!DOCTYPE html>
       right: 14px;
       top: 50%;
       transform: translateY(-50%);
-      color: #64748b;
+      color: #7280AB;
     }}
 
     .search-input {{
       width: 100%;
-      background: #0f172a;
-      border: 1.5px solid #334155;
+      background: #FFFFFF;
+      border: 1.5px solid #C2D0F3;
       border-radius: 12px;
       padding: 12px 44px 12px 16px;
-      color: #fff;
+      color: #1e293b;
       font-family: inherit;
       font-size: 0.95rem;
       transition: all 0.2s;
     }}
     .search-input:focus {{
       outline: none;
-      border-color: #38bdf8;
-      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+      border-color: #204097;
+      box-shadow: 0 0 0 3px rgba(32, 64, 151, 0.15);
     }}
 
     .dept-filter-pills {{
@@ -300,19 +327,20 @@ html_content = f'''<!DOCTYPE html>
 
     .filter-pill {{
       padding: 6px 14px;
-      background: #1e293b;
-      border: 1px solid #334155;
+      background: #FFFFFF;
+      border: 1px solid #C2D0F3;
       border-radius: 20px;
       font-size: 0.8rem;
       font-weight: 700;
-      color: #94a3b8;
+      color: #33467D;
       cursor: pointer;
       transition: all 0.15s;
     }}
     .filter-pill:hover, .filter-pill.active {{
-      background: #2563eb;
-      color: #fff;
-      border-color: #3b82f6;
+      background: #204097;
+      color: #FFFFFF;
+      border-color: #204097;
+      box-shadow: 0 2px 8px rgba(32, 64, 151, 0.25);
     }}
 
     /* Template Cards Grid */
@@ -328,8 +356,8 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     .template-card {{
-      background: #0f172a;
-      border: 1px solid #1e293b;
+      background: #FFFFFF;
+      border: 1.5px solid #C2D0F3;
       border-radius: 14px;
       padding: 20px;
       display: flex;
@@ -339,12 +367,14 @@ html_content = f'''<!DOCTYPE html>
       transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
+      box-shadow: 0 4px 12px rgba(32, 64, 151, 0.06);
+      cursor: pointer;
     }}
 
     .template-card:hover {{
       transform: translateY(-4px);
-      border-color: #3b82f6;
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+      border-color: #204097;
+      box-shadow: 0 12px 28px rgba(32, 64, 151, 0.15);
     }}
 
     .template-card-header {{
@@ -358,9 +388,9 @@ html_content = f'''<!DOCTYPE html>
       height: 44px;
       min-width: 44px;
       border-radius: 10px;
-      background: rgba(37, 99, 235, 0.12);
-      border: 1px solid rgba(37, 99, 235, 0.3);
-      color: #38bdf8;
+      background: rgba(32, 64, 151, 0.08);
+      border: 1px solid #C2D0F3;
+      color: #204097;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -374,8 +404,9 @@ html_content = f'''<!DOCTYPE html>
       display: inline-block;
       font-size: 0.72rem;
       font-weight: 700;
-      color: #38bdf8;
-      background: rgba(56, 189, 248, 0.1);
+      color: #204097;
+      background: #F3FCFE;
+      border: 1px solid #C2D0F3;
       padding: 2px 8px;
       border-radius: 4px;
     }}
@@ -393,30 +424,31 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     .status-pill.status-published {{
-      background: rgba(16, 185, 129, 0.15);
-      color: #34d399;
-      border: 1px solid rgba(16, 185, 129, 0.35);
+      background: rgba(16, 185, 129, 0.1);
+      color: #059669;
+      border: 1px solid rgba(16, 185, 129, 0.3);
     }}
 
     .status-pill.status-draft {{
-      background: rgba(245, 158, 11, 0.15);
-      color: #fbbf24;
-      border: 1px solid rgba(245, 158, 11, 0.35);
+      background: rgba(245, 158, 11, 0.1);
+      color: #d97706;
+      border: 1px solid rgba(245, 158, 11, 0.3);
     }}
 
     .card-title {{
       font-size: 1.05rem;
       font-weight: 800;
-      color: #f8fafc;
+      color: #204097;
       line-height: 1.35;
     }}
 
     .card-details {{
-      background: #1e293b;
+      background: #F3FCFE;
+      border: 1px solid rgba(32, 64, 151, 0.08);
       border-radius: 8px;
       padding: 10px 12px;
       font-size: 0.8rem;
-      color: #94a3b8;
+      color: #33467D;
       display: flex;
       flex-direction: column;
       gap: 6px;
@@ -432,13 +464,13 @@ html_content = f'''<!DOCTYPE html>
       gap: 8px;
     }}
     .card-detail-item > span:first-child {{
-      color: #94a3b8;
+      color: #7280AB;
       white-space: nowrap;
       flex-shrink: 0;
     }}
     .card-detail-item span.val {{
-      color: #e2e8f0;
-      font-weight: 600;
+      color: #204096;
+      font-weight: 700;
       word-break: break-word;
     }}
 
@@ -465,8 +497,8 @@ html_content = f'''<!DOCTYPE html>
     /* Mobile Segmented Switcher */
     .mobile-tab-bar {{
       display: none;
-      background: #0f172a;
-      border-bottom: 1px solid #1e293b;
+      background: #FFFFFF;
+      border-bottom: 1px solid #C2D0F3;
       padding: 8px 12px;
       position: sticky;
       top: 61px;
@@ -475,8 +507,8 @@ html_content = f'''<!DOCTYPE html>
 
     .segmented-switch {{
       display: flex;
-      background: #1e293b;
-      border: 1px solid #334155;
+      background: #F3FCFE;
+      border: 1px solid #C2D0F3;
       border-radius: 10px;
       padding: 3px;
       gap: 3px;
@@ -493,7 +525,7 @@ html_content = f'''<!DOCTYPE html>
       border: none;
       border-radius: 8px;
       background: transparent;
-      color: #94a3b8;
+      color: #33467D;
       font-family: inherit;
       font-size: 0.85rem;
       font-weight: 700;
@@ -502,9 +534,9 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     .segmented-btn.active {{
-      background: #2563eb;
+      background: #204097;
       color: #ffffff;
-      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+      box-shadow: 0 2px 8px rgba(32, 64, 151, 0.3);
     }}
 
     /* Sidebar / Control Panel */
@@ -512,20 +544,20 @@ html_content = f'''<!DOCTYPE html>
       width: 440px;
       min-width: 440px;
       max-width: 440px;
-      background: #0f172a;
-      border-left: 1px solid var(--border-dark);
+      background: #FFFFFF;
+      border-left: 1.5px solid #C2D0F3;
       display: flex;
       flex-direction: column;
       height: 100%;
       overflow-y: auto;
       scrollbar-width: thin;
-      scrollbar-color: #334155 #0f172a;
+      scrollbar-color: #C2D0F3 #FFFFFF;
       z-index: 40;
     }}
 
     .panel-section {{
       padding: 16px 18px;
-      border-bottom: 1px solid #1e293b;
+      border-bottom: 1px solid #E2E8F0;
     }}
 
     .section-title {{
@@ -534,32 +566,32 @@ html_content = f'''<!DOCTYPE html>
       gap: 8px;
       font-size: 0.92rem;
       font-weight: 800;
-      color: #f1f5f9;
+      color: #204097;
       margin-bottom: 12px;
     }}
 
     .section-title svg {{
-      color: var(--accent);
+      color: #204097;
       flex-shrink: 0;
     }}
 
     /* Permanent Student Instructions Box in Sidebar */
     .student-instructions-card {{
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(6, 95, 70, 0.15));
-      border: 1.5px solid rgba(16, 185, 129, 0.4);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0.03));
+      border: 1.5px solid rgba(16, 185, 129, 0.3);
       border-radius: 12px;
       padding: 16px;
       display: flex;
       flex-direction: column;
       gap: 10px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 10px rgba(16, 185, 129, 0.06);
     }}
 
     .instructions-card-header {{
       display: flex;
       align-items: center;
       gap: 8px;
-      color: #34d399;
+      color: #059669;
       font-weight: 900;
       font-size: 1rem;
     }}
@@ -569,7 +601,7 @@ html_content = f'''<!DOCTYPE html>
       flex-direction: column;
       gap: 8px;
       font-size: 0.82rem;
-      color: #e2e8f0;
+      color: #1e293b;
       line-height: 1.5;
     }}
 
@@ -580,14 +612,14 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     .instructions-list-item span.icon {{
-      color: #34d399;
+      color: #059669;
       font-weight: bold;
     }}
 
     /* Admin Action Banner */
     .admin-action-banner {{
-      background: rgba(139, 92, 246, 0.12);
-      border: 1px solid rgba(139, 92, 246, 0.35);
+      background: rgba(32, 64, 151, 0.06);
+      border: 1.5px solid #C2D0F3;
       border-radius: 10px;
       padding: 12px;
       display: flex;
@@ -608,22 +640,22 @@ html_content = f'''<!DOCTYPE html>
       align-items: center;
       font-size: 0.8rem;
       font-weight: 700;
-      color: #cbd5e1;
+      color: #27428B;
       margin-bottom: 5px;
     }}
 
     .form-label span.optional {{
-      color: #64748b;
+      color: #7280AB;
       font-weight: normal;
       font-size: 0.72rem;
     }}
 
     .form-control {{
       width: 100%;
-      background: #1e293b;
-      border: 1px solid #334155;
+      background: #FFFFFF;
+      border: 1.5px solid #C2D0F3;
       border-radius: 8px;
-      color: #fff;
+      color: #1e293b;
       font-family: inherit;
       font-size: 0.86rem;
       padding: 8px 11px;
@@ -632,8 +664,8 @@ html_content = f'''<!DOCTYPE html>
 
     .form-control:focus {{
       outline: none;
-      border-color: #38bdf8;
-      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+      border-color: #204097;
+      box-shadow: 0 0 0 3px rgba(32, 64, 151, 0.15);
     }}
 
     /* Stepper & Presets */
@@ -647,16 +679,16 @@ html_content = f'''<!DOCTYPE html>
     .stepper-container {{
       display: flex;
       align-items: center;
-      background: #1e293b;
-      border: 1px solid #334155;
+      background: #FFFFFF;
+      border: 1.5px solid #C2D0F3;
       border-radius: 8px;
       overflow: hidden;
     }}
 
     .stepper-btn {{
-      background: transparent;
+      background: #F3FCFE;
       border: none;
-      color: #cbd5e1;
+      color: #204097;
       width: 42px;
       height: 40px;
       font-size: 1.25rem;
@@ -668,15 +700,15 @@ html_content = f'''<!DOCTYPE html>
       transition: background 0.15s;
     }}
     .stepper-btn:hover {{
-      background: #334155;
-      color: #fff;
+      background: #C2D0F3;
+      color: #204097;
     }}
 
     .stepper-input {{
       flex: 1;
       background: transparent;
       border: none;
-      color: #fff;
+      color: #204097;
       text-align: center;
       font-size: 0.95rem;
       font-weight: 800;
@@ -695,19 +727,19 @@ html_content = f'''<!DOCTYPE html>
 
     .preset-pill {{
       padding: 5px 11px;
-      background: #1e293b;
-      border: 1px solid #334155;
+      background: #FFFFFF;
+      border: 1px solid #C2D0F3;
       border-radius: 20px;
       font-size: 0.76rem;
-      color: #94a3b8;
+      color: #33467D;
       cursor: pointer;
       font-weight: 700;
       transition: all 0.15s;
     }}
     .preset-pill:hover, .preset-pill.active {{
-      background: #2563eb;
+      background: #204097;
       color: #fff;
-      border-color: #3b82f6;
+      border-color: #204097;
     }}
 
     /* Columns Manager (Admin) */
@@ -722,8 +754,8 @@ html_content = f'''<!DOCTYPE html>
       display: flex;
       align-items: center;
       gap: 8px;
-      background: #1e293b;
-      border: 1px solid #334155;
+      background: #F3FCFE;
+      border: 1px solid #C2D0F3;
       padding: 6px 10px;
       border-radius: 8px;
     }}
@@ -733,7 +765,7 @@ html_content = f'''<!DOCTYPE html>
       background: transparent;
       border: 1px solid transparent;
       border-radius: 4px;
-      color: #fff;
+      color: #204097;
       font-family: inherit;
       font-size: 0.84rem;
       font-weight: 600;
@@ -741,8 +773,8 @@ html_content = f'''<!DOCTYPE html>
       min-width: 0;
     }}
     .column-item input.col-name-input:focus {{
-      background: #0f172a;
-      border-color: #38bdf8;
+      background: #FFFFFF;
+      border-color: #204097;
       outline: none;
     }}
 
@@ -756,7 +788,7 @@ html_content = f'''<!DOCTYPE html>
     .col-icon-btn {{
       background: transparent;
       border: none;
-      color: #94a3b8;
+      color: #7280AB;
       width: 28px;
       height: 28px;
       border-radius: 6px;
@@ -767,18 +799,18 @@ html_content = f'''<!DOCTYPE html>
       transition: all 0.15s;
     }}
     .col-icon-btn:hover {{
-      background: #334155;
-      color: #f1f5f9;
+      background: #C2D0F3;
+      color: #204097;
     }}
     .col-icon-btn.delete-col:hover {{
-      background: rgba(239, 68, 68, 0.2);
+      background: rgba(239, 68, 68, 0.12);
       color: #ef4444;
     }}
 
     /* Logo Control Box */
     .logo-control-box {{
-      background: #1e293b;
-      border: 1px solid #334155;
+      background: #F3FCFE;
+      border: 1px solid #C2D0F3;
       border-radius: 10px;
       padding: 12px;
       display: flex;
@@ -802,7 +834,7 @@ html_content = f'''<!DOCTYPE html>
       align-items: center;
       justify-content: center;
       padding: 4px;
-      border: 1px solid #475569;
+      border: 1px solid #C2D0F3;
       overflow: hidden;
     }}
 
@@ -822,10 +854,10 @@ html_content = f'''<!DOCTYPE html>
     /* Main Preview Canvas Area */
     main.canvas-area {{
       flex: 1;
-      background: #111827;
+      background: #F3FCFE;
       background-image: 
-        radial-gradient(#1f2937 1px, transparent 1px),
-        radial-gradient(#1f2937 1px, #111827 1px);
+        radial-gradient(rgba(32, 64, 151, 0.12) 1px, transparent 1px),
+        radial-gradient(rgba(32, 64, 151, 0.08) 1px, #F3FCFE 1px);
       background-size: 20px 20px;
       background-position: 0 0, 10px 10px;
       position: relative;
@@ -836,7 +868,7 @@ html_content = f'''<!DOCTYPE html>
       align-items: center;
       padding: 16px 16px 80px 16px;
       scrollbar-width: thin;
-      scrollbar-color: #334155 #111827;
+      scrollbar-color: #C2D0F3 #F3FCFE;
       -webkit-overflow-scrolling: touch;
     }}
 
@@ -844,8 +876,8 @@ html_content = f'''<!DOCTYPE html>
     .student-top-guide-bar {{
       width: 100%;
       max-width: 210mm;
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.95));
-      border: 1.5px solid rgba(56, 189, 248, 0.45);
+      background: #FFFFFF;
+      border: 1.5px solid #C2D0F3;
       border-radius: 14px;
       padding: 14px 18px;
       margin-bottom: 16px;
@@ -853,7 +885,7 @@ html_content = f'''<!DOCTYPE html>
       align-items: center;
       justify-content: space-between;
       gap: 14px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(56, 189, 248, 0.15);
+      box-shadow: 0 4px 16px rgba(32, 64, 151, 0.08);
     }}
 
     .guide-bar-content {{
@@ -868,9 +900,9 @@ html_content = f'''<!DOCTYPE html>
       height: 38px;
       min-width: 38px;
       border-radius: 10px;
-      background: rgba(56, 189, 248, 0.15);
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      color: #38bdf8;
+      background: rgba(32, 64, 151, 0.08);
+      border: 1px solid #C2D0F3;
+      color: #204097;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -880,17 +912,17 @@ html_content = f'''<!DOCTYPE html>
     .guide-bar-title {{
       font-size: 0.95rem;
       font-weight: 800;
-      color: #38bdf8;
+      color: #204097;
       margin-bottom: 3px;
     }}
 
     .guide-bar-instructions {{
       font-size: 0.85rem;
-      color: #cbd5e1;
+      color: #33467D;
     }}
 
     .guide-bar-instructions strong {{
-      color: #fff;
+      color: #204097;
     }}
 
     .guide-bar-content {{
@@ -898,14 +930,14 @@ html_content = f'''<!DOCTYPE html>
       align-items: center;
       gap: 10px;
       font-size: 0.85rem;
-      color: #e2e8f0;
+      color: #33467D;
       line-height: 1.4;
     }}
 
     .guide-bar-tag {{
-      background: rgba(16, 185, 129, 0.2);
-      color: #34d399;
-      border: 1px solid rgba(16, 185, 129, 0.4);
+      background: rgba(16, 185, 129, 0.12);
+      color: #059669;
+      border: 1px solid rgba(16, 185, 129, 0.3);
       padding: 3px 10px;
       border-radius: 6px;
       font-weight: 800;
@@ -918,16 +950,16 @@ html_content = f'''<!DOCTYPE html>
       position: sticky;
       top: 10px;
       z-index: 50;
-      background: rgba(15, 23, 42, 0.92);
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1.5px solid #C2D0F3;
       border-radius: 30px;
       padding: 5px 12px;
       display: flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 6px 20px rgba(32, 64, 151, 0.12);
       margin-bottom: 14px;
       flex-wrap: wrap;
       justify-content: center;
@@ -936,7 +968,7 @@ html_content = f'''<!DOCTYPE html>
     .zoom-text {{
       font-size: 0.8rem;
       font-weight: 700;
-      color: #cbd5e1;
+      color: #204097;
       min-width: 44px;
       text-align: center;
     }}
@@ -976,7 +1008,7 @@ html_content = f'''<!DOCTYPE html>
       max-height: 297mm;
       background: #ffffff;
       color: #000000;
-      box-shadow: 0 14px 45px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 10px 35px rgba(32, 64, 151, 0.12);
       position: relative;
       display: flex;
       flex-direction: column;
@@ -1246,8 +1278,8 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     table.students-table td:focus {{
-      background: #eff6ff !important;
-      outline: 1.5px dashed #2563eb !important;
+      background: #F3FCFE !important;
+      outline: 1.5px dashed #204097 !important;
     }}
 
     /* Signatures Section */
@@ -1291,18 +1323,19 @@ html_content = f'''<!DOCTYPE html>
       bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(15, 23, 42, 0.95);
+      background: #FFFFFF;
       backdrop-filter: blur(8px);
-      border: 1px solid #334155;
+      border: 1.5px solid #C2D0F3;
       border-radius: 20px;
       padding: 8px 16px;
-      color: #94a3b8;
+      color: #204097;
       font-size: 0.78rem;
+      font-weight: 700;
       pointer-events: none;
       display: flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 4px 16px rgba(32, 64, 151, 0.15);
       z-index: 80;
       white-space: nowrap;
     }}
@@ -1315,7 +1348,7 @@ html_content = f'''<!DOCTYPE html>
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0, 0, 0, 0.75);
+      background: rgba(32, 64, 151, 0.35);
       backdrop-filter: blur(4px);
       z-index: 999;
       align-items: center;
@@ -1327,13 +1360,13 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     .modal-card {{
-      background: #0f172a;
-      border: 1px solid #334155;
+      background: #FFFFFF;
+      border: 1.5px solid #C2D0F3;
       border-radius: 14px;
       max-width: 480px;
       width: 100%;
       padding: 22px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 20px 40px rgba(32, 64, 151, 0.2);
       text-align: right;
     }}
 
@@ -1343,12 +1376,12 @@ html_content = f'''<!DOCTYPE html>
       display: flex;
       align-items: center;
       gap: 8px;
-      color: #fff;
+      color: #204097;
     }}
 
     .modal-card p {{
       font-size: 0.88rem;
-      color: #cbd5e1;
+      color: #33467D;
       line-height: 1.6;
       margin-bottom: 14px;
     }}
@@ -1364,7 +1397,7 @@ html_content = f'''<!DOCTYPE html>
       left: 10px;
       background: transparent;
       border: none;
-      color: #94a3b8;
+      color: #7280AB;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -1372,22 +1405,23 @@ html_content = f'''<!DOCTYPE html>
       padding: 4px;
     }}
     .password-toggle-btn:hover {{
-      color: #fff;
+      color: #204097;
     }}
 
     .print-tip-item {{
-      background: #1e293b;
+      background: #F3FCFE;
+      border: 1px solid #C2D0F3;
       padding: 10px 12px;
       border-radius: 8px;
       margin-bottom: 8px;
       font-size: 0.82rem;
-      color: #94a3b8;
+      color: #33467D;
       display: flex;
       align-items: center;
       gap: 10px;
     }}
     .print-tip-item strong {{
-      color: #f1f5f9;
+      color: #204097;
     }}
 
     /* Media Print */
@@ -1604,7 +1638,7 @@ html_content = f'''<!DOCTYPE html>
         font-size: 0.72rem !important;
       }}
 
-      /* Admin Action Banner in Gallery on Mobile (Fixing Buttons Overflow) */
+      /* Admin Action Banner in Gallery on Mobile */
       #adminGalleryActions {{
         flex-direction: column !important;
         align-items: stretch !important;
@@ -1714,7 +1748,6 @@ html_content = f'''<!DOCTYPE html>
     /* ========================================================
        STUDENT & ADMIN WORKSPACE LAYOUT (ROLE DRIVEN)
        ======================================================== */
-    /* Student Mode: Entire right sidebar is completely removed! Student gets 100% full screen preview! */
     body.role-student aside.control-panel {{
       display: none !important;
     }}
@@ -1759,9 +1792,9 @@ html_content = f'''<!DOCTYPE html>
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(11, 17, 32, 0.88);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(32, 64, 151, 0.4);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       z-index: 9999;
       align-items: center;
       justify-content: center;
@@ -1775,14 +1808,14 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     .swal-card {{
-      background: #0f172a;
-      border: 1.5px solid #334155;
+      background: #FFFFFF;
+      border: 1.5px solid #C2D0F3;
       border-radius: 22px;
       max-width: 440px;
       width: 100%;
       padding: 30px 24px 24px 24px;
       text-align: center;
-      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.06);
+      box-shadow: 0 20px 50px rgba(32, 64, 151, 0.25);
       transform: scale(0.85);
       transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
     }}
@@ -1826,14 +1859,14 @@ html_content = f'''<!DOCTYPE html>
     .swal-title {{
       font-size: 1.25rem;
       font-weight: 800;
-      color: #ffffff;
+      color: #204097;
       margin-bottom: 10px;
       line-height: 1.3;
     }}
 
     .swal-desc {{
       font-size: 0.9rem;
-      color: #94a3b8;
+      color: #33467D;
       line-height: 1.6;
       margin-bottom: 22px;
     }}
@@ -1841,7 +1874,7 @@ html_content = f'''<!DOCTYPE html>
     .swal-desc .warn-highlight {{
       display: block;
       margin-top: 6px;
-      color: #f87171;
+      color: #ef4444;
       font-weight: 700;
       font-size: 0.85rem;
     }}
@@ -1865,19 +1898,19 @@ html_content = f'''<!DOCTYPE html>
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4);
+      box-shadow: 0 4px 14px rgba(239, 68, 68, 0.3);
       transition: all 0.2s;
     }}
     .swal-btn-danger:hover {{
       background: linear-gradient(135deg, #dc2626, #b91c1c);
       transform: translateY(-1px);
-      box-shadow: 0 6px 18px rgba(239, 68, 68, 0.55);
+      box-shadow: 0 6px 18px rgba(239, 68, 68, 0.45);
     }}
 
     .swal-btn-dismiss {{
-      background: #1e293b;
-      color: #cbd5e1;
-      border: 1px solid #334155;
+      background: #F3FCFE;
+      color: #27428B;
+      border: 1.5px solid #C2D0F3;
       padding: 10px 18px;
       border-radius: 10px;
       font-family: inherit;
@@ -1887,8 +1920,8 @@ html_content = f'''<!DOCTYPE html>
       transition: all 0.2s;
     }}
     .swal-btn-dismiss:hover {{
-      background: #334155;
-      color: #ffffff;
+      background: #C2D0F3;
+      color: #204097;
     }}
 
     /* SweetAlert Success Toast */
@@ -1897,14 +1930,14 @@ html_content = f'''<!DOCTYPE html>
       top: 24px;
       left: 50%;
       transform: translateX(-50%) translateY(-30px);
-      background: #0f172a;
+      background: #FFFFFF;
       border: 1.5px solid #10b981;
       border-radius: 14px;
       padding: 12px 22px;
       display: flex;
       align-items: center;
       gap: 12px;
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.55);
+      box-shadow: 0 10px 30px rgba(32, 64, 151, 0.15);
       z-index: 2000;
       opacity: 0;
       transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -1932,17 +1965,57 @@ html_content = f'''<!DOCTYPE html>
     .swal-toast-title {{
       font-size: 0.9rem;
       font-weight: 800;
-      color: #ffffff;
+      color: #1e293b;
     }}
 
     .swal-toast-msg {{
       font-size: 0.8rem;
-      color: #94a3b8;
+      color: #7280AB;
     }}
 
+    /* ========================================================
+       INTRO MOTION GRAPHICS CINEMATIC OVERLAY (FULLSCREEN 2025.mp4)
+       ======================================================== */
+    .intro-overlay {{
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 999999;
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.65s;
+      opacity: 1;
+      visibility: visible;
+      overflow: hidden;
+    }}
+
+    .intro-overlay.fade-out {{
+      opacity: 0;
+      transform: scale(1.03);
+      visibility: hidden;
+      pointer-events: none;
+    }}
+
+    .intro-fullscreen-video {{
+      width: 100vw;
+      height: 100vh;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+      background: #ffffff;
+    }}
   </style>
 </head>
 <body>
+
+  <!-- Motion Graphics Fullscreen Intro Overlay -->
+  <div id="introOverlay" class="intro-overlay">
+    <video id="introVideo" src="2025.mp4" autoplay muted playsinline preload="auto" class="intro-fullscreen-video"></video>
+  </div>
 
   <!-- Top Global Navbar -->
   <header class="app-navbar no-print">
@@ -1968,11 +2041,13 @@ html_content = f'''<!DOCTYPE html>
         <span id="roleBadgeText">وضع الطالب</span>
       </span>
 
-      <!-- Switch to Gallery / All Departments -->
-      <button type="button" class="btn btn-secondary btn-sm" id="btnBrowseGallery" title="تصفح جميع الأقسام والاستمارات">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-        <span class="btn-navbar-text">أقسام الاستمارات</span>
+      <!-- Switch to Gallery / Return to Home (Visible only when in Workspace) -->
+      <button type="button" class="btn btn-secondary btn-sm workspace-btn" id="btnBrowseGallery" title="العودة للصفحة الرئيسية وتصفح الاستمارات" style="display:none;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 19 12 12 5"></polyline></svg>
+        <span class="btn-navbar-text">العودة للرئيسية</span>
       </button>
+
+
 
 
 
@@ -2039,8 +2114,8 @@ html_content = f'''<!DOCTYPE html>
     </div>
 
     <!-- Admin Top Bar in Gallery -->
-    <div id="adminGalleryActions" style="display:none; justify-content:space-between; align-items:center; background:#1e293b; padding:12px 18px; border-radius:10px; border:1px solid #334155;">
-      <div style="font-weight:700; color:#c084fc; display:flex; align-items:center; gap:8px;">
+    <div id="adminGalleryActions" style="display:none; justify-content:space-between; align-items:center; background:#FFFFFF; padding:12px 18px; border-radius:12px; border:1.5px solid #C2D0F3; box-shadow:0 4px 14px rgba(32,64,151,0.06);">
+      <div style="font-weight:700; color:#204097; display:flex; align-items:center; gap:8px;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
         أنت الآن في وضع الإدارة (Admin) — يمكنك إنشاء وتعديل ونشر القوالب للطلاب
       </div>
@@ -2075,12 +2150,12 @@ html_content = f'''<!DOCTYPE html>
     <aside class="control-panel no-print" id="controlPanel">
 
       <!-- Back to Gallery link inside panel -->
-      <div style="padding: 12px 18px; background:#0b1120; border-bottom:1px solid #1e293b; display:flex; justify-content:space-between; align-items:center;">
+      <div style="padding: 12px 18px; background:#F3FCFE; border-bottom:1px solid #C2D0F3; display:flex; justify-content:space-between; align-items:center;">
         <button type="button" class="btn btn-outline btn-sm" id="btnBackToGalleryFromPanel">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
           تغيير القسم / الاستمارة
         </button>
-        <span style="font-size:0.75rem; color:#94a3b8;" id="panelActiveDeptBadge">قسم نظم معلومات الأعمال</span>
+        <span style="font-size:0.75rem; color:#33467D; font-weight:700;" id="panelActiveDeptBadge">قسم نظم معلومات الأعمال</span>
       </div>
 
       <!-- PERMANENT STUDENT INSTRUCTIONS CARD IN SIDEBAR -->
@@ -2115,13 +2190,13 @@ html_content = f'''<!DOCTYPE html>
       <div class="panel-section" id="adminBannerSec" style="display:none;">
         <div class="admin-action-banner">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; gap:8px;">
-            <div style="font-size:0.85rem; font-weight:800; color:#c084fc; display:flex; align-items:center; gap:6px;">
+            <div style="font-size:0.85rem; font-weight:800; color:#204097; display:flex; align-items:center; gap:6px;">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
               <span>تحرير القالب وضبط النشر</span>
             </div>
             <span id="panelPublishStatusBadge" class="status-pill status-draft">مسودة</span>
           </div>
-          <p id="panelPublishStatusDesc" style="font-size:0.78rem; color:#cbd5e1; line-height:1.5; margin-bottom:10px;">
+          <p id="panelPublishStatusDesc" style="font-size:0.78rem; color:#33467D; line-height:1.5; margin-bottom:10px;">
             يمكنك كمسؤول تعديل بيانات وتنسيق القالب وحفظه كمسودة خاصة، أو نشره وإيقاف نشره للطلاب في أي وقت.
           </p>
           <div style="display:flex; flex-direction:column; gap:8px;">
@@ -2300,7 +2375,7 @@ html_content = f'''<!DOCTYPE html>
             <div class="form-group" style="margin-top: 4px;">
               <label class="form-label">
                 <span>حجم الشعار</span>
-                <span id="logoSizeVal" style="color:#38bdf8;">58px</span>
+                <span id="logoSizeVal" style="color:#204097; font-weight:700;">58px</span>
               </label>
               <input type="range" class="form-control" id="logoSizeSlider" min="35" max="95" value="58" style="padding: 2px;">
             </div>
@@ -2366,7 +2441,7 @@ html_content = f'''<!DOCTYPE html>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
         </button>
 
-        <div style="width: 1px; height: 16px; background: rgba(255,255,255,0.15);"></div>
+        <div style="width: 1px; height: 16px; background: #C2D0F3;"></div>
 
         <button type="button" class="btn btn-outline btn-sm" id="btnZoomFit" style="border-radius: 20px; font-size: 0.76rem; padding: 4px 10px;">
           ملاءمة الشاشة
@@ -2475,7 +2550,7 @@ html_content = f'''<!DOCTYPE html>
     </div> <!-- End paper-viewport -->
 
       <div class="edit-hint-toast no-print">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#204097" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
         <span>اضغط على أي خانة في جدول الطلاب واكتب من اليمين لليسار، ثم اطبع!</span>
       </div>
 
@@ -2486,7 +2561,7 @@ html_content = f'''<!DOCTYPE html>
   <div class="modal-backdrop" id="adminLoginModal">
     <div class="modal-card">
       <h3>
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#204097" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
         تسجيل دخول مسؤول النظام (Admin)
       </h3>
       <p>أدخل كلمة مرور المسؤول لفتح صلاحيات تعديل وتصميم ونشر القوالب لجميع الطلاب:</p>
@@ -2499,7 +2574,7 @@ html_content = f'''<!DOCTYPE html>
             <svg id="eyeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
           </button>
         </div>
-        <div id="loginFeedbackMsg" style="font-size:0.75rem; color:#f87171; margin-top:6px; display:none;"></div>
+        <div id="loginFeedbackMsg" style="font-size:0.75rem; color:#ef4444; font-weight:700; margin-top:6px; display:none;"></div>
 
       </div>
 
@@ -2516,7 +2591,7 @@ html_content = f'''<!DOCTYPE html>
   <div class="modal-backdrop" id="changePassModal">
     <div class="modal-card">
       <h3>
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><path d="M21 2l-2 2m-1.5 6.1L19 12l2-2-4-4-1.9 1.5M10.5 14.5L3 22l4-4 3.5-3.5"></path></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#204097" stroke-width="2"><path d="M21 2l-2 2m-1.5 6.1L19 12l2-2-4-4-1.9 1.5M10.5 14.5L3 22l4-4 3.5-3.5"></path></svg>
         تغيير كلمة مرور الإدارة (Admin)
       </h3>
       <p>يمكنك تعيين كلمة مرور جديدة لحماية لوحة الإدارة. يتم تشفيرها تلقائياً بتقنية SHA-256 وحفظها في المتصفح.</p>
@@ -2575,11 +2650,77 @@ html_content = f'''<!DOCTYPE html>
     </div>
   </div>
 
+  <!-- Admin Create New Template Modal -->
+  <div class="modal-backdrop" id="createTemplateModal">
+    <div class="modal-card" style="max-width: 520px;">
+      <h3>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#204097" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+        إنشاء قالب استمارة بحث جديد
+      </h3>
+      <p>قم بتحديد بيانات استمارة البحث الجديدة لإضافتها إلى المنصة واعتمادها فوراً للطلاب:</p>
+
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label class="form-label" for="newTmplTitleInput">عنوان استمارة البحث الرسمية:</label>
+        <input type="text" class="form-control" id="newTmplTitleInput" placeholder="مثال: استمارة تسجيل مشروع تخرج نظم المعلومات" value="استمارة بحث تخرج جديدة">
+      </div>
+
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label class="form-label" for="newTmplDeptSelect">القسم العلمي التابع له:</label>
+        <select class="form-control" id="newTmplDeptSelect">
+          <option value="قسم نظم معلومات الأعمال">قسم نظم معلومات الأعمال</option>
+          <option value="قسم علوم الحاسب">قسم علوم الحاسب</option>
+          <option value="قسم إدارة الأعمال والمحاسبة">قسم إدارة الأعمال والمحاسبة</option>
+          <option value="قسم الهندسة">قسم الهندسة</option>
+          <option value="custom">قسم آخر (مخصص)...</option>
+        </select>
+      </div>
+
+      <div class="form-group" id="newTmplCustomDeptGroup" style="margin-bottom: 12px; display: none;">
+        <label class="form-label" for="newTmplCustomDeptInput">اسم القسم المخصص:</label>
+        <input type="text" class="form-control" id="newTmplCustomDeptInput" placeholder="أدخل اسم القسم الجديد...">
+      </div>
+
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label class="form-label" for="newTmplHeadInput">رئيس القسم المعتمد:</label>
+        <input type="text" class="form-control" id="newTmplHeadInput" value="أ.د/ إبراهيم سليم">
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px;">
+        <div class="form-group">
+          <label class="form-label" for="newTmplRowCount">عدد صفوف الطلاب:</label>
+          <select class="form-control" id="newTmplRowCount">
+            <option value="15" selected>15 صفاً (فريق عمل)</option>
+            <option value="6">6 صفوف (مصغرة)</option>
+            <option value="10">10 صفوف</option>
+            <option value="20">20 صفاً</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="newTmplPublishSelect">حالة النشر:</label>
+          <select class="form-control" id="newTmplPublishSelect">
+            <option value="true" selected>🟢 معروض ومنشور للطلاب</option>
+            <option value="false">🟡 مسودة خاصة بالإدارة</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="createTmplFeedbackMsg" style="font-size:0.8rem; color:#ef4444; font-weight:700; margin-bottom:10px; display:none;"></div>
+
+      <div style="display:flex; gap:10px; justify-content:flex-end;">
+        <button type="button" class="btn btn-outline" id="btnCancelCreateTmpl">إلغاء</button>
+        <button type="button" class="btn btn-primary" id="btnSubmitCreateTmpl">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          إنشاء القالب وإضافته الآن
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Print Advice Modal -->
   <div class="modal-backdrop" id="printModal">
     <div class="modal-card">
       <h3>
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#204097" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
         تعليمات طباعة استمارة رسمية مثالية (A4)
       </h3>
       <p>لضمان ظهور الاستمارة بصفحة واحدة متناسقة وبأعلى جودة رسمية في نافذة الطباعة:</p>
@@ -2762,6 +2903,9 @@ html_content = f'''<!DOCTYPE html>
           if (typeof t.published === 'undefined') {{
             t.published = true;
           }}
+          if (!t.logoData || t.logoData === 'DEFAULT') {{
+            t.logoData = DEFAULT_LOGO_B64;
+          }}
           if (t.id === 'cs_default' || (t.dept && t.dept.includes('علوم الحاسب'))) {{
             t.headName = 'أ.د/ إبراهيم سليم';
             t.instLine2 = 'معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات';
@@ -2783,19 +2927,41 @@ html_content = f'''<!DOCTYPE html>
     function saveTemplates() {{
       try {{
         localStorage.setItem("tiba_templates_v3", JSON.stringify(templates));
-      }} catch (e) {{}}
+      }} catch (e) {{
+        console.warn("Storage quota warning, compressing logo data:", e);
+        try {{
+          const clean = templates.map(t => {{
+            const c = Object.assign({{}}, t);
+            if (c.logoData === DEFAULT_LOGO_B64) c.logoData = 'DEFAULT';
+            return c;
+          }});
+          localStorage.setItem("tiba_templates_v3", JSON.stringify(clean));
+        }} catch(err) {{
+          console.error("Storage save failed:", err);
+        }}
+      }}
     }}
 
-    // Switch Views
-    function showGalleryView() {{
+    // Switch Views with Browser History Support
+    function showGalleryView(updateHistory = true) {{
       document.getElementById('viewGallery').style.display = 'flex';
       document.getElementById('appWorkspace').classList.remove('active');
       document.getElementById('mobileTabBar').style.display = 'none';
       document.querySelectorAll('.workspace-btn').forEach(btn => btn.style.display = 'none');
+      
+      if (updateHistory) {{
+        try {{
+          if (window.location.hash === '#workspace') {{
+            history.pushState({{ view: 'gallery' }}, '', window.location.pathname + window.location.search);
+          }} else {{
+            history.replaceState({{ view: 'gallery' }}, '', window.location.pathname + window.location.search);
+          }}
+        }} catch (e) {{}}
+      }}
       renderGallery();
     }}
 
-    function showWorkspaceView() {{
+    function showWorkspaceView(updateHistory = true) {{
       document.getElementById('viewGallery').style.display = 'none';
       document.getElementById('appWorkspace').classList.add('active');
       if (window.innerWidth <= 1024) {{
@@ -2807,6 +2973,12 @@ html_content = f'''<!DOCTYPE html>
       updateAdminBannerUI();
       syncInputsFromState();
       renderPreview();
+      
+      if (updateHistory) {{
+        try {{
+          history.pushState({{ view: 'workspace', templateId: currentTemplate ? currentTemplate.id : null }}, '', '#workspace');
+        }} catch (e) {{}}
+      }}
       
       setTimeout(() => {{
         fitToScreen();
@@ -2902,12 +3074,12 @@ html_content = f'''<!DOCTYPE html>
         if (roleTemplates.length === 0) {{
           if (currentRole === 'admin') {{
             grid.innerHTML = `
-              <div style="grid-column: 1/-1; text-align: center; padding: 50px 20px; background: rgba(15, 23, 42, 0.7); border: 2px dashed #475569; border-radius: 16px;">
-                <div style="width: 56px; height: 56px; margin: 0 auto 14px auto; background: rgba(148, 163, 184, 0.1); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: #94a3b8;">
+              <div style="grid-column: 1/-1; text-align: center; padding: 50px 20px; background: #FFFFFF; border: 2px dashed #C2D0F3; border-radius: 16px; box-shadow: 0 4px 16px rgba(32, 64, 151, 0.06);">
+                <div style="width: 56px; height: 56px; margin: 0 auto 14px auto; background: rgba(32, 64, 151, 0.08); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: #204097;">
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
                 </div>
-                <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 8px;">لا توجد أي قوالب حالياً</h3>
-                <p style="font-size: 0.88rem; color: #94a3b8; max-width: 480px; margin: 0 auto 16px auto; line-height: 1.6;">
+                <h3 style="font-size: 1.25rem; font-weight: 800; color: #204097; margin-bottom: 8px;">لا توجد أي قوالب حالياً</h3>
+                <p style="font-size: 0.88rem; color: #33467D; max-width: 480px; margin: 0 auto 16px auto; line-height: 1.6;">
                   تم تفريغ كافة القوالب. يمكنك كمسؤول إنشاء قالب استمارة جديد الآن وضبط بياناته ونشره للطلاب.
                 </p>
                 <div style="display:flex; justify-content:center;">
@@ -2920,12 +3092,12 @@ html_content = f'''<!DOCTYPE html>
             `;
           }} else {{
             grid.innerHTML = `
-              <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; background: rgba(15, 23, 42, 0.7); border: 2px dashed #334155; border-radius: 16px;">
-                <div style="width: 60px; height: 60px; margin: 0 auto 14px auto; background: rgba(56, 189, 248, 0.12); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #38bdf8;">
+              <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; background: #FFFFFF; border: 2px dashed #C2D0F3; border-radius: 16px; box-shadow: 0 4px 16px rgba(32, 64, 151, 0.06);">
+                <div style="width: 60px; height: 60px; margin: 0 auto 14px auto; background: rgba(32, 64, 151, 0.08); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #204097;">
                   <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                 </div>
-                <h3 style="font-size: 1.35rem; font-weight: 800; color: #38bdf8; margin-bottom: 8px;">لا توجد استمارات متاحة حالياً</h3>
-                <p style="font-size: 0.95rem; color: #cbd5e1; max-width: 520px; margin: 0 auto; line-height: 1.7;">
+                <h3 style="font-size: 1.35rem; font-weight: 800; color: #204097; margin-bottom: 8px;">لا توجد استمارات متاحة حالياً</h3>
+                <p style="font-size: 0.95rem; color: #33467D; max-width: 520px; margin: 0 auto; line-height: 1.7;">
                   لم تقم إدارة المعهد بنشر أي استمارة بحث حتى الآن. يرجى الانتظار حتى تقوم إدارة المعهد بنشر القوالب المعتمدة لقسمك.
                 </p>
               </div>
@@ -2935,8 +3107,8 @@ html_content = f'''<!DOCTYPE html>
         }}
 
         grid.innerHTML = `
-          <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #94a3b8;">
-            <p style="font-size: 1.1rem; font-weight: 700;">لا توجد استمارات مطابقة للبحث</p>
+          <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #33467D;">
+            <p style="font-size: 1.1rem; font-weight: 700; color: #204097;">لا توجد استمارات مطابقة للبحث</p>
             <p style="font-size: 0.85rem; margin-top: 6px;">جرب تغيير كلمة البحث أو اختيار "جميع الأقسام".</p>
           </div>
         `;
@@ -2989,7 +3161,7 @@ html_content = f'''<!DOCTYPE html>
           </div>
 
           ${{currentRole === 'admin' ? `
-            <div style="margin-top: 14px; padding-top: 12px; border-top: 1px dashed #334155;">
+            <div style="margin-top: 14px; padding-top: 12px; border-top: 1px dashed #C2D0F3;">
               <button type="button" class="btn btn-sm" onclick="event.stopPropagation(); togglePublishTemplate('${{tmpl.id}}');" style="width:100%; justify-content:center; padding:9px 12px; font-weight:800; font-size:0.88rem; border-radius:8px; display:flex; align-items:center; gap:8px; cursor:pointer; transition:all 0.2s ease; ${{isPublished ? 'background:rgba(245,158,11,0.14); color:#fbbf24; border:1.5px solid #f59e0b;' : 'background:rgba(16,185,129,0.16); color:#34d399; border:1.5px solid #10b981;'}}">
                 ${{isPublished ? `
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="10" y1="15" x2="10" y2="9"></line><line x1="14" y1="15" x2="14" y2="9"></line></svg>
@@ -3014,12 +3186,18 @@ html_content = f'''<!DOCTYPE html>
             ` : ''}}
           </div>
         `;
+
+        card.addEventListener('click', (e) => {{
+          if (e.target.closest('button')) return;
+          selectTemplate(tmpl.id);
+        }});
+
         grid.appendChild(card);
       }});
     }}
 
     // Select Template and open workspace
-    window.selectTemplate = function(templateId) {{
+    window.selectTemplate = function(templateId, updateHistory = true) {{
       const found = templates.find(t => t.id === templateId);
       if (!found) return;
       if (currentRole !== 'admin' && found.published === false) {{
@@ -3030,7 +3208,7 @@ html_content = f'''<!DOCTYPE html>
       
       appState.rowCount = currentTemplate.rowCount || 15;
       document.getElementById('panelActiveDeptBadge').innerText = currentTemplate.dept;
-      showWorkspaceView();
+      showWorkspaceView(updateHistory);
     }};
 
     // Toggle Publish/Display Status for a Template
@@ -3068,7 +3246,7 @@ html_content = f'''<!DOCTYPE html>
         desc.innerText = 'هذا القالب معروض ومتاح حالياً لجميع الطلاب في قائمة الاستمارات الرسمية.';
         toggleBtn.className = 'btn btn-sm';
         toggleBtn.style.background = 'rgba(245,158,11,0.15)';
-        toggleBtn.style.color = '#fbbf24';
+        toggleBtn.style.color = '#b45309';
         toggleBtn.style.border = '1.5px solid #f59e0b';
         toggleBtn.style.fontWeight = '800';
         toggleBtn.style.padding = '10px';
@@ -3084,7 +3262,7 @@ html_content = f'''<!DOCTYPE html>
         `;
         desc.innerText = 'هذا القالب متوقف عرضه ومخفي عن الطلاب، يمكنك تعديله ثم تشغيل العرض متى أردت.';
         toggleBtn.className = 'btn btn-sm';
-        toggleBtn.style.background = '#10b981';
+        toggleBtn.style.background = '#059669';
         toggleBtn.style.color = '#ffffff';
         toggleBtn.style.border = '1.5px solid #10b981';
         toggleBtn.style.fontWeight = '800';
@@ -3475,13 +3653,40 @@ html_content = f'''<!DOCTYPE html>
 
     // Initialization & Event Binding
     function init() {{
+      setupIntro();
       loadTemplates();
-      showGalleryView();
+
+      // Ensure initial history state is set
+      try {{
+        history.replaceState({{ view: 'gallery' }}, '', window.location.pathname + window.location.search);
+      }} catch (e) {{}}
+
+      showGalleryView(false);
+
+      // Handle browser Back / Forward buttons & mobile swipe gestures
+      window.addEventListener('popstate', (e) => {{
+        // If an active modal is open, dismiss it first
+        const activeModal = document.querySelector('.modal-backdrop.active');
+        if (activeModal) {{
+          activeModal.classList.remove('active');
+          return;
+        }}
+
+        const isWorkspace = (window.location.hash === '#workspace') || (e.state && e.state.view === 'workspace');
+        if (!isWorkspace) {{
+          // Return to home gallery smoothly without leaving the platform
+          showGalleryView(false);
+        }} else if (currentTemplate) {{
+          showWorkspaceView(false);
+        }} else if (templates.length > 0) {{
+          selectTemplate(templates[0].id, false);
+        }}
+      }});
 
       // Navigation
-      document.getElementById('brandHomeBtn').addEventListener('click', showGalleryView);
-      document.getElementById('btnBrowseGallery').addEventListener('click', showGalleryView);
-      document.getElementById('btnBackToGalleryFromPanel').addEventListener('click', showGalleryView);
+      document.getElementById('brandHomeBtn').addEventListener('click', () => showGalleryView(true));
+      document.getElementById('btnBrowseGallery').addEventListener('click', () => showGalleryView(true));
+      document.getElementById('btnBackToGalleryFromPanel').addEventListener('click', () => showGalleryView(true));
 
       // Search & Filters
       document.getElementById('gallerySearchInput').addEventListener('input', renderGallery);
@@ -3658,45 +3863,150 @@ html_content = f'''<!DOCTYPE html>
         }});
       }}
 
-      // Admin Create New Template (Saved as Draft initially)
-      document.getElementById('btnAdminCreateNew').addEventListener('click', () => {{
-        const newTitle = prompt('أدخل عنوان استمارة البحث الجديدة:', 'استمارة بحث تخرج جديدة');
-        if (!newTitle) return;
-        const newDept = prompt('أدخل اسم القسم العلمي التابع له الاستمارة:', 'قسم نظم معلومات الأعمال');
-        if (!newDept) return;
+      // Create Template Modal Bindings
+      const createModal = document.getElementById('createTemplateModal');
+      const newTitleInput = document.getElementById('newTmplTitleInput');
+      const newDeptSelect = document.getElementById('newTmplDeptSelect');
+      const customDeptGroup = document.getElementById('newTmplCustomDeptGroup');
+      const customDeptInput = document.getElementById('newTmplCustomDeptInput');
+      const newHeadInput = document.getElementById('newTmplHeadInput');
+      const newRowCountSelect = document.getElementById('newTmplRowCount');
+      const newPublishSelect = document.getElementById('newTmplPublishSelect');
+      const createFeedback = document.getElementById('createTmplFeedbackMsg');
+      const btnCancelCreate = document.getElementById('btnCancelCreateTmpl');
+      const btnSubmitCreate = document.getElementById('btnSubmitCreateTmpl');
 
-        const newTmpl = {{
-          id: 'tmpl_' + Date.now(),
-          dept: newDept.trim(),
-          formTitle: newTitle.trim(),
-          published: false, // Default is DRAFT (not published immediately)
-          instLine1: "معاهد طيبة العليا",
-          instLine2: "معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات",
-          instLine3: newDept.trim(),
-          academicYear: "العام الجامعي 2024 / 2025",
-          projectNo: "",
-          projectName: "",
-          supervisor: "",
-          signRightTitle: "أستاذ المادة المشرف",
-          signLeftTitle: "رئيس القسم",
-          headName: "أ.د/ إبراهيم سليم",
-          logoVisible: true,
-          logoSize: 58,
-          logoData: DEFAULT_LOGO_B64,
-          columns: [
-            {{ id: "col_seq", name: "م", width: "7%", autoSeq: true }},
-            {{ id: "col_code", name: "كود الطالب", width: "23%", autoSeq: false }},
-            {{ id: "col_name", name: "اسم الطالب", width: "42%", autoSeq: false }},
-            {{ id: "col_phone", name: "رقم التليفون", width: "28%", autoSeq: false }}
-          ],
-          rowCount: 15
-        }};
+      function openCreateTemplateModal() {{
+        if (!createModal) return;
+        createFeedback.style.display = 'none';
+        createFeedback.innerText = '';
+        newTitleInput.value = 'استمارة بحث تخرج جديدة';
+        newDeptSelect.value = 'قسم نظم معلومات الأعمال';
+        customDeptGroup.style.display = 'none';
+        customDeptInput.value = '';
+        newHeadInput.value = 'أ.د/ إبراهيم سليم';
+        newRowCountSelect.value = '15';
+        newPublishSelect.value = 'true';
+        createModal.classList.add('active');
+        setTimeout(() => {{ newTitleInput.focus(); }}, 80);
+      }}
 
-        templates.unshift(newTmpl);
-        saveTemplates();
-        selectTemplate(newTmpl.id);
-        showSwalToast('تم حفظ القالب كمسودة!', 'تم إنشاء القالب وحفظه كمسودة خاصة بالإدارة. يمكنك ضبطه ونشره للطلاب متى شئت.');
-      }});
+      function closeCreateTemplateModal() {{
+        if (createModal) createModal.classList.remove('active');
+      }}
+
+      if (newDeptSelect) {{
+        newDeptSelect.addEventListener('change', () => {{
+          const val = newDeptSelect.value;
+          if (val === 'custom') {{
+            customDeptGroup.style.display = 'block';
+            customDeptInput.focus();
+          }} else {{
+            customDeptGroup.style.display = 'none';
+            if (val.includes('إدارة')) {{
+              newHeadInput.value = 'أ.د/ محمد عبد السلام';
+            }} else {{
+              newHeadInput.value = 'أ.د/ إبراهيم سليم';
+            }}
+          }}
+        }});
+      }}
+
+      if (btnCancelCreate) btnCancelCreate.addEventListener('click', closeCreateTemplateModal);
+      if (createModal) {{
+        createModal.addEventListener('click', (e) => {{
+          if (e.target === createModal) closeCreateTemplateModal();
+        }});
+      }}
+
+      // Admin Create New Template button triggers the modal
+      document.getElementById('btnAdminCreateNew').addEventListener('click', openCreateTemplateModal);
+
+      if (btnSubmitCreate) {{
+        btnSubmitCreate.addEventListener('click', () => {{
+          const title = newTitleInput.value.trim();
+          if (!title) {{
+            createFeedback.innerText = 'يرجى إدخال عنوان استمارة البحث أولاً.';
+            createFeedback.style.display = 'block';
+            newTitleInput.focus();
+            return;
+          }}
+
+          let dept = newDeptSelect.value;
+          if (dept === 'custom') {{
+            dept = customDeptInput.value.trim();
+            if (!dept) {{
+              createFeedback.innerText = 'يرجى كتابة اسم القسم العلمي المخصص.';
+              createFeedback.style.display = 'block';
+              customDeptInput.focus();
+              return;
+            }}
+          }}
+
+          const headName = newHeadInput.value.trim() || 'أ.د/ إبراهيم سليم';
+          const rowCount = parseInt(newRowCountSelect.value, 10) || 15;
+          const isPublished = (newPublishSelect.value === 'true');
+
+          const newTmpl = {{
+            id: 'tmpl_' + Date.now(),
+            dept: dept,
+            formTitle: title,
+            published: isPublished,
+            instLine1: "معاهد طيبة العليا",
+            instLine2: "معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات",
+            instLine3: dept,
+            academicYear: "العام الجامعي 2024 / 2025",
+            projectNo: "",
+            projectName: "",
+            supervisor: "",
+            signRightTitle: "أستاذ المادة المشرف",
+            signLeftTitle: "رئيس القسم",
+            headName: headName,
+            logoVisible: true,
+            logoSize: 58,
+            logoData: DEFAULT_LOGO_B64,
+            columns: [
+              {{ id: "col_seq", name: "م", width: "7%", autoSeq: true }},
+              {{ id: "col_code", name: "كود الطالب", width: "23%", autoSeq: false }},
+              {{ id: "col_name", name: "اسم الطالب", width: "42%", autoSeq: false }},
+              {{ id: "col_phone", name: "رقم التليفون", width: "28%", autoSeq: false }}
+            ],
+            rowCount: rowCount
+          }};
+
+          // Add to top of templates array
+          templates.unshift(newTmpl);
+          saveTemplates();
+
+          // Reset gallery filters to ALL so the user immediately sees the new card!
+          activeFilter = 'all';
+          document.querySelectorAll('#deptFilterPills .filter-pill').forEach(p => p.classList.remove('active'));
+          const allPill = document.querySelector('#deptFilterPills .filter-pill[data-filter="all"]');
+          if (allPill) allPill.classList.add('active');
+          const searchInput = document.getElementById('gallerySearchInput');
+          if (searchInput) searchInput.value = '';
+
+          // Re-render gallery
+          renderGallery();
+
+          // Close modal
+          closeCreateTemplateModal();
+
+          // Show Toast confirmation
+          showSwalToast(
+            'تم إنشاء القالب وإضافته بنجاح!',
+            isPublished 
+              ? 'تمت إضافة القالب الجديد بنجاح ونشره للطلاب مباشرة في المنصة.'
+              : 'تمت إضافة القالب وحفظه كمسودة خاصة بالإدارة.'
+          );
+
+          // Smooth scroll to the new card
+          const firstCard = document.querySelector('.template-card');
+          if (firstCard) {{
+            firstCard.scrollIntoView({{ behavior: 'smooth', block: 'center' }});
+          }}
+        }});
+      }}
 
       // Admin Save Current Template Changes
       const btnSaveTemplateChanges = document.getElementById('btnSaveTemplateChanges');
@@ -3982,6 +4292,42 @@ html_content = f'''<!DOCTYPE html>
       printModal.addEventListener('click', (e) => {{
         if (e.target === printModal) printModal.classList.remove('active');
       }});
+    }}
+
+        // Motion Graphics Intro Logic
+    function setupIntro() {{
+      const overlay = document.getElementById('introOverlay');
+      const video = document.getElementById('introVideo');
+      if (!overlay || !video) return;
+
+      let closed = false;
+      function closeIntro() {{
+        if (closed) return;
+        closed = true;
+        overlay.classList.add('fade-out');
+        setTimeout(() => {{
+          overlay.style.display = 'none';
+          try {{ video.pause(); }} catch(e){{}}
+        }}, 650);
+      }}
+
+      overlay.addEventListener('click', closeIntro);
+      overlay.style.cursor = 'pointer';
+
+      video.addEventListener('ended', () => {{
+        setTimeout(closeIntro, 200);
+      }});
+
+      // Auto close fallback after 4.5s
+      setTimeout(() => {{
+        if (!closed) closeIntro();
+      }}, 4500);
+
+      // Attempt autoplay
+      const playPromise = video.play();
+      if (playPromise !== undefined) {{
+        playPromise.catch(() => {{}});
+      }}
     }}
 
     window.addEventListener('DOMContentLoaded', init);
