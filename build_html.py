@@ -872,77 +872,274 @@ html_content = f'''<!DOCTYPE html>
       -webkit-overflow-scrolling: touch;
     }}
 
-    /* Top Instruction Banner for Student (Always visible in any template) */
+    /* ========================================================
+       STUDENT GUIDELINES & INSTRUCTIONS STYLING
+       ======================================================== */
+    .student-guidelines-banner {{
+      background: #FFFFFF;
+      border: 1.5px solid #C2D0F3;
+      border-radius: 14px;
+      padding: 12px 18px;
+      box-shadow: 0 4px 14px rgba(32, 64, 151, 0.06);
+      margin-top: 18px;
+      text-align: right;
+      transition: all 0.25s ease;
+    }}
+
+    .student-guidelines-banner.is-open {{
+      border-color: #204097;
+      box-shadow: 0 6px 20px rgba(32, 64, 151, 0.1);
+    }}
+
+    .guidelines-toggle-btn {{
+      width: 100%;
+      background: transparent;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      cursor: pointer;
+      padding: 4px 0;
+      text-align: right;
+      font-family: inherit;
+    }}
+
+    .toggle-btn-right {{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }}
+
+    .guidelines-header-icon {{
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 100%);
+      border: 1.5px solid #FDA4AF;
+      color: #E11D48;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }}
+
+    .toggle-btn-text {{
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }}
+
+    .toggle-title-row {{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }}
+
+    .toggle-main-title {{
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: #204097;
+    }}
+
+    .toggle-badge {{
+      background: #FFF1F2;
+      color: #E11D48;
+      border: 1px solid #FECDD3;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s ease;
+    }}
+
+    .toggle-sub-title {{
+      font-size: 0.8rem;
+      color: #64748B;
+    }}
+
+    .toggle-chevron {{
+      color: #7280AB;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.25s ease, color 0.2s ease;
+      flex-shrink: 0;
+    }}
+
+    .guidelines-toggle-btn:hover .toggle-chevron {{
+      color: #204097;
+    }}
+
+    .guidelines-toggle-btn.open .toggle-chevron {{
+      transform: rotate(180deg);
+      color: #204097;
+    }}
+
+    .guidelines-collapsible-content {{
+      padding-top: 14px;
+      border-top: 1.5px dashed #D6E0F8;
+      margin-top: 12px;
+      animation: fadeInDown 0.25s ease;
+    }}
+
+    @keyframes fadeInDown {{
+      from {{ opacity: 0; transform: translateY(-6px); }}
+      to {{ opacity: 1; transform: translateY(0); }}
+    }}
+
+    .guidelines-grid {{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }}
+
+    @media (max-width: 1024px) {{
+      .guidelines-grid {{
+        grid-template-columns: repeat(2, 1fr);
+      }}
+    }}
+
+    .guideline-item-card {{
+      background: #F8FAFC;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      transition: all 0.2s ease;
+    }}
+
+    .guideline-item-card:hover {{
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(32, 64, 151, 0.08);
+    }}
+
+    .guideline-card-title {{
+      font-size: 0.86rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }}
+
+    .step-num {{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      font-size: 0.72rem;
+      font-weight: 900;
+      color: #FFFFFF;
+      flex-shrink: 0;
+    }}
+
+    .guideline-item-card.danger {{
+      background: #FFFBFB;
+      border-color: #FECDD3;
+    }}
+    .guideline-item-card.danger .guideline-card-title {{
+      color: #BE123C;
+    }}
+    .guideline-item-card.danger .step-num {{
+      background: #E11D48;
+    }}
+
+    .guideline-item-card.primary {{
+      background: #F8FAFF;
+      border-color: #C7D7FE;
+    }}
+    .guideline-item-card.primary .guideline-card-title {{
+      color: #1E40AF;
+    }}
+    .guideline-item-card.primary .step-num {{
+      background: #2563EB;
+    }}
+
+    .guideline-item-card.warning {{
+      background: #FFFDF5;
+      border-color: #FDE68A;
+    }}
+    .guideline-item-card.warning .guideline-card-title {{
+      color: #B45309;
+    }}
+    .guideline-item-card.warning .step-num {{
+      background: #D97706;
+    }}
+
+    .guideline-item-card.success {{
+      background: #F6FEF9;
+      border-color: #A7F3D0;
+    }}
+    .guideline-item-card.success .guideline-card-title {{
+      color: #047857;
+    }}
+    .guideline-item-card.success .step-num {{
+      background: #059669;
+    }}
+
+    .guideline-card-body {{
+      font-size: 0.8rem;
+      color: #334155;
+      line-height: 1.5;
+    }}
+
+    .guideline-card-body ul {{
+      margin: 4px 0 0 0;
+      padding-right: 16px;
+      list-style-type: disc;
+    }}
+
+    .guideline-card-body li {{
+      margin-bottom: 2px;
+    }}
+
+    .guideline-card-body strong {{
+      color: #0F172A;
+    }}
+
+    /* Top Instruction Banner for Student in Workspace (Collapsible) */
+    /* Top Instruction Banner for Student in Workspace (Collapsible) */
     .student-top-guide-bar {{
       width: 100%;
       max-width: 210mm;
       background: #FFFFFF;
       border: 1.5px solid #C2D0F3;
       border-radius: 14px;
-      padding: 14px 18px;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      box-shadow: 0 4px 16px rgba(32, 64, 151, 0.08);
+      padding: 12px 18px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 14px rgba(32, 64, 151, 0.06);
+      text-align: right;
+      transition: all 0.25s ease;
     }}
 
-    .guide-bar-content {{
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      line-height: 1.5;
+    .student-top-guide-bar.is-open {{
+      border-color: #204097;
+      box-shadow: 0 6px 20px rgba(32, 64, 151, 0.1);
     }}
 
-    .guide-bar-icon-wrap {{
-      width: 38px;
-      height: 38px;
-      min-width: 38px;
+    .meta-student-hint {{
+      font-size: 0.68rem;
+      color: #BE123C;
+      background: #FFF1F2;
+      border: 1px solid #FECDD3;
+      padding: 1px 7px;
       border-radius: 10px;
-      background: rgba(32, 64, 151, 0.08);
-      border: 1px solid #C2D0F3;
-      color: #204097;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
+      margin-right: 6px;
+      font-weight: 700;
+      vertical-align: middle;
+      display: inline-block;
     }}
-
-    .guide-bar-title {{
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: #204097;
-      margin-bottom: 3px;
-    }}
-
-    .guide-bar-instructions {{
-      font-size: 0.85rem;
-      color: #33467D;
-    }}
-
-    .guide-bar-instructions strong {{
-      color: #204097;
-    }}
-
-    .guide-bar-content {{
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.85rem;
-      color: #33467D;
-      line-height: 1.4;
-    }}
-
-    .guide-bar-tag {{
-      background: rgba(16, 185, 129, 0.12);
-      color: #059669;
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 3px 10px;
-      border-radius: 6px;
-      font-weight: 800;
-      font-size: 0.78rem;
-      white-space: nowrap;
+    body.role-admin .meta-student-hint {{
+      display: none;
     }}
 
     /* Zoom Bar */
@@ -1681,27 +1878,51 @@ html_content = f'''<!DOCTYPE html>
         overflow-x: hidden !important;
       }}
 
-      .student-top-guide-bar {{
+      /* Collapsible Guidelines Mobile Polishing */
+      .student-guidelines-banner {{
         padding: 10px 12px !important;
-        margin-bottom: 12px !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
-        gap: 10px !important;
+        margin-top: 12px !important;
+        border-radius: 12px !important;
+      }}
+      .guidelines-header-icon {{
+        width: 32px !important;
+        height: 32px !important;
+        min-width: 32px !important;
+        border-radius: 8px !important;
+      }}
+      .toggle-main-title {{
+        font-size: 0.86rem !important;
+      }}
+      .toggle-sub-title {{
+        display: none !important;
+      }}
+      .toggle-badge {{
+        font-size: 0.68rem !important;
+        padding: 2px 7px !important;
+      }}
+      .guidelines-grid {{
+        grid-template-columns: 1fr !important;
+        gap: 8px !important;
+      }}
+      .guideline-item-card {{
+        padding: 9px 11px !important;
+        border-radius: 9px !important;
+      }}
+      .guideline-card-title {{
+        font-size: 0.82rem !important;
+      }}
+      .guideline-card-body {{
+        font-size: 0.76rem !important;
+        line-height: 1.4 !important;
+      }}
+      .guideline-card-body ul {{
+        margin-top: 2px !important;
+        padding-right: 14px !important;
+      }}
+      .student-top-guide-bar {{
+        padding: 8px 12px !important;
+        margin-bottom: 8px !important;
         border-radius: 10px !important;
-      }}
-
-      .guide-bar-title {{
-        font-size: 0.88rem !important;
-      }}
-
-      .guide-bar-instructions {{
-        font-size: 0.78rem !important;
-        line-height: 1.45 !important;
-      }}
-
-      .student-top-guide-bar button {{
-        width: 100% !important;
-        justify-content: center !important;
       }}
 
       .zoom-toolbar {{
@@ -2047,9 +2268,15 @@ html_content = f'''<!DOCTYPE html>
         <span class="btn-navbar-text">العودة للرئيسية</span>
       </button>
 
-
-
-
+      <!-- Print Button (Primary for student) -->
+      <button type="button" class="btn btn-primary workspace-btn" id="btnPrintPdf" style="display:none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+          <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        <span>طباعة / حفظ PDF</span>
+      </button>
 
       <!-- Clear Data -->
       <button type="button" class="btn btn-outline btn-sm workspace-btn" id="btnClearData" title="تفريغ جدول الطلاب" style="display:none;">
@@ -2061,16 +2288,6 @@ html_content = f'''<!DOCTYPE html>
       <button type="button" class="btn btn-outline btn-sm" id="btnAuthToggle">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
         <span id="authBtnText">دخول الإدارة</span>
-      </button>
-
-      <!-- Print Button (Primary for student) -->
-      <button type="button" class="btn btn-primary workspace-btn" id="btnPrintPdf" style="display:none;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 6 2 18 2 18 9"></polyline>
-          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-          <rect x="6" y="14" width="12" height="8"></rect>
-        </svg>
-        <span>طباعة / حفظ PDF</span>
       </button>
     </div>
   </header>
@@ -2107,6 +2324,92 @@ html_content = f'''<!DOCTYPE html>
           <button type="button" class="filter-pill active" data-filter="all">جميع الأقسام</button>
           <button type="button" class="filter-pill" data-filter="نظم معلومات الأعمال">نظم معلومات الأعمال</button>
           <button type="button" class="filter-pill" data-filter="علوم الحاسب">علوم الحاسب</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Collapsible Student Guidelines Banner (Closed by default) -->
+    <div class="student-guidelines-banner" id="studentGuidelinesBanner">
+      <button type="button" class="guidelines-toggle-btn" id="btnToggleGuidelines" aria-expanded="false">
+        <div class="toggle-btn-right">
+          <div class="guidelines-header-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          </div>
+          <div class="toggle-btn-text">
+            <div class="toggle-title-row">
+              <span class="toggle-main-title">تنبيهات وتعليمات هامة لملء الاستمارة</span>
+              <span class="toggle-badge" id="guidelinesBadge">اضغط هنا للتنبيهات ▾</span>
+            </div>
+            <div class="toggle-sub-title">الخانات المتروكة فارغة • بيانات الجدول • رقم تليفون الـ Team Leader</div>
+          </div>
+        </div>
+        <div class="toggle-chevron" id="guidelinesChevron">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+      </button>
+
+      <div class="guidelines-collapsible-content" id="guidelinesContent" style="display: none;">
+        <div class="guidelines-grid">
+          <!-- Box 1: Empty Fields -->
+          <div class="guideline-item-card danger">
+            <div class="guideline-card-title">
+              <span class="step-num">١</span>
+              <span>خانات تُترك فارغة تماماً</span>
+            </div>
+            <div class="guideline-card-body">
+              تُترك هذه الخانات بيضاء فارغة بدون كتابة:
+              <ul>
+                <li><strong>رقم المشروع</strong></li>
+                <li><strong>اسم المشروع</strong></li>
+                <li><strong>اسم الدكتور المشرف</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Box 2: Table Data -->
+          <div class="guideline-item-card primary">
+            <div class="guideline-card-title">
+              <span class="step-num">٢</span>
+              <span>بيانات الجدول المطلوبة</span>
+            </div>
+            <div class="guideline-card-body">
+              تسجيل بيانات الطلاب بدقة بالجدول:
+              <ul>
+                <li><strong>كود كل طالب</strong></li>
+                <li><strong>اسم كل طالب</strong> (ثلاثي أو رباعي وواضح)</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Box 3: Team Leader -->
+          <div class="guideline-item-card warning">
+            <div class="guideline-card-title">
+              <span class="step-num">٣</span>
+              <span>قائد الفريق (Team Leader)</span>
+            </div>
+            <div class="guideline-card-body">
+              رقم الهاتف وقائد الفريق:
+              <ul>
+                <li>كتابة <strong>رقم تليفون الـ Team Leader بس</strong>.</li>
+                <li>تحديد قائد الفريق بكتابة <strong>TL</strong> بجوار اسمه (مثال: <em>أحمد محمد علي - TL</em>).</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Box 4: Print & Submit -->
+          <div class="guideline-item-card success">
+            <div class="guideline-card-title">
+              <span class="step-num">٤</span>
+              <span>الطباعة والتسليم الورقي</span>
+            </div>
+            <div class="guideline-card-body">
+              إتمام التسجيل والطباعة:
+              <ul>
+                <li>التأكد من أن البيانات <strong>واضحة ومنظمة</strong>.</li>
+                <li>بعد الانتهاء، <strong>اطبع الاستمارة ورقياً</strong> وتوجّه بها لتسليمها لإدارة المعهد.</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -2161,24 +2464,24 @@ html_content = f'''<!DOCTYPE html>
         <div class="student-instructions-card">
           <div class="instructions-card-header">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-            <span>تعليمات الطالب المعتمدة:</span>
+            <span>تنبيهات ملء الاستمارة:</span>
           </div>
           <div class="instructions-list">
             <div class="instructions-list-item">
               <span class="icon">١.</span>
-              <div>القالب معتمد ورسمي ومقفل بالكامل للحفاظ على تنسيق المعهد (لا يتطلب أي تعديل تصميم).</div>
+              <div>اترك الخانات التالية <strong>فارغة تماماً</strong>: (رقم المشروع - اسم المشروع - اسم الدكتور المشرف).</div>
             </div>
             <div class="instructions-list-item">
               <span class="icon">٢.</span>
-              <div><strong>اضغط مباشرة على أي خانة داخل جدول الطلاب</strong> لكتابة الكود والاسم ورقم التليفون.</div>
+              <div>اكتب في الجدول: <strong>كود كل طالب</strong> + <strong>اسم كل طالب</strong> رباعي وواضح.</div>
             </div>
             <div class="instructions-list-item">
               <span class="icon">٣.</span>
-              <div>الكتابة داخل الجدول تتم <strong>من اليمين إلى اليسار</strong> بشكل تلقائي ونظامي.</div>
+              <div>اكتب <strong>رقم تليفون الـ Team Leader بس</strong>، وحدد القائد بكتابة <strong>TL</strong> بجوار اسمه.</div>
             </div>
             <div class="instructions-list-item">
               <span class="icon">٤.</span>
-              <div>بمجرد الانتهاء، اضغط فقط على زر <strong>"طباعة / حفظ PDF"</strong> بالأعلى.</div>
+              <div>تأكد من وضوح وتنظيم البيانات، ثم اضغط على <strong>«طباعة / حفظ PDF»</strong> واطبعها ورقياً وتعالَ بها للمعهد.</div>
             </div>
           </div>
         </div>
@@ -2408,25 +2711,66 @@ html_content = f'''<!DOCTYPE html>
     <!-- Left Side: Interactive Canvas & A4 Page -->
     <main class="canvas-area" id="canvasArea">
 
-      <!-- Always Visible Student Instructions Banner Above the Form -->
+      <!-- Collapsible Student Instructions Banner Above the Form (Closed by default) -->
       <div class="student-top-guide-bar no-print" id="studentTopGuideBar">
-        <div class="guide-bar-content">
-          <div class="guide-bar-icon-wrap">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"></path></svg>
+        <button type="button" class="guidelines-toggle-btn" id="btnToggleWorkspaceGuide" aria-expanded="false">
+          <div class="toggle-btn-right">
+            <div class="guidelines-header-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            </div>
+            <div class="toggle-btn-text">
+              <div class="toggle-title-row">
+                <span class="toggle-main-title">تنبيهات هامة لملء الاستمارة</span>
+                <span class="toggle-badge" id="workspaceGuideBadge">اضغط للتنبيهات ▾</span>
+              </div>
+              <div class="toggle-sub-title">الخانات المتروكة فارغة • بيانات الجدول • رقم تليفون الـ Team Leader</div>
+            </div>
           </div>
-          <div>
-            <div class="guide-bar-title">تعليمات هامة للطلاب:</div>
-            <div class="guide-bar-instructions">
-              <strong>١. اكتب بياناتك مباشرة:</strong> اضغط داخل أي خانة في جدول الطلاب واكتب الاسم ورقم الكود ورقم التليفون (الكتابة تبدأ تلقائياً <strong>من اليمين إلى اليسار</strong>).<br>
-              <strong>٢. القالب معتمد ومقفل:</strong> جميع بيانات المعهد والعناوين الرسمية مقفلة لحماية التنسيق الأكاديمي المعتمد لمعهدك.<br>
-              <strong>٣. الطباعة والحفظ:</strong> بمجرد الانتهاء من ملء بياناتك، اضغط فقط على زر <strong>«طباعة / حفظ PDF»</strong> للاحتفاظ بنسختك المعتمدة.
+          <div class="toggle-chevron" id="workspaceGuideChevron">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+        </button>
+
+        <div class="guidelines-collapsible-content" id="workspaceGuideItems" style="display: none;">
+          <div class="guidelines-grid">
+            <div class="guideline-item-card danger">
+              <div class="guideline-card-title">
+                <span class="step-num">١</span>
+                <span>خانات تُترك فارغة تماماً</span>
+              </div>
+              <div class="guideline-card-body">
+                اترك الخانات التالية فارغة: <strong>(رقم المشروع • اسم المشروع • اسم الدكتور المشرف)</strong>.
+              </div>
+            </div>
+            <div class="guideline-item-card primary">
+              <div class="guideline-card-title">
+                <span class="step-num">٢</span>
+                <span>بيانات الجدول المطلوبة</span>
+              </div>
+              <div class="guideline-card-body">
+                اكتب داخل الجدول: <strong>كود كل طالب</strong> + <strong>اسم كل طالب</strong> رباعي وواضح.
+              </div>
+            </div>
+            <div class="guideline-item-card warning">
+              <div class="guideline-card-title">
+                <span class="step-num">٣</span>
+                <span>قائد الفريق (Team Leader)</span>
+              </div>
+              <div class="guideline-card-body">
+                اكتب <strong>رقم تليفون الـ TL بس</strong>، وحدد القائد بكتابة <strong>TL</strong> بجوار اسمه.
+              </div>
+            </div>
+            <div class="guideline-item-card success">
+              <div class="guideline-card-title">
+                <span class="step-num">٤</span>
+                <span>الطباعة والتسليم</span>
+              </div>
+              <div class="guideline-card-body">
+                تأكد من وضوح البيانات، ثم <strong>اطبع الاستمارة وتعالَ بها للمعهد</strong>.
+              </div>
             </div>
           </div>
         </div>
-        <button type="button" class="btn btn-primary" onclick="document.getElementById('btnPrintPdf').click()" style="align-self: center; white-space: nowrap;">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-          طباعة / حفظ PDF
-        </button>
       </div>
 
       <!-- Zoom and Display Controls Toolbar -->
@@ -2492,7 +2836,7 @@ html_content = f'''<!DOCTYPE html>
               <!-- 3. Project Metadata with Dotted Lines (Student cannot edit, Admin can edit) -->
               <div class="project-meta-box">
                 <div class="meta-row">
-                  <span class="meta-label">رقم المشروع:</span>
+                  <span class="meta-label">رقم المشروع: <span class="meta-student-hint no-print">(تُترك فارغة)</span></span>
                   <div class="meta-line-container">
                     <span class="meta-value-text" id="previewProjectNo" contenteditable="false" spellcheck="false"></span>
                     <div class="meta-dotted-line"></div>
@@ -2500,7 +2844,7 @@ html_content = f'''<!DOCTYPE html>
                 </div>
 
                 <div class="meta-row">
-                  <span class="meta-label">اسم المشروع:</span>
+                  <span class="meta-label">اسم المشروع: <span class="meta-student-hint no-print">(تُترك فارغة)</span></span>
                   <div class="meta-line-container">
                     <span class="meta-value-text" id="previewProjectName" contenteditable="false" spellcheck="false"></span>
                     <div class="meta-dotted-line"></div>
@@ -2508,7 +2852,7 @@ html_content = f'''<!DOCTYPE html>
                 </div>
 
                 <div class="meta-row">
-                  <span class="meta-label">اسم الدكتور المشرف:</span>
+                  <span class="meta-label">اسم الدكتور المشرف: <span class="meta-student-hint no-print">(تُترك فارغة)</span></span>
                   <div class="meta-line-container">
                     <span class="meta-value-text" id="previewSupervisor" contenteditable="false" spellcheck="false"></span>
                     <div class="meta-dotted-line"></div>
@@ -2789,7 +3133,7 @@ html_content = f'''<!DOCTYPE html>
           {{ id: "col_seq", name: "م", width: "7%", autoSeq: true }},
           {{ id: "col_code", name: "كود الطالب", width: "23%", autoSeq: false }},
           {{ id: "col_name", name: "اسم الطالب", width: "42%", autoSeq: false }},
-          {{ id: "col_phone", name: "رقم التليفون", width: "28%", autoSeq: false }}
+          {{ id: "col_phone", name: "رقم التليفون (TL فقط)", width: "28%", autoSeq: false }}
         ],
         rowCount: 15
       }},
@@ -2813,10 +3157,9 @@ html_content = f'''<!DOCTYPE html>
         logoData: DEFAULT_LOGO_B64,
         columns: [
           {{ id: "col_seq", name: "م", width: "7%", autoSeq: true }},
-          {{ id: "col_code", name: "كود الطالب", width: "20%", autoSeq: false }},
-          {{ id: "col_name", name: "اسم الطالب", width: "38%", autoSeq: false }},
-          {{ id: "col_track", name: "مسار التخصص (Track)", width: "17%", autoSeq: false }},
-          {{ id: "col_phone", name: "رقم التليفون", width: "18%", autoSeq: false }}
+          {{ id: "col_code", name: "كود الطالب", width: "23%", autoSeq: false }},
+          {{ id: "col_name", name: "اسم الطالب", width: "42%", autoSeq: false }},
+          {{ id: "col_phone", name: "رقم التليفون (TL فقط)", width: "28%", autoSeq: false }}
         ],
         rowCount: 6
       }}
@@ -2859,6 +3202,22 @@ html_content = f'''<!DOCTYPE html>
           }}
           // Update academic year to 2026 / 2027
           t.academicYear = "العام الجامعي 2026 / 2027";
+
+          // Purge col_track / مسار التخصص from all templates completely
+          if (Array.isArray(t.columns)) {{
+            t.columns = t.columns.filter(c => c.id !== 'col_track' && !c.name.includes('مسار'));
+            const seqCol = t.columns.find(c => c.id === 'col_seq' || c.autoSeq);
+            if (seqCol) seqCol.width = '7%';
+            const codeCol = t.columns.find(c => c.id === 'col_code');
+            if (codeCol) codeCol.width = '23%';
+            const nameCol = t.columns.find(c => c.id === 'col_name');
+            if (nameCol) nameCol.width = '42%';
+            const phoneCol = t.columns.find(c => c.id === 'col_phone');
+            if (phoneCol) {{
+              phoneCol.width = '28%';
+              phoneCol.name = 'رقم التليفون (TL فقط)';
+            }}
+          }}
 
           if (t.id === 'cs_default' || (t.dept && t.dept.includes('علوم الحاسب'))) {{
             t.rowCount = 6;
@@ -2922,6 +3281,21 @@ html_content = f'''<!DOCTYPE html>
             const t = r.data || {{}};
             if (!t.logoData || t.logoData === 'DEFAULT') {{
               t.logoData = DEFAULT_LOGO_B64;
+            }}
+            // Purge col_track / مسار التخصص from all cloud templates
+            if (Array.isArray(t.columns)) {{
+              t.columns = t.columns.filter(c => c.id !== 'col_track' && !c.name.includes('مسار'));
+              const seqCol = t.columns.find(c => c.id === 'col_seq' || c.autoSeq);
+              if (seqCol) seqCol.width = '7%';
+              const codeCol = t.columns.find(c => c.id === 'col_code');
+              if (codeCol) codeCol.width = '23%';
+              const nameCol = t.columns.find(c => c.id === 'col_name');
+              if (nameCol) nameCol.width = '42%';
+              const phoneCol = t.columns.find(c => c.id === 'col_phone');
+              if (phoneCol) {{
+                phoneCol.width = '28%';
+                phoneCol.name = 'رقم التليفون (TL فقط)';
+              }}
             }}
             return t;
           }});
@@ -3012,8 +3386,11 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     function showWorkspaceView(updateHistory = true) {{
+      window.scrollTo(0, 0);
       document.getElementById('viewGallery').style.display = 'none';
       document.getElementById('appWorkspace').classList.add('active');
+      const canvas = document.getElementById('canvasArea');
+      if (canvas) canvas.scrollTop = 0;
       if (window.innerWidth <= 1024) {{
         document.getElementById('mobileTabBar').style.display = 'block';
       }}
@@ -3089,7 +3466,7 @@ html_content = f'''<!DOCTYPE html>
         adminBanner.style.display = 'none';
         adminGalleryActions.style.display = 'none';
         adminDesignControls.style.display = 'none';
-        studentTopGuide.style.display = 'flex';
+        studentTopGuide.style.display = 'block';
 
         if (controlPanel) controlPanel.style.display = 'none';
         if (mobileTabBar) mobileTabBar.style.display = 'none';
@@ -3782,6 +4159,72 @@ html_content = f'''<!DOCTYPE html>
       // Search
       document.getElementById('gallerySearchInput').addEventListener('input', renderGallery);
 
+      // Collapsible Student Guidelines Toggle in Gallery
+      const btnToggleGuidelines = document.getElementById('btnToggleGuidelines');
+      const guidelinesContent = document.getElementById('guidelinesContent');
+      const guidelinesBadge = document.getElementById('guidelinesBadge');
+      const guidelinesBanner = document.getElementById('studentGuidelinesBanner');
+
+      if (btnToggleGuidelines && guidelinesContent) {{
+        btnToggleGuidelines.addEventListener('click', () => {{
+          const isOpen = (guidelinesContent.style.display !== 'none');
+          if (isOpen) {{
+            guidelinesContent.style.display = 'none';
+            btnToggleGuidelines.classList.remove('open');
+            if (guidelinesBanner) guidelinesBanner.classList.remove('is-open');
+            btnToggleGuidelines.setAttribute('aria-expanded', 'false');
+            if (guidelinesBadge) {{
+              guidelinesBadge.innerText = 'اضغط للتنبيهات ▾';
+              guidelinesBadge.style.background = '#FFF1F2';
+              guidelinesBadge.style.color = '#E11D48';
+            }}
+          }} else {{
+            guidelinesContent.style.display = 'block';
+            btnToggleGuidelines.classList.add('open');
+            if (guidelinesBanner) guidelinesBanner.classList.add('is-open');
+            btnToggleGuidelines.setAttribute('aria-expanded', 'true');
+            if (guidelinesBadge) {{
+              guidelinesBadge.innerText = 'إغلاق التنبيهات ▴';
+              guidelinesBadge.style.background = '#EFF6FF';
+              guidelinesBadge.style.color = '#1E40AF';
+            }}
+          }}
+        }});
+      }}
+
+      // Collapsible Student Top Guide Toggle in Workspace
+      const btnToggleWorkspaceGuide = document.getElementById('btnToggleWorkspaceGuide');
+      const workspaceGuideItems = document.getElementById('workspaceGuideItems');
+      const workspaceGuideBadge = document.getElementById('workspaceGuideBadge');
+      const studentTopGuideBar = document.getElementById('studentTopGuideBar');
+
+      if (btnToggleWorkspaceGuide && workspaceGuideItems) {{
+        btnToggleWorkspaceGuide.addEventListener('click', () => {{
+          const isOpen = (workspaceGuideItems.style.display !== 'none');
+          if (isOpen) {{
+            workspaceGuideItems.style.display = 'none';
+            btnToggleWorkspaceGuide.classList.remove('open');
+            if (studentTopGuideBar) studentTopGuideBar.classList.remove('is-open');
+            btnToggleWorkspaceGuide.setAttribute('aria-expanded', 'false');
+            if (workspaceGuideBadge) {{
+              workspaceGuideBadge.innerText = 'اضغط للتنبيهات ▾';
+              workspaceGuideBadge.style.background = '#FFF1F2';
+              workspaceGuideBadge.style.color = '#E11D48';
+            }}
+          }} else {{
+            workspaceGuideItems.style.display = 'block';
+            btnToggleWorkspaceGuide.classList.add('open');
+            if (studentTopGuideBar) studentTopGuideBar.classList.add('is-open');
+            btnToggleWorkspaceGuide.setAttribute('aria-expanded', 'true');
+            if (workspaceGuideBadge) {{
+              workspaceGuideBadge.innerText = 'إغلاق التنبيهات ▴';
+              workspaceGuideBadge.style.background = '#EFF6FF';
+              workspaceGuideBadge.style.color = '#1E40AF';
+            }}
+          }}
+        }});
+      }}
+
       // Auth (Admin Login / Logout)
       const adminModal = document.getElementById('adminLoginModal');
       const feedbackEl = document.getElementById('loginFeedbackMsg');
@@ -4061,17 +4504,11 @@ html_content = f'''<!DOCTYPE html>
             logoVisible: true,
             logoSize: 58,
             logoData: DEFAULT_LOGO_B64,
-            columns: (dept === 'علوم الحاسب') ? [
-              {{ id: "col_seq", name: "م", width: "7%", autoSeq: true }},
-              {{ id: "col_code", name: "كود الطالب", width: "20%", autoSeq: false }},
-              {{ id: "col_name", name: "اسم الطالب", width: "38%", autoSeq: false }},
-              {{ id: "col_track", name: "مسار التخصص (Track)", width: "17%", autoSeq: false }},
-              {{ id: "col_phone", name: "رقم التليفون", width: "18%", autoSeq: false }}
-            ] : [
+            columns: [
               {{ id: "col_seq", name: "م", width: "7%", autoSeq: true }},
               {{ id: "col_code", name: "كود الطالب", width: "23%", autoSeq: false }},
               {{ id: "col_name", name: "اسم الطالب", width: "42%", autoSeq: false }},
-              {{ id: "col_phone", name: "رقم التليفون", width: "28%", autoSeq: false }}
+              {{ id: "col_phone", name: "رقم التليفون (TL فقط)", width: "28%", autoSeq: false }}
             ],
             rowCount: rowCount
           }};
