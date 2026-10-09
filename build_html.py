@@ -9,7 +9,24 @@ html_content = f'''<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>منصة استمارة بحث التخرج - معاهد طيبة العليا</title>
+  <title>معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات</title>
+  <meta name="description" content="منصة تسجيل وتعبئة استمارة بحث ومشروع التخرج - معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات">
+  
+  <!-- Open Graph / WhatsApp / Facebook Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات">
+  <meta property="og:description" content="استمارات تسجيل مشاريع وأبحاث التخرج - معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات">
+  <meta property="og:site_name" content="معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات">
+  <meta property="og:image" content="https://tiba-higher-institute-for-management-and-information-technology.vercel.app/tiba_logo.png">
+  <meta property="og:image:alt" content="شعار معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات">
+  <meta name="twitter:description" content="استمارات تسجيل مشاريع وأبحاث التخرج - معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات">
+  <meta name="twitter:image" content="https://tiba-higher-institute-for-management-and-information-technology.vercel.app/tiba_logo.png">
+  
+  <link rel="icon" type="image/png" href="tiba_logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
@@ -410,9 +427,19 @@ html_content = f'''<!DOCTYPE html>
       justify-content: space-between;
       align-items: center;
     }}
+    .card-detail-item.item-inst {{
+      justify-content: flex-start;
+      gap: 8px;
+    }}
+    .card-detail-item > span:first-child {{
+      color: #94a3b8;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }}
     .card-detail-item span.val {{
       color: #e2e8f0;
       font-weight: 600;
+      word-break: break-word;
     }}
 
     .template-card-footer {{
@@ -1930,7 +1957,7 @@ html_content = f'''<!DOCTYPE html>
       </div>
       <div>
         <h1>منصة استمارة بحث التخرج</h1>
-        <span class="subtitle">معاهد طيبة العليا • تصميم رسمي متوافق مع مقاس A4</span>
+        <span class="subtitle">معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات • تصميم رسمي متوافق مع مقاس A4</span>
       </div>
     </div>
 
@@ -2211,7 +2238,7 @@ html_content = f'''<!DOCTYPE html>
           </div>
           <div class="form-group">
             <label class="form-label">اسم المعهد (السطر 2):</label>
-            <input type="text" class="form-control" id="inputInstLine2" value="المعهد العالي لتكنولوجيا الإدارة والمعلومات">
+            <input type="text" class="form-control" id="inputInstLine2" value="معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات">
           </div>
           <div class="form-group">
             <label class="form-label">القسم العلمي (السطر 3):</label>
@@ -2370,7 +2397,7 @@ html_content = f'''<!DOCTYPE html>
                   <img id="formLogoImg" class="institute-logo-img" src="data:image/png;base64,{logo_b64}" alt="شعار المعهد">
                   <div class="institute-text-lines">
                     <div class="inst-title" id="previewInstLine1">معاهد طيبة العليا</div>
-                    <div class="inst-sub" id="previewInstLine2">المعهد العالي لتكنولوجيا الإدارة والمعلومات</div>
+                    <div class="inst-sub" id="previewInstLine2">معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات</div>
                     <div class="inst-dept" id="previewInstLine3">قسم نظم معلومات الأعمال</div>
                   </div>
                 </div>
@@ -2607,7 +2634,7 @@ html_content = f'''<!DOCTYPE html>
         published: true,
         formTitle: "استمارة بحث تخرج نظم معلومات الأعمال",
         instLine1: "معاهد طيبة العليا",
-        instLine2: "المعهد العالي لتكنولوجيا الإدارة والمعلومات",
+        instLine2: "معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات",
         instLine3: "قسم نظم معلومات الأعمال",
         academicYear: "العام الجامعي 2024 / 2025",
         projectNo: "",
@@ -2633,7 +2660,7 @@ html_content = f'''<!DOCTYPE html>
         published: true,
         formTitle: "استمارة تسجيل مشروع تخرج علوم الحاسب",
         instLine1: "معاهد طيبة العليا",
-        instLine2: "المعهد العالي لعلوم الحاسب وتكنولوجيا المعلومات",
+        instLine2: "معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات",
         instLine3: "قسم علوم الحاسب",
         academicYear: "العام الجامعي 2024 / 2025",
         projectNo: "",
@@ -2641,7 +2668,7 @@ html_content = f'''<!DOCTYPE html>
         supervisor: "",
         signRightTitle: "المشرف الأكاديمي",
         signLeftTitle: "رئيس مجلس القسم",
-        headName: "أ.د/ عادل عبد الفتاح",
+        headName: "أ.د/ إبراهيم سليم",
         logoVisible: true,
         logoSize: 58,
         logoData: DEFAULT_LOGO_B64,
@@ -2660,7 +2687,7 @@ html_content = f'''<!DOCTYPE html>
         published: true,
         formTitle: "استمارة بحث تخرج إدارة الأعمال والمحاسبة",
         instLine1: "معاهد طيبة العليا",
-        instLine2: "المعهد العالي لتكنولوجيا الإدارة والمعلومات",
+        instLine2: "معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات",
         instLine3: "قسم العلوم التجارية والإدارية",
         academicYear: "العام الجامعي 2024 / 2025",
         projectNo: "",
@@ -2721,29 +2748,41 @@ html_content = f'''<!DOCTYPE html>
     // Load templates from localStorage
     function loadTemplates() {{
       try {{
-        const stored = localStorage.getItem("tiba_templates_v2");
+        let stored = localStorage.getItem("tiba_templates_v3");
+        if (!stored) {{
+          stored = localStorage.getItem("tiba_templates_v2");
+        }}
         if (stored !== null) {{
           templates = JSON.parse(stored);
-          let modified = false;
-          templates.forEach(t => {{
-            if (typeof t.published === 'undefined') {{
-              t.published = true;
-              modified = true;
-            }}
-          }});
-          if (modified) saveTemplates();
         }} else {{
           templates = JSON.parse(JSON.stringify(INITIAL_TEMPLATES));
-          saveTemplates();
         }}
+        // Always ensure migrations & official updates are applied
+        templates.forEach(t => {{
+          if (typeof t.published === 'undefined') {{
+            t.published = true;
+          }}
+          if (t.id === 'cs_default' || (t.dept && t.dept.includes('علوم الحاسب'))) {{
+            t.headName = 'أ.د/ إبراهيم سليم';
+            t.instLine2 = 'معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات';
+          }}
+          if (t.instLine2 === 'المعهد العالي لعلوم الحاسب وتكنولوجيا المعلومات' || t.instLine2 === 'المعهد العالي لتكنولوجيا الإدارة والمعلومات') {{
+            t.instLine2 = 'معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات';
+          }}
+          if (t.headName === 'أ.د/ عادل عبد الفتاح') {{
+            t.headName = 'أ.د/ إبراهيم سليم';
+          }}
+        }});
+        saveTemplates();
       }} catch (e) {{
         templates = JSON.parse(JSON.stringify(INITIAL_TEMPLATES));
+        saveTemplates();
       }}
     }}
 
     function saveTemplates() {{
       try {{
-        localStorage.setItem("tiba_templates_v2", JSON.stringify(templates));
+        localStorage.setItem("tiba_templates_v3", JSON.stringify(templates));
       }} catch (e) {{}}
     }}
 
@@ -2934,7 +2973,7 @@ html_content = f'''<!DOCTYPE html>
             </div>
 
             <div class="card-details" style="margin-top: 14px;">
-              <div class="card-detail-item">
+              <div class="card-detail-item item-inst">
                 <span>المعهد:</span>
                 <span class="val">${{tmpl.instLine2}}</span>
               </div>
@@ -3632,7 +3671,7 @@ html_content = f'''<!DOCTYPE html>
           formTitle: newTitle.trim(),
           published: false, // Default is DRAFT (not published immediately)
           instLine1: "معاهد طيبة العليا",
-          instLine2: "المعهد العالي لتكنولوجيا الإدارة والمعلومات",
+          instLine2: "معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات",
           instLine3: newDept.trim(),
           academicYear: "العام الجامعي 2024 / 2025",
           projectNo: "",
