@@ -2256,10 +2256,10 @@ html_content = f'''<!DOCTYPE html>
     </div>
 
     <div class="navbar-actions">
-      <!-- Role indicator -->
-      <span class="role-badge student" id="roleBadge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>
-        <span id="roleBadgeText">وضع الطالب</span>
+      <!-- Role indicator (Admin only) -->
+      <span class="role-badge admin" id="roleBadge" style="display:none;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+        <span id="roleBadgeText">وضع الإدارة (Admin)</span>
       </span>
 
       <!-- Switch to Gallery / Return to Home (Visible only when in Workspace) -->
@@ -2284,10 +2284,10 @@ html_content = f'''<!DOCTYPE html>
         <span class="btn-navbar-text">تفريغ الجدول</span>
       </button>
 
-      <!-- Admin Login / Logout Trigger -->
-      <button type="button" class="btn btn-outline btn-sm" id="btnAuthToggle">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-        <span id="authBtnText">دخول الإدارة</span>
+      <!-- Admin Logout Trigger (Shown ONLY when admin is logged in) -->
+      <button type="button" class="btn btn-outline btn-sm" id="btnAuthToggle" style="display:none;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <span id="authBtnText">خروج من الإدارة</span>
       </button>
     </div>
   </header>
@@ -3416,6 +3416,7 @@ html_content = f'''<!DOCTYPE html>
     function applyRolePermissions() {{
       const roleBadge = document.getElementById('roleBadge');
       const roleText = document.getElementById('roleBadgeText');
+      const authBtn = document.getElementById('btnAuthToggle');
       const authBtnText = document.getElementById('authBtnText');
       const studentBanner = document.getElementById('studentBannerSec');
       const adminBanner = document.getElementById('adminBannerSec');
@@ -3434,9 +3435,15 @@ html_content = f'''<!DOCTYPE html>
         document.body.classList.add('role-admin');
         document.body.classList.remove('role-student');
 
-        roleBadge.className = 'role-badge admin';
-        roleText.innerText = 'وضع الإدارة (Admin)';
-        authBtnText.innerText = 'خروج من الإدارة';
+        if (roleBadge) {{
+          roleBadge.className = 'role-badge admin';
+          roleBadge.style.display = 'inline-flex';
+          roleText.innerText = 'وضع الإدارة (Admin)';
+        }}
+        if (authBtn) {{
+          authBtn.style.display = 'inline-flex';
+          authBtnText.innerText = 'خروج من الإدارة';
+        }}
         studentBanner.style.display = 'none';
         adminBanner.style.display = 'block';
         adminGalleryActions.style.display = 'flex';
@@ -3455,13 +3462,13 @@ html_content = f'''<!DOCTYPE html>
         previewProjectName.contentEditable = 'true';
         previewSupervisor.contentEditable = 'true';
       }} else {{
-        // Student Mode: STRICTLY LOCKED, NO SIDEBAR, ONLY PREVIEW CANVAS!
+        // Student Mode: STRICTLY LOCKED, NO SIDEBAR, ADMIN BUTTONS HIDDEN!
         document.body.classList.add('role-student');
         document.body.classList.remove('role-admin');
 
-        roleBadge.className = 'role-badge student';
-        roleText.innerText = 'وضع الطالب';
-        authBtnText.innerText = 'دخول الإدارة';
+        if (roleBadge) roleBadge.style.display = 'none';
+        if (authBtn) authBtn.style.display = 'none';
+
         studentBanner.style.display = 'none';
         adminBanner.style.display = 'none';
         adminGalleryActions.style.display = 'none';
@@ -4124,12 +4131,18 @@ html_content = f'''<!DOCTYPE html>
       setupIntro();
       loadTemplates();
 
-      // Ensure initial history state is set
-      try {{
-        history.replaceState({{ view: 'gallery' }}, '', window.location.pathname + window.location.search);
-      }} catch (e) {{}}
+      // Ensure initial history state is set only if not #admin
+      if (window.location.hash !== '#admin' && !window.location.hash.startsWith('#workspace')) {{
+        try {{
+          history.replaceState({{ view: 'gallery' }}, '', window.location.pathname + window.location.search);
+        }} catch (e) {{}}
+      }}
 
       showGalleryView(false);
+
+      // Direct Admin URL trigger check
+      checkAdminUrlTrigger();
+      window.addEventListener('hashchange', checkAdminUrlTrigger);
 
       // Handle browser Back / Forward buttons & mobile swipe gestures
       window.addEventListener('popstate', (e) => {{
@@ -4137,6 +4150,11 @@ html_content = f'''<!DOCTYPE html>
         const activeModal = document.querySelector('.modal-backdrop.active');
         if (activeModal) {{
           activeModal.classList.remove('active');
+          return;
+        }}
+
+        if (window.location.hash === '#admin') {{
+          checkAdminUrlTrigger();
           return;
         }}
 
@@ -4225,30 +4243,70 @@ html_content = f'''<!DOCTYPE html>
         }});
       }}
 
+      // Direct Admin Access via Secret Link (#admin or ?admin=true)
+      function triggerAdminLoginModal() {{
+        const adminModal = document.getElementById('adminLoginModal');
+        const feedbackEl = document.getElementById('loginFeedbackMsg');
+        const passInput = document.getElementById('adminPasswordInput');
+        if (!adminModal) return;
+        if (passInput) passInput.value = '';
+        if (feedbackEl) feedbackEl.style.display = 'none';
+        adminModal.classList.add('active');
+        setTimeout(() => {{
+          if (passInput) passInput.focus();
+        }}, 200);
+      }}
+
+      function checkAdminUrlTrigger() {{
+        const isHashAdmin = (window.location.hash === '#admin');
+        const isQueryAdmin = (window.location.search.includes('admin=true') || window.location.search.includes('admin=1'));
+        if (isHashAdmin || isQueryAdmin) {{
+          if (sessionStorage.getItem('tiba_admin_session') === 'true') {{
+            currentRole = 'admin';
+            applyRolePermissions();
+            if (document.getElementById('appWorkspace').classList.contains('active')) {{
+              showWorkspaceView(false);
+            }} else {{
+              renderGallery();
+            }}
+          }} else if (currentRole !== 'admin') {{
+            triggerAdminLoginModal();
+          }}
+        }}
+      }}
+
       // Auth (Admin Login / Logout)
       const adminModal = document.getElementById('adminLoginModal');
       const feedbackEl = document.getElementById('loginFeedbackMsg');
       const passInput = document.getElementById('adminPasswordInput');
 
+      // Logout trigger for Admin (only visible when in Admin mode)
       document.getElementById('btnAuthToggle').addEventListener('click', () => {{
         if (currentRole === 'admin') {{
           currentRole = 'student';
+          sessionStorage.removeItem('tiba_admin_session');
+          try {{
+            if (window.location.hash === '#admin') {{
+              history.replaceState(null, '', window.location.pathname + window.location.search);
+            }}
+          }} catch(e) {{}}
           applyRolePermissions();
           if (document.getElementById('appWorkspace').classList.contains('active')) {{
-            showWorkspaceView();
+            showWorkspaceView(false);
           }} else {{
             renderGallery();
           }}
-        }} else {{
-          passInput.value = '';
-          feedbackEl.style.display = 'none';
-          adminModal.classList.add('active');
-          passInput.focus();
+          showSwalToast('تم تسجيل الخروج', 'تم إغلاق وضع الإدارة والعودة لوضع الطالب بنجاح.');
         }}
       }});
 
       document.getElementById('btnCloseLoginModal').addEventListener('click', () => {{
         adminModal.classList.remove('active');
+        if (window.location.hash === '#admin') {{
+          try {{
+            history.replaceState(null, '', window.location.pathname + window.location.search);
+          }} catch(e) {{}}
+        }}
       }});
 
       // Toggle password visibility
@@ -4283,14 +4341,21 @@ html_content = f'''<!DOCTYPE html>
           failedAttempts = 0;
           lockUntilTime = 0;
           localStorage.removeItem("tiba_lockout_time");
+          sessionStorage.setItem("tiba_admin_session", "true");
           currentRole = 'admin';
+          if (window.location.hash !== '#admin' && !window.location.hash.includes('workspace')) {{
+            try {{
+              history.replaceState({{ view: 'admin' }}, '', window.location.pathname + window.location.search + '#admin');
+            }} catch(e) {{}}
+          }}
           adminModal.classList.remove('active');
           applyRolePermissions();
           if (document.getElementById('appWorkspace').classList.contains('active')) {{
-            showWorkspaceView();
+            showWorkspaceView(false);
           }} else {{
             renderGallery();
           }}
+          showSwalToast('تم تسجيل الدخول بنجاح!', 'أهلاً بك في لوحة تحكم إدارة الاستمارات.');
         }} else {{
           failedAttempts++;
           if (failedAttempts >= 3) {{
