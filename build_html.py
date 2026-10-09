@@ -1,8 +1,16 @@
 import os
+import base64
 
 base64_path = "/Users/mac/Desktop/tiba/tiba_logo_base64.txt"
 with open(base64_path, "r") as f:
     logo_b64 = f.read().strip()
+
+attnlg_path = "/Users/mac/Desktop/tiba/attnlg.jpg"
+if os.path.exists(attnlg_path):
+    with open(attnlg_path, "rb") as f:
+        attnlg_b64 = base64.b64encode(f.read()).decode("utf-8")
+else:
+    attnlg_b64 = logo_b64
 
 html_content = f'''<!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -90,21 +98,28 @@ html_content = f'''<!DOCTYPE html>
       overflow-x: hidden;
     }}
 
-    /* Global Navbar */
+    /* Global Top Header Wrapper (Sticky anchor for Navbar and Mobile Tab Switcher) */
+    .app-top-header-wrap {{
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      width: 100%;
+      background: #FFFFFF;
+      box-shadow: 0 2px 10px rgba(32, 64, 151, 0.08);
+    }}
+
     header.app-navbar {{
       background: #FFFFFF;
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border-bottom: 2px solid var(--border-color);
-      box-shadow: 0 2px 12px rgba(32, 64, 151, 0.08);
+      border-bottom: 1.5px solid var(--border-color);
       padding: 10px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      position: relative;
       gap: 12px;
+      width: 100%;
     }}
 
     .navbar-brand {{
@@ -116,15 +131,26 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     .navbar-brand .brand-icon {{
-      width: 40px;
-      height: 40px;
-      min-width: 40px;
-      background: linear-gradient(135deg, #204097, #27428B);
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      background: #FFFFFF;
+      border: 1.5px solid #C2D0F3;
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 12px rgba(32, 64, 151, 0.25);
+      box-shadow: 0 2px 8px rgba(32, 64, 151, 0.12);
+      overflow: hidden;
+      padding: 2px;
+      flex-shrink: 0;
+    }}
+
+    .navbar-brand .brand-icon img.brand-logo-img {{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
     }}
 
     .navbar-brand h1 {{
@@ -498,11 +524,11 @@ html_content = f'''<!DOCTYPE html>
     .mobile-tab-bar {{
       display: none;
       background: #FFFFFF;
-      border-bottom: 1px solid #C2D0F3;
-      padding: 8px 12px;
-      position: sticky;
-      top: 61px;
-      z-index: 90;
+      border-top: 1px solid #E2E8F0;
+      border-bottom: 1.5px solid #C2D0F3;
+      padding: 6px 12px;
+      width: 100%;
+      position: relative;
     }}
 
     .segmented-switch {{
@@ -1726,11 +1752,15 @@ html_content = f'''<!DOCTYPE html>
       }}
 
       .mobile-tab-bar {{
-        display: block;
+        display: none !important;
+      }}
+      body.workspace-active.role-admin .mobile-tab-bar {{
+        display: block !important;
       }}
 
       .app-workspace {{
-        height: calc(100vh - 110px);
+        height: calc(100dvh - 140px);
+        height: calc(100vh - 140px);
       }}
 
       aside.control-panel {{
@@ -1758,23 +1788,38 @@ html_content = f'''<!DOCTYPE html>
     @media (max-width: 768px) {{
       /* Top Navbar Mobile Optimization */
       header.app-navbar {{
-        padding: 8px 10px !important;
+        padding: 8px 12px !important;
         flex-direction: column !important;
         align-items: stretch !important;
-        gap: 8px !important;
+        gap: 6px !important;
       }}
 
       .navbar-brand {{
         width: 100% !important;
-        justify-content: space-between !important;
+        justify-content: flex-start !important;
+        gap: 10px !important;
+      }}
+
+      .navbar-brand .brand-icon {{
+        width: 38px !important;
+        height: 38px !important;
+        min-width: 38px !important;
+        padding: 2px !important;
       }}
 
       .navbar-brand h1 {{
-        font-size: 0.95rem !important;
+        font-size: 0.92rem !important;
         line-height: 1.2 !important;
+        margin: 0 !important;
       }}
+
       .navbar-brand span.subtitle {{
-        display: none !important;
+        display: block !important;
+        font-size: 0.67rem !important;
+        color: #4B6396 !important;
+        line-height: 1.25 !important;
+        margin-top: 2px !important;
+        white-space: normal !important;
       }}
 
       .navbar-actions {{
@@ -1782,28 +1827,45 @@ html_content = f'''<!DOCTYPE html>
         display: flex !important;
         justify-content: space-between !important;
         align-items: center !important;
-        gap: 4px !important;
+        gap: 6px !important;
         flex-wrap: nowrap !important;
         overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 2px 0 !important;
       }}
 
       .navbar-actions .btn {{
-        padding: 6px 8px !important;
-        font-size: 0.75rem !important;
+        padding: 6px 10px !important;
+        font-size: 0.74rem !important;
         white-space: nowrap !important;
-        flex: 1 !important;
+        flex-shrink: 0 !important;
+        border-radius: 8px !important;
       }}
 
       .navbar-actions #btnPrintPdf {{
-        flex: 1.5 !important;
-        padding: 7px 10px !important;
-        font-size: 0.82rem !important;
+        flex: 1.3 !important;
+        padding: 6px 12px !important;
+        font-size: 0.8rem !important;
       }}
 
       .role-badge {{
-        padding: 4px 8px !important;
+        padding: 5px 10px !important;
         font-size: 0.72rem !important;
         white-space: nowrap !important;
+        flex-shrink: 0 !important;
+      }}
+
+      .mobile-tab-bar {{
+        padding: 6px 10px !important;
+      }}
+
+      .app-workspace {{
+        height: calc(100dvh - 145px) !important;
+        height: calc(100vh - 145px) !important;
+      }}
+
+      body.role-admin #studentGuidelinesBanner {{
+        display: none !important;
       }}
 
       /* Gallery Mobile Spacing */
@@ -1986,8 +2048,11 @@ html_content = f'''<!DOCTYPE html>
       display: flex !important;
     }}
     @media (max-width: 1024px) {{
-      body.role-admin .mobile-tab-bar {{
+      body.role-admin.workspace-active .mobile-tab-bar {{
         display: block !important;
+      }}
+      body.role-admin:not(.workspace-active) .mobile-tab-bar {{
+        display: none !important;
       }}
       body.role-admin:not(.show-preview-mode) aside.control-panel {{
         display: block !important;
@@ -2238,71 +2303,68 @@ html_content = f'''<!DOCTYPE html>
     <video id="introVideo" src="2025.mp4" autoplay muted playsinline preload="auto" class="intro-fullscreen-video"></video>
   </div>
 
-  <!-- Top Global Navbar -->
-  <header class="app-navbar no-print">
-    <div class="navbar-brand" id="brandHomeBtn">
-      <div class="brand-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"></path>
-          <path d="M6 6h10"></path>
-          <path d="M6 10h10"></path>
-          <path d="M6 14h6"></path>
-        </svg>
+  <!-- Top Global Sticky Wrapper (Contains Navbar and Mobile Tab Switcher) -->
+  <div class="app-top-header-wrap" id="appTopHeaderWrap">
+    <header class="app-navbar no-print">
+      <div class="navbar-brand" id="brandHomeBtn">
+        <div class="brand-icon" title="شعار معهد طيبة العالي">
+          <img src="data:image/png;base64,{attnlg_b64}" alt="شعار معهد طيبة العالي" class="brand-logo-img">
+        </div>
+        <div>
+          <h1>منصة استمارة بحث التخرج</h1>
+          <span class="subtitle">معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات • تصميم رسمي متوافق مع مقاس A4</span>
+        </div>
       </div>
-      <div>
-        <h1>منصة استمارة بحث التخرج</h1>
-        <span class="subtitle">معهد طيبة العالي لتكنولوجيا الإدارة والمعلومات • تصميم رسمي متوافق مع مقاس A4</span>
+
+      <div class="navbar-actions">
+        <!-- Role indicator (Admin only) -->
+        <span class="role-badge admin" id="roleBadge" style="display:none;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+          <span id="roleBadgeText">وضع الإدارة (Admin)</span>
+        </span>
+
+        <!-- Switch to Gallery / Return to Home (Visible only when in Workspace) -->
+        <button type="button" class="btn btn-secondary btn-sm workspace-btn" id="btnBrowseGallery" title="العودة للصفحة الرئيسية وتصفح الاستمارات" style="display:none;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 19 12 12 5"></polyline></svg>
+          <span class="btn-navbar-text">العودة للرئيسية</span>
+        </button>
+
+        <!-- Print Button (Primary for student) -->
+        <button type="button" class="btn btn-primary workspace-btn" id="btnPrintPdf" style="display:none;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          <span>طباعة / حفظ PDF</span>
+        </button>
+
+        <!-- Clear Data -->
+        <button type="button" class="btn btn-outline btn-sm workspace-btn" id="btnClearData" title="تفريغ جدول الطلاب" style="display:none;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+          <span class="btn-navbar-text">تفريغ الجدول</span>
+        </button>
+
+        <!-- Admin Logout Trigger (Shown ONLY when admin is logged in) -->
+        <button type="button" class="btn btn-outline btn-sm" id="btnAuthToggle" style="display:none;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          <span id="authBtnText">خروج من الإدارة</span>
+        </button>
       </div>
-    </div>
+    </header>
 
-    <div class="navbar-actions">
-      <!-- Role indicator (Admin only) -->
-      <span class="role-badge admin" id="roleBadge" style="display:none;">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-        <span id="roleBadgeText">وضع الإدارة (Admin)</span>
-      </span>
-
-      <!-- Switch to Gallery / Return to Home (Visible only when in Workspace) -->
-      <button type="button" class="btn btn-secondary btn-sm workspace-btn" id="btnBrowseGallery" title="العودة للصفحة الرئيسية وتصفح الاستمارات" style="display:none;">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 19 12 12 5"></polyline></svg>
-        <span class="btn-navbar-text">العودة للرئيسية</span>
-      </button>
-
-      <!-- Print Button (Primary for student) -->
-      <button type="button" class="btn btn-primary workspace-btn" id="btnPrintPdf" style="display:none;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 6 2 18 2 18 9"></polyline>
-          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-          <rect x="6" y="14" width="12" height="8"></rect>
-        </svg>
-        <span>طباعة / حفظ PDF</span>
-      </button>
-
-      <!-- Clear Data -->
-      <button type="button" class="btn btn-outline btn-sm workspace-btn" id="btnClearData" title="تفريغ جدول الطلاب" style="display:none;">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-        <span class="btn-navbar-text">تفريغ الجدول</span>
-      </button>
-
-      <!-- Admin Logout Trigger (Shown ONLY when admin is logged in) -->
-      <button type="button" class="btn btn-outline btn-sm" id="btnAuthToggle" style="display:none;">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-        <span id="authBtnText">خروج من الإدارة</span>
-      </button>
-    </div>
-  </header>
-
-  <!-- Mobile Segmented Tabs Bar (Active when in Workspace on screens < 1024px) -->
-  <div class="mobile-tab-bar no-print" id="mobileTabBar" style="display:none;">
-    <div class="segmented-switch">
-      <button type="button" class="segmented-btn active" id="tabBtnEdit">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="3" y1="15" x2="21" y2="15"></line></svg>
-        <span>التحكم في الجدول</span>
-      </button>
-      <button type="button" class="segmented-btn" id="tabBtnPreview">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-        <span>معاينة الاستمارة (A4)</span>
-      </button>
+    <!-- Mobile Segmented Tabs Bar (Active ONLY when in Workspace on screens <= 1024px) -->
+    <div class="mobile-tab-bar no-print" id="mobileTabBar" style="display:none;">
+      <div class="segmented-switch">
+        <button type="button" class="segmented-btn active" id="tabBtnEdit">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="3" y1="15" x2="21" y2="15"></line></svg>
+          <span>التحكم في الجدول</span>
+        </button>
+        <button type="button" class="segmented-btn" id="tabBtnPreview">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          <span>معاينة الاستمارة (A4)</span>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -3367,9 +3429,11 @@ html_content = f'''<!DOCTYPE html>
 
     // Switch Views with Browser History Support
     function showGalleryView(updateHistory = true) {{
+      document.body.classList.remove('workspace-active');
       document.getElementById('viewGallery').style.display = 'flex';
       document.getElementById('appWorkspace').classList.remove('active');
-      document.getElementById('mobileTabBar').style.display = 'none';
+      const mobileTabBar = document.getElementById('mobileTabBar');
+      if (mobileTabBar) mobileTabBar.style.display = 'none';
       document.querySelectorAll('.workspace-btn').forEach(btn => btn.style.display = 'none');
       
       if (updateHistory) {{
@@ -3387,12 +3451,16 @@ html_content = f'''<!DOCTYPE html>
 
     function showWorkspaceView(updateHistory = true) {{
       window.scrollTo(0, 0);
+      document.body.classList.add('workspace-active');
       document.getElementById('viewGallery').style.display = 'none';
       document.getElementById('appWorkspace').classList.add('active');
       const canvas = document.getElementById('canvasArea');
       if (canvas) canvas.scrollTop = 0;
-      if (window.innerWidth <= 1024) {{
-        document.getElementById('mobileTabBar').style.display = 'block';
+      const mobileTabBar = document.getElementById('mobileTabBar');
+      if (window.innerWidth <= 1024 && currentRole === 'admin' && mobileTabBar) {{
+        mobileTabBar.style.display = 'block';
+      }} else if (mobileTabBar) {{
+        mobileTabBar.style.display = 'none';
       }}
       document.querySelectorAll('.workspace-btn').forEach(btn => btn.style.display = 'inline-flex');
       
@@ -3419,12 +3487,14 @@ html_content = f'''<!DOCTYPE html>
       const authBtn = document.getElementById('btnAuthToggle');
       const authBtnText = document.getElementById('authBtnText');
       const studentBanner = document.getElementById('studentBannerSec');
+      const studentGuidelinesBanner = document.getElementById('studentGuidelinesBanner');
       const adminBanner = document.getElementById('adminBannerSec');
       const adminGalleryActions = document.getElementById('adminGalleryActions');
       const adminDesignControls = document.getElementById('adminDesignControls');
       const studentTopGuide = document.getElementById('studentTopGuideBar');
       const controlPanel = document.getElementById('controlPanel');
       const mobileTabBar = document.getElementById('mobileTabBar');
+      const isWorkspace = document.getElementById('appWorkspace') && document.getElementById('appWorkspace').classList.contains('active');
       
       const previewTitle = document.getElementById('previewFormTitle');
       const previewProjectNo = document.getElementById('previewProjectNo');
@@ -3444,6 +3514,7 @@ html_content = f'''<!DOCTYPE html>
           authBtn.style.display = 'inline-flex';
           authBtnText.innerText = 'خروج من الإدارة';
         }}
+        if (studentGuidelinesBanner) studentGuidelinesBanner.style.display = 'none';
         studentBanner.style.display = 'none';
         adminBanner.style.display = 'block';
         adminGalleryActions.style.display = 'flex';
@@ -3452,8 +3523,8 @@ html_content = f'''<!DOCTYPE html>
         updateAdminBannerUI();
 
         if (controlPanel) controlPanel.style.display = 'flex';
-        if (window.innerWidth <= 1024 && mobileTabBar) {{
-          mobileTabBar.style.display = 'block';
+        if (mobileTabBar) {{
+          mobileTabBar.style.display = (isWorkspace && window.innerWidth <= 1024) ? 'block' : 'none';
         }}
 
         // Admin can edit all headers directly in preview
@@ -3469,6 +3540,7 @@ html_content = f'''<!DOCTYPE html>
         if (roleBadge) roleBadge.style.display = 'none';
         if (authBtn) authBtn.style.display = 'none';
 
+        if (studentGuidelinesBanner) studentGuidelinesBanner.style.display = 'block';
         studentBanner.style.display = 'none';
         adminBanner.style.display = 'none';
         adminGalleryActions.style.display = 'none';
